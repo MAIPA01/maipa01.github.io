@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>Mobile Detection</title>
+    </head>
+    <body onload="DetectIphone()">
+        <input type="button" OnClick="DetectIphone()" value="What my device is?" />
+    </body>
+</html>
+
+<script>
+function DetectIphone()
+{
+	if (/Mobi/.test(navigator.userAgent)) {
+		alert('mobile');
+	}
+	else {
+	alert('Nain');
+	}
+}
+</script>
+
+		<!--<script type="text/javascript">
+		<!--
+		if (screen.width <= 699) {
+		document.location = "index2.html";
+		}
+		//--><!--
+		</script>-->
+		
+<!--<script>
+    function DetectIphone()
+    {
+       var uagent = navigator.userAgent.toLowerCase();
+       if (uagent.search("kindle") > -1)
+          alert('kindle');
+	   else if(uagent.search("windows") > -1){
+		alert('windows');
+		}
+		else if(uagent.search("linux") > -1){
+		alert('linux');
+		}
+		else if(uagent.search("android") > -1){
+		alert('android');
+		}
+		else if(uagent.search("iphone") > -1){
+		alert('iphone');
+		}
+		else if(uagent.search("ipad") > -1){
+		alert('ipad');
+		}
+		else if(uagent.search("mac") > -1){
+		alert('mac');
+		}
+		else if(uagent.search("webos") > -1){
+		alert('webos');
+		}
+		else if(uagent.search("ipod") > -1){
+		alert('ipod');
+		}
+		else if(uagent.search("blackberry") > -1){
+		alert('blackberry');
+		}
+		else if(uagent.search("bb") > -1){
+		alert('bb');
+		}
+		else if(uagent.search("playbook") > -1){
+		alert('playbook');
+		}
+		else if(uagent.search("iemobile") > -1){
+		alert('iemobile');
+		}
+		else if(uagent.search("windows phone") > -1){
+		alert('windows phone');
+		}
+		else if(uagent.search("silk") > -1){
+		alert('silk');
+		}
+		else if(uagent.search("opera mini") > -1){
+		alert('opera mini');
+		}
+       else
+          alert('false');
+    }
+</script>-->
+Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini
