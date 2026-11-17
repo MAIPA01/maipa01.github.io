@@ -25,156 +25,386 @@
   ],
   "projects": [
     {
-      "title": {
-        "en": "TODO: My game engine",
-        "pl": "TODO: Mój silnik gier"
-      },
+      "title": "Twin^2 Engine",
       "category": "engine",
-      "year": "2025",
+      "year": "2024",
       "image": "",
+      "imageFit": "contain",
       "description": {
-        "en": "Short description of your own game engine — what it can do, what you're proud of (ECS, editor, physics, scripting…).",
-        "pl": "Krótki opis Twojego silnika — co potrafi i z czego jesteś dumny (ECS, edytor, fizyka, skrypty…)."
+        "en": "Game engine built in 4 months for courses at Lodz University of Technology written in C++20.",
+        "pl": "Silnik gier zrobiony w 4 miesiące na zajęciach na Politechnice Łódzkiej napisany w C++20."
       },
       "tags": [
-        "C++",
+        "C++20",
         "OpenGL",
-        "ECS"
+        "CMake",
+        "ZTGK 2024 - Game Developement"
       ],
       "featured": true,
       "links": [
         {
           "type": "github",
-          "url": "https://github.com/MAIPA01/TODO"
+          "url": "https://github.com/Muppetsg2/Twin-2-Engine"
         }
       ]
     },
     {
-      "title": {
-        "en": "TODO: My renderer",
-        "pl": "TODO: Mój renderer"
-      },
-      "category": "engine",
-      "year": "2025",
-      "image": "",
+      "title": "Echoes of Fame",
+      "category": "game",
+      "year": "2024",
+      "image": "images/projects/echoes-of-fame-icon.webp",
+      "imageFit": "contain",
       "description": {
-        "en": "Short description of your renderer — PBR, shadows, deferred / forward+, ray tracing… Add a screenshot in images/projects/.",
-        "pl": "Krótki opis renderera — PBR, cienie, deferred / forward+, ray tracing… Dodaj zrzut ekranu do images/projects/."
+        "en": "Game build using custom game engine Twin^2 Engine. It is Strategy Endless Runner in which you lead a music band to gain influence.",
+        "pl": "Gra zbudownana na własnym silniku Twin^2 Engine. Jest to gra strategiczna bez końca w której prowadzisz zespół muzyczny tak by zdobyć wpływy."
       },
       "tags": [
-        "C++",
-        "Rendering",
-        "Shaders"
+        "C++20",
+        "Custom Engine",
+        "ZTGK 2024 - Game Developement",
+        "Endless Runner",
+        "Strategy",
+        "Area Control",
+        "PC"
       ],
+      "featured": true,
       "links": [
         {
           "type": "github",
-          "url": "https://github.com/MAIPA01/TODO"
+          "url": "https://github.com/Muppetsg2/Twin-2-Engine"
         },
         {
-          "type": "youtube",
-          "url": "https://www.youtube.com/watch?v=TODO"
+          "type": "download",
+          "label": "Windows",
+          "url": "https://github.com/Muppetsg2/Twin-2-Engine/releases/download/v1.2.2-After-Finals/build.zip"
         }
       ]
     },
     {
-      "title": {
-        "en": "TODO: My library",
-        "pl": "TODO: Moja biblioteka"
-      },
+      "title": "pcre2cpp",
       "category": "library",
-      "year": "2024",
+      "year": "2026",
       "image": "",
+      "imageFit": "contain",
       "description": {
-        "en": "What does the library do and who is it for? One or two sentences are enough.",
-        "pl": "Co robi biblioteka i dla kogo jest? Wystarczą jedno–dwa zdania."
+        "en": "A C++ wrapper around the PCRE2 library to provide a more user-friendly and object-oriented interface for using regular expressions, while retaining the performance and flexibility of the original library.",
+        "pl": "Otoczka (wrapper) w języku C++ dla biblioteki PCRE2, zapewniająca bardziej przyjazny dla użytkownika, obiektowy interfejs do obsługi wyrażeń regularnych, przy jednoczesnym zachowaniu wydajności i elastyczności oryginalnej biblioteki."
       },
       "tags": [
-        "C++",
-        "Header-only"
+        "C++17",
+        "CMake",
+        "Header-only",
+        "Wrapper"
       ],
       "links": [
         {
           "type": "github",
-          "url": "https://github.com/MAIPA01/TODO"
+          "url": "https://github.com/MAIPA01/pcre2cpp"
         },
         {
           "type": "docs",
-          "url": "https://github.com/MAIPA01/TODO#readme"
+          "url": "https://maipa01.github.io/pcre2cpp/html/"
         }
       ]
     },
     {
-      "title": {
-        "en": "TODO: Game jam game",
-        "pl": "TODO: Gra z game jamu"
-      },
-      "category": "game",
-      "year": "2024",
+      "title": "glslstruct",
+      "category": "library",
+      "year": "2026",
       "image": "",
+      "imageFit": "contain",
       "description": {
-        "en": "Game made with a team — describe your role (e.g. gameplay programmer, shaders, tools).",
-        "pl": "Gra robiona w zespole — opisz swoją rolę (np. gameplay, shadery, narzędzia)."
+        "en": "GLSL structure representation in C++.",
+        "pl": "Reprezentacja struktur GLSL w języku C++."
+      },
+      "tags": [
+        "C++17",
+        "CMake",
+        "OpenGL",
+        "Vulkan",
+        "GLSL"
+      ],
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/MAIPA01/glslstruct"
+        },
+        {
+          "type": "docs",
+          "url": "https://maipa01.github.io/glslstruct/html/"
+        }
+      ]
+    },
+    {
+      "title": "tinypbrt",
+      "category": "library",
+      "year": "2026",
+      "image": "",
+      "imageFit": "contain",
+      "description": {
+        "en": "Tiny but powerful pbrt-v4 loader.",
+        "pl": "Tiny but powerful pbrt-v4 loader."
+      },
+      "tags": [
+        "C11",
+        "C++20",
+        "CMake",
+        "Wrapper",
+        "PBRT-v4"
+      ],
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/MAIPA01/tinypbrt"
+        },
+        {
+          "type": "docs",
+          "url": "https://maipa01.github.io/tinypbrt/"
+        }
+      ]
+    },
+    {
+      "title": "margs",
+      "category": "library",
+      "year": "2025",
+      "image": "",
+      "imageFit": "contain",
+      "description": {
+        "en": "margs (Maipa's Args Analyzer) is a C++ library for parsing command-line arguments. It supports flags (--flag), values (--value value), and grouped arguments (e.g., group --group-flag). The library allows easy definition of valid arguments, automatically generates error messages for invalid input, and provides built-in help message generation.",
+        "pl": "margs (Maipa's Args Analyzer) to biblioteka w języku C++ służąca do parsowania argumentów wiersza poleceń. Obsługuje flagi (--flaga), wartości (--wartość wartość) oraz argumenty zgrupowane (np. grupa --flaga-grupy). Biblioteka umożliwia łatwe definiowanie poprawnych argumentów, automatycznie generuje komunikaty o błędach w przypadku nieprawidłowych danych wejściowych oraz oferuje wbudowaną funkcję tworzenia komunikatów pomocy."
+      },
+      "tags": [
+        "C++20",
+        "CMake",
+        "Header-only",
+        "Args Parser"
+      ],
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/MAIPA01/margs"
+        },
+        {
+          "type": "docs",
+          "url": "https://github.com/MAIPA01/margs#"
+        }
+      ]
+    },
+    {
+      "title": "Destiny Painter",
+      "category": "game",
+      "year": "2025",
+      "image": "images/projects/destiny-painter-icon.webp",
+      "imageFit": "contain",
+      "description": {
+        "en": "Destiny Painter is an arcade-style game where you leap between colourful planets, leaving a trail of paint behind you.",
+        "pl": "Destiny Painter to gra w stylu zręcznościowym, w której przeskakujesz pomiędzy kolorowymi planetami, zostawiając za sobą ślad farby."
       },
       "tags": [
         "Unity",
         "C#",
-        {
-          "en": "Team project",
-          "pl": "Projekt zespołowy"
-        }
+        "ZTGK 2025 - Mobile",
+        "Android",
+        "Arcade"
       ],
       "links": [
         {
           "type": "itch",
-          "url": "https://TODO.itch.io/TODO"
+          "url": "https://muppetsg2.itch.io/destiny-painter"
         },
         {
           "type": "github",
-          "url": "https://github.com/MAIPA01/TODO"
+          "url": "https://github.com/Muppetsg2/DestinyPainter"
+        },
+        {
+          "type": "vimeo",
+          "label": "Trailer",
+          "url": "https://vimeo.com/1092907356?fl=pl&fe=sh"
         }
       ]
     },
     {
-      "title": {
-        "en": "TODO: Unreal Engine project",
-        "pl": "TODO: Projekt w Unreal Engine"
-      },
+      "title": "CEO Simulator",
       "category": "game",
       "year": "2025",
-      "image": "",
+      "image": "images/projects/ceo-simulator-icon.webp",
+      "imageFit": "contain",
       "description": {
-        "en": "A project made in Unreal Engine — what did you build in C++ / Blueprints?",
-        "pl": "Projekt w Unreal Engine — co zbudowałeś w C++ / Blueprintach?"
+        "en": "CEO Simulator is a satirical, low-poly management simulator where you step into the shoes of a company's CEO. Your job is to review documents brought in by employees and make important yes-or-no decisions that will shape the company's future.",
+        "pl": "CEO Simulator to satyryczny symulator zarządzania w stylistyce low-poly, w którym wcielasz się w rolę dyrektora generalnego (CEO) firmy. Twoim zadaniem jest przeglądanie dokumentów dostarczanych przez pracowników oraz podejmowanie kluczowych decyzji – poprzez wybór „tak” lub „nie” – które ukształtują przyszłość przedsiębiorstwa."
       },
       "tags": [
-        "Unreal Engine",
-        "C++"
+        "Unity",
+        "C#",
+        "ZTGK 2025 - VR",
+        "VR",
+        "Meta Quest 2 & 3",
+        "Simulator"
       ],
       "links": [
         {
+          "type": "itch",
+          "url": "https://magnar303.itch.io/ceo-simulator"
+        },
+        {
           "type": "github",
-          "url": "https://github.com/MAIPA01/TODO"
+          "url": "https://github.com/Muppetsg2/VRGame"
+        },
+        {
+          "type": "vimeo",
+          "label": "Trailer",
+          "url": "https://vimeo.com/1092811852?fl=pl&fe=sh"
+        }
+      ]
+    },
+    {
+      "title": "Dog Of War",
+      "category": "game",
+      "year": "2026",
+      "image": "images/projects/dog-of-war-icon.webp",
+      "imageFit": "contain",
+      "description": {
+        "en": "A dog cursed to suffer endlessly seeks hope in a Wishing Star, hoping to finally break free from his torment.",
+        "pl": "Pies, na którego rzucono klątwę wiecznego cierpienia, szuka nadziei w Gwieździe Życzeń, mając nadzieję, że wreszcie uwolni się od swoich mąk."
+      },
+      "tags": [
+        "Unity",
+        "C#",
+        "Komiks Game Jam 2k26",
+        "PC",
+        "Roguelike"
+      ],
+      "links": [
+        {
+          "type": "itch",
+          "url": "https://muppetsg2.itch.io/dog-of-war"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/Westesc/KGJ2026"
+        },
+        {
+          "type": "youtube",
+          "label": "Trailer",
+          "url": "https://youtu.be/KrlpQl53lzg"
+        }
+      ]
+    },
+    {
+      "title": "There Are Signs",
+      "category": "game",
+      "year": "2025",
+      "image": "images/projects/there-are-signs-icon.webp",
+      "imageFit": "contain",
+      "description": {
+        "en": "There Are Signs is a logic-based platformer where signs are more than just decorations – they're tools you can use to manipulate the environment and change how you move through the world.",
+        "pl": "„There Are Signs” to logiczna gra platformowa, w której znaki pełnią funkcję wykraczającą poza zwykłą dekorację – stają się narzędziami pozwalającymi manipulować otoczeniem i zmieniać sposób, w jaki poruszasz się po świecie gry."
+      },
+      "tags": [
+        "Unity",
+        "C#",
+        "Komiks Game Jam 2k25",
+        "PC",
+        "Platformer"
+      ],
+      "links": [
+        {
+          "type": "itch",
+          "url": "https://muppetsg2.itch.io/there-are-signs"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/Muppetsg2/KomiksGJ2025"
+        },
+        {
+          "type": "youtube",
+          "label": "Trailer",
+          "url": "https://youtu.be/Ybg7Kx91Qes"
+        }
+      ]
+    },
+    {
+      "title": "Bubble Hunt",
+      "category": "game",
+      "year": "2025",
+      "image": "images/projects/bubble-hunt-icon.webp",
+      "imageFit": "contain",
+      "description": {
+        "en": "Bubble Hunt is a first-person action game where you find yourself trapped in a cave with a giant monster. There's only one way to escape: fulfill the monster's wish by collecting bugs – its favourite snack!",
+        "pl": "Bubble Hunt to pierwszoosobowa gra akcji, w której zostajesz uwięziony w jaskini wraz z ogromnym potworem. Jest tylko jeden sposób na ucieczkę: spełnić życzenie stwora, zbierając dla niego robaki – jego ulubiony przysmak!"
+      },
+      "tags": [
+        "Unreal Engine",
+        "Unreal Blueprints",
+        "Global Game Jam 2025",
+        "PC",
+        "Action"
+      ],
+      "links": [
+        {
+          "type": "itch",
+          "url": "https://agaa3.itch.io/bubble-hunt"
+        },
+        {
+          "type": "vimeo",
+          "label": "Trailer",
+          "url": "https://vimeo.com/1050905531?fl=pl&fe=sh"
+        }
+      ]
+    },
+    {
+      "title": "Wind Rider",
+      "category": "game",
+      "year": "2023",
+      "image": "images/projects/wind-rider-icon.webp",
+      "imageFit": "contain",
+      "description": {
+        "en": "Wind Rider is a puzzle-platformer where you take control of a small paper airplane with the power to harness the wind and move objects around. Navigate through enclosed mazes, overcome tricky obstacles, outsmart enemies, and find your way to the exit.",
+        "pl": "Wind Rider to gra zręcznościowo-logiczna, w której przejmujesz kontrolę nad małym papierowym samolotem, potrafiącym wykorzystywać siłę wiatru do przemieszczania obiektów. Przemierzaj zamknięte labirynty, pokonuj skomplikowane przeszkody, przechytrzaj przeciwników i odnajdź drogę do wyjścia."
+      },
+      "tags": [
+        "Unity",
+        "C#",
+        "ZTGK 2023 - Game Design",
+        "ZTGK 2024 - Mobile",
+        "PC",
+        "Android",
+        "Platformer",
+        "Puzzle"
+      ],
+      "links": [
+        {
+          "type": "itch",
+          "url": "https://thelongcat.itch.io/wind-rider"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/MatRyb/Wind-Knight"
         }
       ]
     },
     {
       "title": "Calculator RPG",
       "category": "game",
-      "year": "",
-      "image": "",
+      "hidden": true,
+      "year": "2020",
+      "image": "images/projects/calculator-rpg.png",
+      "imageFit": "contain",
       "description": {
-        "en": "A calculator that is also an RPG. Released on Google Play.",
-        "pl": "Kalkulator, który jest też grą RPG. Wydany w Google Play."
+        "en": "A game where you are transfered by virus to your device and only way to fight is by using calculator.",
+        "pl": "Gra, w której za sprawą wirusa zostajesz przeniesiony do wnętrza własnego urządzenia, a jedynym sposobem na walkę jest użycie kalkulatora."
       },
       "tags": [
+        "Unity",
+        "C#",
         "Android",
+        "RPG",
         "Google Play"
       ],
       "links": [
         {
           "type": "playstore",
-          "url": "https://play.google.com/store/apps/details?id=TODO"
+          "url": "https://play.google.com/store/apps/details?id=com.MAIPA.INC.CalculatorRPG"
         },
         {
           "type": "web",
@@ -182,65 +412,101 @@
             "en": "Privacy policy",
             "pl": "Polityka prywatności"
           },
-          "url": "CalculatorRPGPrivacyPolicy.html"
+          "url": "https://muppetsg2.github.io/privacy.html?id=calculator-rpg"
         }
       ]
     },
     {
-      "title": "Marry Kiss & Kill",
+      "title": "Marry, Kiss & Kill",
       "category": "game",
-      "year": "",
-      "image": "images/projects/marry-kiss-kill.jpg",
+      "year": "2017",
+      "image": "images/projects/marry-kiss-and-kill-icon.webp",
       "imageFit": "contain",
       "description": {
-        "en": "My most popular game — downloaded more than 15 000 times.",
-        "pl": "Moja najpopularniejsza gra — ponad 15 000 pobrań."
+        "en": "Bring some fun to your next gathering with this simple party game! Whether you're playing with friends or just looking for a good laugh.",
+        "pl": "Wprowadź trochę zabawy na swoje kolejne spotkanie dzięki tej prostej grze towarzyskiej! Niezależnie od tego, czy grasz ze znajomymi, czy po prostu szukasz okazji do dobrego śmiechu."
       },
       "tags": [
         "Android",
-        "Unity"
+        "Unity",
+        "C#",
+        "Party Game",
+        "Google Play"
       ],
       "featured": true,
       "links": [
         {
           "type": "playstore",
-          "url": "https://play.google.com/store/apps/details?id=TODO"
+          "url": "https://play.google.com/store/apps/details?id=com.MAIPA.INCandMuppetsg2.MKandK"
+        },
+        {
+          "type": "web",
+          "label": {
+            "en": "Privacy policy",
+            "pl": "Polityka prywatności"
+          },
+          "url": "https://muppetsg2.github.io/privacy.html?id=marry-kiss-kill"
         }
       ]
     },
     {
-      "title": "Diller: The Last 7 Weeks",
+      "title": "Diler - The Last 7Week",
       "category": "game",
-      "year": "",
-      "image": "images/projects/diller.jpg",
+      "year": "2018",
+      "image": "images/projects/diler-icon.webp",
       "imageFit": "contain",
       "description": {
-        "en": "Space shooter.",
-        "pl": "Kosmiczna strzelanka."
+        "en": "Get behind the controls of a spaceship and take down the dealer's debtors in this action-packed space shooter! Choose from 6 different spaceships and help the dealer settle some unfinished business.",
+        "pl": "Zasiądź za sterami statku kosmicznego i wyeliminuj dłużników handlarza w tej pełnej akcji strzelance osadzonej w przestrzeni kosmicznej! Wybierz jeden z 6 dostępnych statków i pomóż handlarzowi załatwić pewne niedokończone sprawy."
       },
       "tags": [
         "Unity",
+        "C#",
         {
-          "en": "Shooter",
-          "pl": "Strzelanka"
-        }
+          "en": "Space Shooter",
+          "pl": "Kosmiczna Strzelanka"
+        },
+        "Andorid",
+        "Google Play"
       ],
-      "links": []
+      "links": [
+        {
+          "type": "playstore",
+          "url": "https://play.google.com/store/apps/details?id=com.MAIPA.INC.Muppetsg2.Last7Weeks"
+        },
+        {
+          "type": "web",
+          "label": {
+            "en": "Privacy policy",
+            "pl": "Polityka prywatności"
+          },
+          "url": "https://muppetsg2.github.io/privacy.html?id=diler"
+        },
+        {
+          "type": "youtube",
+          "label": "Trailer",
+          "url": "https://youtu.be/byNMAhhpPEM"
+        }
+      ]
     },
     {
       "title": "The Wizards",
       "category": "game",
       "year": "2017",
-      "image": "images/projects/the-wizards.jpg",
+      "image": "images/projects/the-wizards-icon.webp",
       "imageFit": "contain",
       "description": {
-        "en": "My first published game (16.04.2017).",
-        "pl": "Moja pierwsza wydana gra (16.04.2017)."
+        "en": "The Wizards is a platformer about a team of four wizards who must save the world from an evil force threatening to corrupt it. Step into the shoes of one of four unique wizards and stop the Evil Lord from plunging the world into darkness! It is also the first published game (16.04.2017).",
+        "pl": "„The Wizards” to gra platformowa opowiadająca o czwórce czarodziejów, którzy muszą ocalić świat przed złowrogą siłą dążącą do jego skażenia. Wciel się w jednego z czterech unikalnych magów i powstrzymaj Złego Władcę, zanim pogrąży świat w ciemności! Jest to również pierwsza wydana przez nas gra (16.04.2017)."
       },
       "tags": [
+        "Unity",
+        "C#",
         "Windows",
         "Android",
-        "macOS"
+        "macOS",
+        "Google Play",
+        "Platformer"
       ],
       "links": [
         {
@@ -249,49 +515,62 @@
           "url": "Instalatory/The Wizards/The Wizards.exe"
         },
         {
-          "type": "download",
-          "label": "Android",
-          "url": "Instalatory/The Wizards/The Wizards.apk"
+          "type": "playstore",
+          "url": "https://play.google.com/store/apps/details?id=com.MAIPA.INC.Muppetsg2Company.TheWizards"
         },
         {
           "type": "download",
           "label": "macOS",
-          "url": "Instalatory/The Wizards/TheWizards.app.zip"
+          "url": "Instalatory/The Wizards/The Wizards.app.zip"
+        },
+        {
+          "type": "web",
+          "label": {
+            "en": "Privacy policy",
+            "pl": "Polityka prywatności"
+          },
+          "url": "https://muppetsg2.github.io/privacy.html?id=the-wizards"
         }
       ]
     },
     {
       "title": "Stack",
       "category": "game",
-      "year": "",
+      "year": "2017",
       "image": "images/projects/stack.jpg",
       "imageFit": "contain",
       "description": {
-        "en": "My take on the popular stacking arcade game.",
-        "pl": "Moja wersja popularnej zręcznościówki o układaniu klocków."
+        "en": "My take on the popular stacking arcade game made by Ketchapp.",
+        "pl": "Moja wersja popularnej zręcznościowej gry polegającej na układaniu elementów, stworzonej przez studio Ketchapp."
       },
       "tags": [
-        "Android"
+        "Unity",
+        "C#",
+        "Android",
+        "Google Play",
+        "Arcade"
       ],
       "links": [
         {
-          "type": "download",
-          "label": "Android",
-          "url": "Instalatory/Stack/Stack.apk"
+          "type": "playstore",
+          "url": "https://play.google.com/store/apps/details?id=com.MAIPA.INC.Stack"
         }
       ]
     },
     {
       "title": "Money Click",
       "category": "game",
-      "year": "",
+      "year": "2016",
       "image": "images/projects/money-click.jpg",
       "imageFit": "contain",
       "description": {
-        "en": "My very first game — a clicker.",
-        "pl": "Moja pierwsza gra w ogóle — clicker."
+        "en": "My very first game — a simple clicker.",
+        "pl": "Moja pierwsza gra w ogóle — prosty clicker."
       },
       "tags": [
+        "Unity",
+        "C#",
+        "Clicker",
         "Windows",
         "Android",
         "macOS"
@@ -311,6 +590,89 @@
           "type": "download",
           "label": "macOS",
           "url": "Instalatory/MoneyClick/MoneyClick.app.zip"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "Fifteen",
+        "pl": "Piętnastka"
+      },
+      "category": "game",
+      "year": "2024",
+      "image": "",
+      "imageFit": "contain",
+      "description": {
+        "en": "Game where you have fifteen squares and one hole and you need to move squares to make them be in order.",
+        "pl": "Gra, w której masz piętnaście kwadratów i jedno puste miejsce; musisz przesuwać kwadraty tak, aby ułożyły się w odpowiedniej kolejności."
+      },
+      "tags": [
+        "Processing",
+        "JavaScript",
+        "Puzzle",
+        "Web"
+      ],
+      "links": [
+        {
+          "type": "web",
+          "label": "Play",
+          "url": "https://maipa01.github.io/PZP/Projekt/Pietnastka/"
+        }
+      ]
+    },
+    {
+      "title": "Vertex Map Editor - Tool for Wind Rider",
+      "category": "app",
+      "year": "2024",
+      "image": "",
+      "imageFit": "contain",
+      "description": {
+        "en": "Tool used to help with creating backgrounds for map in Wind Rider game.",
+        "pl": "Narzędzie wspomagające tworzenie teł do map w grze Wind Rider."
+      },
+      "tags": [
+        "Unity",
+        "C#",
+        "Tool",
+        "Windows"
+      ],
+      "links": [
+        {
+          "type": "download",
+          "label": "Windows",
+          "url": "https://github.com/MAIPA01/Vertex-Map-Editor/releases/download/v1.0.0/VertexMapEditor-v1.0.0.zip"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/MAIPA01/Vertex-Map-Editor"
+        }
+      ]
+    },
+    {
+      "title": "Ping-Pong",
+      "category": "game",
+      "year": "2022",
+      "image": "",
+      "imageFit": "contain",
+      "description": {
+        "en": "Classic Ping-Pong game made using JavaScript and SVG.",
+        "pl": "Klasyczna gra w ping-ponga stworzona przy użyciu języka JavaScript oraz formatu SVG."
+      },
+      "tags": [
+        "JavaScript",
+        "SVG",
+        "Arcade",
+        "Web"
+      ],
+      "links": [
+        {
+          "type": "web",
+          "label": "Play",
+          "url": "https://maipa01.github.io/SVG-JS-PONG-GAME/Main%20Screen.svg"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/MAIPA01/SVG-JS-PONG-GAME"
         }
       ]
     }

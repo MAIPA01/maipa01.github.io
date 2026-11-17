@@ -30,7 +30,7 @@
   "stats": [
     { "value": "2017", "label": { "en": "first published game", "pl": "pierwsza wydana gra" } },
     { "value": "15k+", "label": { "en": "downloads of Marry Kiss & Kill", "pl": "pobrań Marry Kiss & Kill" } },
-    { "value": "6+", "label": { "en": "released games", "pl": "wydanych gier" } }
+    { "value": "16+", "label": { "en": "released games", "pl": "wydanych gier" } }
   ],
 
   "skills": [
@@ -41,7 +41,7 @@
         "en": "Gameplay programming and full game production — from prototype to store release.",
         "pl": "Programowanie rozgrywki i pełna produkcja gier — od prototypu do wydania w sklepie."
       },
-      "tags": ["Unity", "Unreal Engine", "C#", "C++"]
+      "tags": ["Unity", "Unreal Engine", "C#", "C++", "Unreal Blueprints"]
     },
     {
       "icon": "engine",
@@ -59,7 +59,7 @@
         "en": "Custom renderers, real-time lighting and shaders — understanding every pixel on the screen.",
         "pl": "Własne renderery, oświetlenie w czasie rzeczywistym i shadery — rozumiem każdy piksel na ekranie."
       },
-      "tags": ["OpenGL", "Shaders", "GLSL / HLSL"]
+      "tags": ["OpenGL", "Vulkan", "Shaders", "GLSL"]
     },
     {
       "icon": "cube",
