@@ -1,0 +1,91 @@
+{
+  "_info": "Settings of the playable mode (press P). Texts are in data/i18n/<language>.json under \"game\". Sprites are horizontal sprite sheets — Aseprite: File > Export Sprite Sheet (Sheet type: Horizontal Strip). Frame numbers count from 0, left to right.",
+  "enabled": true,
+  "sound": true,
+  "pixelScale": 4,
+  "player": {
+    "sprite": "assets/game/player.png",
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "hitbox": {
+      "x": 3,
+      "y": 0,
+      "w": 11,
+      "h": 16
+    },
+    "animations": {
+      "idle": {
+        "frames": [
+          0,
+          1
+        ],
+        "fps": 2
+      },
+      "run": {
+        "frames": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "fps": 10
+      },
+      "jump": {
+        "frames": [
+          6
+        ],
+        "fps": 1
+      },
+      "fall": {
+        "frames": [
+          7
+        ],
+        "fps": 1
+      }
+    }
+  },
+  "collectible": {
+    "sprite": "assets/game/coin.png",
+    "frameWidth": 8,
+    "frameHeight": 8,
+    "frames": [
+      0,
+      1,
+      2,
+      3,
+      2,
+      1
+    ],
+    "fps": 10
+  },
+  "physics": {
+    "gravity": 2200,
+    "moveSpeed": 340,
+    "jumpVelocity": 820,
+    "doubleJump": true,
+    "maxFallSpeed": 1100
+  },
+  "platforms": [
+    ".section-head",
+    ".skill-card",
+    ".stat",
+    ".about-avatar",
+    ".filter-chip",
+    ".project-card",
+    ".model-card",
+    ".render-tile",
+    ".contact-text",
+    ".social-link",
+    ".site-footer",
+    ".hero-actions .btn",
+    ".character-card",
+    ".hero-actions .btn-pixel"
+  ],
+  "coinsOn": [
+    ".project-card",
+    ".skill-card",
+    ".model-card",
+    ".render-tile",
+    ".character-card"
+  ]
+}

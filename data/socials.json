@@ -1,0 +1,50 @@
+{
+  "_info": "Links shown in the Contact section and the footer. Leave \"url\" empty (\"\") to hide an entry. Icons: linkedin, email, youtube, github, itch, playstore, vroid, web, twitter, discord. \"label\" can be a string or {\"en\": \"...\", \"pl\": \"...\"}.",
+  "socials": [
+    {
+      "label": "LinkedIn",
+      "handle": "Patryk Antosik",
+      "url": "https://www.linkedin.com/in/patryk-antosik",
+      "icon": "linkedin"
+    },
+    {
+      "label": {
+        "en": "Email",
+        "pl": "E-mail"
+      },
+      "handle": "patryk.antosik03@gmail.com",
+      "url": "mailto:patryk.antosik03@gmail.com",
+      "icon": "email"
+    },
+    {
+      "label": "GitHub",
+      "handle": "MAIPA01",
+      "url": "https://github.com/MAIPA01",
+      "icon": "github"
+    },
+    {
+      "label": "YouTube",
+      "handle": "MAiPA",
+      "url": "https://www.youtube.com/@maipa01",
+      "icon": "youtube"
+    },
+    {
+      "label": "itch.io",
+      "handle": "MAIPA01",
+      "url": "https://maipa01.itch.io/",
+      "icon": "itch"
+    },
+    {
+      "label": "Google Play",
+      "handle": "MAIPA.INC & Muppetsg2",
+      "url": "https://play.google.com/store/apps/dev?id=9148978594936176812&utm_source=emea_Med",
+      "icon": "playstore"
+    },
+    {
+      "label": "VRoid Hub",
+      "handle": "MAIPA",
+      "url": "https://hub.vroid.com/en/users/45032515",
+      "icon": "vroid"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "_info": "Languages of the site. To add one: 1) add an entry here, 2) copy en.json to <code>.json and translate it, 3) optionally add \"<code>\": \"...\" next to \"en\"/\"pl\" in the files in data/. Anything missing falls back to the default language (and is listed in the browser console).",
+  "default": "en",
+  "languages": [
+    { "code": "en", "label": "English", "short": "EN" },
+    { "code": "pl", "label": "Polski", "short": "PL" }
+  ]
+}

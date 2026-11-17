@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "MAIPA — Patryk Antosik · Programista gier i grafiki",
+    "description": "Portfolio Patryka Antosika (MAIPA): gry, własne silniki gier i renderery, Unity, Unreal Engine i modelowanie 3D."
+  },
+  "nav": {
+    "skip": "Przejdź do treści",
+    "menu": "Menu",
+    "about": "O mnie",
+    "projects": "Projekty",
+    "models": "3D",
+    "characters": "Postacie",
+    "contact": "Kontakt",
+    "play": "Graj",
+    "playTitle": "Zagraj w tę stronę (P)",
+    "language": "Język"
+  },
+  "hero": {
+    "greeting": "> witaj świecie_",
+    "seeProjects": "Zobacz projekty",
+    "play": "Zagraj w stronę",
+    "scroll": "Przewiń w dół"
+  },
+  "sections": {
+    "about": { "title": "O mnie", "subtitle": "kim jestem" },
+    "projectsBand": { "title": "Projekty", "subtitle": "gry · silniki · biblioteki" },
+    "projects": { "title": "Projekty", "subtitle": "co zbudowałem" },
+    "modelsBand": { "title": "3D", "subtitle": "modele i rendery" },
+    "models": { "title": "Modele 3D", "subtitle": "przeciągnij, aby obrócić", "viewer": "Modele interaktywne", "renders": "Rendery" },
+    "characters": { "title": "Postacie", "subtitle": "moje autorskie postacie", "text": "Postacie, które zaprojektowałem i stworzyłem — kliknij obrazek, aby go powiększyć." },
+    "contact": {
+      "title": "Kontakt",
+      "subtitle": "porozmawiajmy",
+      "text": "Chcesz współpracować, masz pytanie o któryś z moich projektów albo znalazłeś błąd w grze? Napisz — chętnie porozmawiam."
+    }
+  },
+  "projects": {
+    "all": "Wszystkie",
+    "googlePlay": "Google Play",
+    "featured": "Wyróżnione",
+    "empty": "Brak projektów — dodaj je w data/projects.json",
+    "filterLabel": "Filtruj projekty"
+  },
+  "links": {
+    "github": "GitHub",
+    "itch": "itch.io",
+    "playstore": "Google Play",
+    "youtube": "Wideo",
+    "web": "Strona",
+    "download": "Pobierz",
+    "docs": "Dokumentacja",
+    "vroid": "VRoid Hub",
+    "link": "Link"
+  },
+  "models": {
+    "loadError": "Nie udało się wczytać modelu",
+    "openImage": "Otwórz obraz",
+    "close": "Zamknij"
+  },
+  "characters": {
+    "view3d": "Zobacz w 3D",
+    "view2d": "Pokaż obrazek",
+    "pose": "Poza"
+  },
+  "footer": {
+    "note": "Ta strona jest grywalna — wciśnij P albo przycisk GRAJ.",
+    "madeBy": "Wykonał"
+  },
+  "game": {
+    "start": "TRYB GRY — ← → ruch · SPACJA skok · ↓ zeskok · E otwórz · ESC wyjście",
+    "startTouch": "TRYB GRY — użyj przycisków · X wychodzi",
+    "open": "E: otwórz",
+    "collected": "monet",
+    "won": "GG! Wszystko znalezione. Dzięki za grę!"
+  },
+  "errors": {
+    "load": "Nie udało się wczytać plików z danymi. Jeśli otworzyłeś index.html bezpośrednio z dysku, uruchom lokalny serwer: python -m http.server i wejdź na http://localhost:8000"
+  }
+}

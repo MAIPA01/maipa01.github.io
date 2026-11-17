@@ -1,0 +1,318 @@
+{
+  "_info": "Every project is one card. Texts (title, description, tags, link label) can be a string or {\"en\": \"...\", \"pl\": \"...\"}. \"category\" must match an id from \"categories\". Link types: github, itch, playstore, youtube, web, download, docs, vroid. \"hidden\": true hides a project. \"featured\": true shows it first. \"imageFit\": \"contain\" shows the whole image (square app icons) instead of cropping.",
+  "categories": [
+    {
+      "id": "game",
+      "label": {
+        "en": "Games",
+        "pl": "Gry"
+      }
+    },
+    {
+      "id": "engine",
+      "label": {
+        "en": "Engines & renderers",
+        "pl": "Silniki i renderery"
+      }
+    },
+    {
+      "id": "library",
+      "label": {
+        "en": "Libraries",
+        "pl": "Biblioteki"
+      }
+    }
+  ],
+  "projects": [
+    {
+      "title": {
+        "en": "TODO: My game engine",
+        "pl": "TODO: Mój silnik gier"
+      },
+      "category": "engine",
+      "year": "2025",
+      "image": "",
+      "description": {
+        "en": "Short description of your own game engine — what it can do, what you're proud of (ECS, editor, physics, scripting…).",
+        "pl": "Krótki opis Twojego silnika — co potrafi i z czego jesteś dumny (ECS, edytor, fizyka, skrypty…)."
+      },
+      "tags": [
+        "C++",
+        "OpenGL",
+        "ECS"
+      ],
+      "featured": true,
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/MAIPA01/TODO"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "TODO: My renderer",
+        "pl": "TODO: Mój renderer"
+      },
+      "category": "engine",
+      "year": "2025",
+      "image": "",
+      "description": {
+        "en": "Short description of your renderer — PBR, shadows, deferred / forward+, ray tracing… Add a screenshot in images/projects/.",
+        "pl": "Krótki opis renderera — PBR, cienie, deferred / forward+, ray tracing… Dodaj zrzut ekranu do images/projects/."
+      },
+      "tags": [
+        "C++",
+        "Rendering",
+        "Shaders"
+      ],
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/MAIPA01/TODO"
+        },
+        {
+          "type": "youtube",
+          "url": "https://www.youtube.com/watch?v=TODO"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "TODO: My library",
+        "pl": "TODO: Moja biblioteka"
+      },
+      "category": "library",
+      "year": "2024",
+      "image": "",
+      "description": {
+        "en": "What does the library do and who is it for? One or two sentences are enough.",
+        "pl": "Co robi biblioteka i dla kogo jest? Wystarczą jedno–dwa zdania."
+      },
+      "tags": [
+        "C++",
+        "Header-only"
+      ],
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/MAIPA01/TODO"
+        },
+        {
+          "type": "docs",
+          "url": "https://github.com/MAIPA01/TODO#readme"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "TODO: Game jam game",
+        "pl": "TODO: Gra z game jamu"
+      },
+      "category": "game",
+      "year": "2024",
+      "image": "",
+      "description": {
+        "en": "Game made with a team — describe your role (e.g. gameplay programmer, shaders, tools).",
+        "pl": "Gra robiona w zespole — opisz swoją rolę (np. gameplay, shadery, narzędzia)."
+      },
+      "tags": [
+        "Unity",
+        "C#",
+        {
+          "en": "Team project",
+          "pl": "Projekt zespołowy"
+        }
+      ],
+      "links": [
+        {
+          "type": "itch",
+          "url": "https://TODO.itch.io/TODO"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/MAIPA01/TODO"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "TODO: Unreal Engine project",
+        "pl": "TODO: Projekt w Unreal Engine"
+      },
+      "category": "game",
+      "year": "2025",
+      "image": "",
+      "description": {
+        "en": "A project made in Unreal Engine — what did you build in C++ / Blueprints?",
+        "pl": "Projekt w Unreal Engine — co zbudowałeś w C++ / Blueprintach?"
+      },
+      "tags": [
+        "Unreal Engine",
+        "C++"
+      ],
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/MAIPA01/TODO"
+        }
+      ]
+    },
+    {
+      "title": "Calculator RPG",
+      "category": "game",
+      "year": "",
+      "image": "",
+      "description": {
+        "en": "A calculator that is also an RPG. Released on Google Play.",
+        "pl": "Kalkulator, który jest też grą RPG. Wydany w Google Play."
+      },
+      "tags": [
+        "Android",
+        "Google Play"
+      ],
+      "links": [
+        {
+          "type": "playstore",
+          "url": "https://play.google.com/store/apps/details?id=TODO"
+        },
+        {
+          "type": "web",
+          "label": {
+            "en": "Privacy policy",
+            "pl": "Polityka prywatności"
+          },
+          "url": "CalculatorRPGPrivacyPolicy.html"
+        }
+      ]
+    },
+    {
+      "title": "Marry Kiss & Kill",
+      "category": "game",
+      "year": "",
+      "image": "images/projects/marry-kiss-kill.jpg",
+      "imageFit": "contain",
+      "description": {
+        "en": "My most popular game — downloaded more than 15 000 times.",
+        "pl": "Moja najpopularniejsza gra — ponad 15 000 pobrań."
+      },
+      "tags": [
+        "Android",
+        "Unity"
+      ],
+      "featured": true,
+      "links": [
+        {
+          "type": "playstore",
+          "url": "https://play.google.com/store/apps/details?id=TODO"
+        }
+      ]
+    },
+    {
+      "title": "Diller: The Last 7 Weeks",
+      "category": "game",
+      "year": "",
+      "image": "images/projects/diller.jpg",
+      "imageFit": "contain",
+      "description": {
+        "en": "Space shooter.",
+        "pl": "Kosmiczna strzelanka."
+      },
+      "tags": [
+        "Unity",
+        {
+          "en": "Shooter",
+          "pl": "Strzelanka"
+        }
+      ],
+      "links": []
+    },
+    {
+      "title": "The Wizards",
+      "category": "game",
+      "year": "2017",
+      "image": "images/projects/the-wizards.jpg",
+      "imageFit": "contain",
+      "description": {
+        "en": "My first published game (16.04.2017).",
+        "pl": "Moja pierwsza wydana gra (16.04.2017)."
+      },
+      "tags": [
+        "Windows",
+        "Android",
+        "macOS"
+      ],
+      "links": [
+        {
+          "type": "download",
+          "label": "Windows",
+          "url": "Instalatory/The Wizards/The Wizards.exe"
+        },
+        {
+          "type": "download",
+          "label": "Android",
+          "url": "Instalatory/The Wizards/The Wizards.apk"
+        },
+        {
+          "type": "download",
+          "label": "macOS",
+          "url": "Instalatory/The Wizards/TheWizards.app.zip"
+        }
+      ]
+    },
+    {
+      "title": "Stack",
+      "category": "game",
+      "year": "",
+      "image": "images/projects/stack.jpg",
+      "imageFit": "contain",
+      "description": {
+        "en": "My take on the popular stacking arcade game.",
+        "pl": "Moja wersja popularnej zręcznościówki o układaniu klocków."
+      },
+      "tags": [
+        "Android"
+      ],
+      "links": [
+        {
+          "type": "download",
+          "label": "Android",
+          "url": "Instalatory/Stack/Stack.apk"
+        }
+      ]
+    },
+    {
+      "title": "Money Click",
+      "category": "game",
+      "year": "",
+      "image": "images/projects/money-click.jpg",
+      "imageFit": "contain",
+      "description": {
+        "en": "My very first game — a clicker.",
+        "pl": "Moja pierwsza gra w ogóle — clicker."
+      },
+      "tags": [
+        "Windows",
+        "Android",
+        "macOS"
+      ],
+      "links": [
+        {
+          "type": "download",
+          "label": "Windows",
+          "url": "Instalatory/MoneyClick/MoneyClick.exe"
+        },
+        {
+          "type": "download",
+          "label": "Android",
+          "url": "Instalatory/MoneyClick/MoneyClick.apk"
+        },
+        {
+          "type": "download",
+          "label": "macOS",
+          "url": "Instalatory/MoneyClick/MoneyClick.app.zip"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "_info": "Your original characters. Each one is a card: \"images\" = list of poses (transparent PNG works best, ~800 px tall — the first one is the default), optional \"model\" = .glb file shown after clicking \"View in 3D\". Texts can be a string or {\"en\": \"...\", \"pl\": \"...\"}. Link types as in projects (vroid, youtube, web, ...). \"hidden\": true hides a character.",
+  "characters": [
+    {
+      "name": "MAIPA-Chan",
+      "images": [
+        { "src": "images/characters/maipa-chan/pose-1.png", "alt": { "en": "MAIPA-Chan, pose 1", "pl": "MAIPA-Chan, poza 1" } },
+        { "src": "images/characters/maipa-chan/pose-2.png", "alt": { "en": "MAIPA-Chan, pose 2", "pl": "MAIPA-Chan, poza 2" } },
+        { "src": "images/characters/maipa-chan/pose-3.png", "alt": { "en": "MAIPA-Chan, pose 3", "pl": "MAIPA-Chan, poza 3" } },
+        { "src": "images/characters/maipa-chan/pose-4.png", "alt": { "en": "MAIPA-Chan, pose 4", "pl": "MAIPA-Chan, poza 4" } }
+      ],
+      "description": {
+        "en": "My mascot — the face of MAIPA. She's also the pixel-art hero of this page's play mode.",
+        "pl": "Moja maskotka — twarz MAIPA. To też pixelowa bohaterka trybu gry na tej stronie."
+      },
+      "tags": ["VRoid Studio", { "en": "Mascot", "pl": "Maskotka" }],
+      "model": "models/characters/maipa-chan.vrm",
+      "links": [
+        { "type": "vroid", "url": "https://hub.vroid.com/en/characters/2775575123311028762/models/5883148803304617630" }
+      ]
+    },
+    {
+      "name": "Remi",
+      "images": [
+        { "src": "images/characters/remi/pose-1.png", "alt": { "en": "Remi, pose 1", "pl": "Remi, poza 1" } },
+        { "src": "images/characters/remi/pose-2.png", "alt": { "en": "Remi, pose 2", "pl": "Remi, poza 2" } },
+        { "src": "images/characters/remi/pose-3.png", "alt": { "en": "Remi, pose 3", "pl": "Remi, poza 3" } },
+        { "src": "images/characters/remi/pose-4.png", "alt": { "en": "Remi, pose 4", "pl": "Remi, poza 4" } }
+      ],
+      "description": { 
+        "en": "My playful companion - chearful member of MAIPA team.", 
+        "pl": "Mój zabawny kompan - radosny członek zespołu MAIPA."
+       },
+      "tags": ["VRoid Studio", { "en": "Companion", "pl": "Kompan" }],
+      "model": "models/characters/remi.vrm",
+      "links": [
+        { "type": "vroid", "url": "https://hub.vroid.com/en/characters/2715204465061278629/models/4647111655279034534" }
+      ]
+    },
+    {
+      "name": "MAIPA-Senpai",
+      "images": [
+        { "src": "images/characters/maipa-senpai/pose-1.png", "alt": { "en": "MAIPA-Senpai, pose 1", "pl": "MAIPA-Senpai, poza 1" } },
+        { "src": "images/characters/maipa-senpai/pose-2.png", "alt": { "en": "MAIPA-Senpai, pose 2", "pl": "MAIPA-Senpai, poza 2" } },
+        { "src": "images/characters/maipa-senpai/pose-3.png", "alt": { "en": "MAIPA-Senpai, pose 3", "pl": "MAIPA-Senpai, poza 3" } },
+        { "src": "images/characters/maipa-senpai/pose-4.png", "alt": { "en": "MAIPA-Senpai, pose 4", "pl": "MAIPA-Senpai, poza 4" } }
+      ],
+      "description": { 
+        "en": "My avatar - Main character of MAIPA team.", 
+        "pl": "Mój awatar - Główna postać zespołu MAIPA."
+       },
+      "tags": ["VRoid Studio", "Senpai"],
+      "model": "models/characters/maipa-senpai.vrm",
+      "links": [
+        { "type": "vroid", "url": "https://hub.vroid.com/en/characters/6798448802277271347/models/1984736792512691561" }
+      ]
+    }
+  ]
+}
