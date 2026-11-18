@@ -1,7 +1,9 @@
 {
   "meta": {
     "title": "MAIPA — Patryk Antosik · Programista gier i grafiki",
-    "description": "Portfolio Patryka Antosika (MAIPA): gry, własne silniki gier i renderery, Unity, Unreal Engine i modelowanie 3D."
+    "description": "Portfolio Patryka Antosika (MAIPA): gry, własne silniki gier i renderery, Unity, Unreal Engine i modelowanie 3D.",
+    "projectTitle": "{title} — MAIPA",
+    "notFoundTitle": "404 — Nie znaleziono strony · MAIPA"
   },
   "nav": {
     "skip": "Przejdź do treści",
@@ -13,21 +15,48 @@
     "contact": "Kontakt",
     "play": "Graj",
     "playTitle": "Zagraj w tę stronę (P)",
-    "language": "Język"
+    "language": "Język",
+    "home": "Start",
+    "theme": "Przełącz tryb dzienny / nocny",
+    "themeDay": "Dzień",
+    "themeNight": "Noc"
   },
   "hero": {
     "greeting": "> witaj świecie_",
     "seeProjects": "Zobacz projekty",
     "play": "Zagraj w stronę",
-    "scroll": "Przewiń w dół"
+    "scroll": "Przewiń w dół",
+    "playShort": "Graj"
   },
   "sections": {
-    "about": { "title": "O mnie", "subtitle": "kim jestem" },
-    "projectsBand": { "title": "Projekty", "subtitle": "gry · silniki · biblioteki" },
-    "projects": { "title": "Projekty", "subtitle": "co zbudowałem" },
-    "modelsBand": { "title": "3D", "subtitle": "modele i rendery" },
-    "models": { "title": "Modele 3D", "subtitle": "przeciągnij, aby obrócić", "viewer": "Modele interaktywne", "renders": "Rendery" },
-    "characters": { "title": "Postacie", "subtitle": "moje autorskie postacie", "text": "Postacie, które zaprojektowałem i stworzyłem — kliknij obrazek, aby go powiększyć." },
+    "about": {
+      "title": "O mnie",
+      "subtitle": "kim jestem"
+    },
+    "projectsBand": {
+      "title": "Projekty",
+      "subtitle": "gry · silniki · biblioteki"
+    },
+    "projects": {
+      "title": "Projekty",
+      "subtitle": "co zbudowałem"
+    },
+    "modelsBand": {
+      "title": "3D",
+      "subtitle": "modele i rendery"
+    },
+    "models": {
+      "title": "Modele 3D",
+      "subtitle": "modele i rendery",
+      "viewer": "Modele interaktywne",
+      "renders": "Rendery",
+      "open": "Otwórz projekt"
+    },
+    "characters": {
+      "title": "Postacie",
+      "subtitle": "moje autorskie postacie",
+      "text": "Postacie, które zaprojektowałem i stworzyłem — kliknij obrazek, aby go powiększyć."
+    },
     "contact": {
       "title": "Kontakt",
       "subtitle": "porozmawiajmy",
@@ -39,7 +68,9 @@
     "googlePlay": "Google Play",
     "featured": "Wyróżnione",
     "empty": "Brak projektów — dodaj je w data/projects.json",
-    "filterLabel": "Filtruj projekty"
+    "filterLabel": "Filtruj projekty",
+    "open": "Szczegóły",
+    "more": "Czytaj więcej"
   },
   "links": {
     "github": "GitHub",
@@ -50,7 +81,9 @@
     "download": "Pobierz",
     "docs": "Dokumentacja",
     "vroid": "VRoid Hub",
-    "link": "Link"
+    "link": "Link",
+    "vimeo": "Wideo",
+    "play": "Graj"
   },
   "models": {
     "loadError": "Nie udało się wczytać modelu",
@@ -67,13 +100,68 @@
     "madeBy": "Wykonał"
   },
   "game": {
-    "start": "TRYB GRY — ← → ruch · SPACJA skok · ↓ zeskok · E otwórz · ESC wyjście",
+    "start": "TRYB GRY — ← → ruch · SPACJA skok · ↑ wspinaczka · ↓ zeskok · E użyj · F machnij · C postać · R od nowa · ESC wyjście",
     "startTouch": "TRYB GRY — użyj przycisków · X wychodzi",
     "open": "E: otwórz",
     "collected": "monet",
-    "won": "GG! Wszystko znalezione. Dzięki za grę!"
+    "won": "GG! Wszystkie monety zebrane w {time}.",
+    "pick": "WYBIERZ POSTAĆ",
+    "pickHint": "← → wybór · ENTER zatwierdź",
+    "time": "czas",
+    "best": "rekord",
+    "newRecord": "NOWY REKORD!",
+    "car": "E: wsiądź",
+    "carExit": "E: wysiądź",
+    "carFound": "SEKRET ZNALEZIONY: Challenger! ← → jazda · SPACJA skok · F klakson · E wysiądź",
+    "openProject": "E: otwórz projekt",
+    "back": "E: wróć",
+    "pickHere": "E: graj jako {name}"
   },
   "errors": {
     "load": "Nie udało się wczytać plików z danymi. Jeśli otworzyłeś index.html bezpośrednio z dysku, uruchom lokalny serwer: python -m http.server i wejdź na http://localhost:8000"
+  },
+  "video": {
+    "open": "Otwórz w serwisie {site}",
+    "close": "Zamknij wideo",
+    "trailer": "Zwiastun"
+  },
+  "project": {
+    "back": "Wróć do projektów",
+    "backModels": "Wróć do modeli 3D",
+    "notFound": "Nie znaleziono projektu",
+    "notFoundText": "Nie ma projektu o takim identyfikatorze. Sprawdź link albo wróć do listy.",
+    "overview": "Przegląd",
+    "about": "O projekcie",
+    "details": "Szczegóły",
+    "year": "Rok",
+    "category": "Kategoria",
+    "tech": "Technologie",
+    "links": "Linki",
+    "videos": "Filmy",
+    "team": "Zespół",
+    "myRole": "Co zrobiłem",
+    "you": "ja",
+    "play": "Zagraj w przeglądarce",
+    "playStart": "Uruchom grę",
+    "playNote": "Gra wczyta się dopiero po kliknięciu — może to chwilę potrwać.",
+    "fullscreen": "Pełny ekran",
+    "newTab": "Otwórz w nowej karcie",
+    "gallery": "Galeria",
+    "screenshots": "Zrzuty ekranu",
+    "renders": "Rendery",
+    "model": "Model 3D",
+    "variant": "Wersja",
+    "modelMissing": "Ten model 3D jest teraz niedostępny.",
+    "related": "Powiązane projekty"
+  },
+  "notFound": {
+    "title": "Nie znaleziono strony",
+    "text": "Ta strona nie istnieje — może została przeniesiona albo w linku jest literówka. Ale skoro już tu jesteś: wciśnij P i zagraj.",
+    "home": "Wróć na stronę główną",
+    "projects": "Przeglądaj projekty"
+  },
+  "theme": {
+    "day": "Tryb dzienny",
+    "night": "Tryb nocny"
   }
 }

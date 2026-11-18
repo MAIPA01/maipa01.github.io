@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- GitHub Pages serves this file for every missing URL (at any depth), so all paths start from the site root -->
+  <base href="/">
+  <title>404 — Page not found · MAIPA</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#d11717">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="images/webp.ico">
+  <script>try{var m=JSON.parse(localStorage.getItem('maipa-theme'));document.documentElement.dataset.theme=m||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="page-notfound">
+  <main id="main" class="nf">
+    <div class="nf-digits" aria-hidden="true"></div>
+    <div class="nf-card">
+      <p class="pixel-label">&gt; error 404_</p>
+      <h1 class="title" data-i18n="notFound.title">Page not found</h1>
+      <p data-i18n="notFound.text">This page doesn't exist.</p>
+      <div class="nf-actions">
+        <a class="btn-pixel btn-pixel-lg" href="index.html" data-i18n="notFound.home">Back to the home page</a>
+        <a class="btn btn-outline-dark" href="index.html#projects" data-i18n="notFound.projects">Browse projects</a>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="js/notfound.js"></script>
+</body>
+</html>

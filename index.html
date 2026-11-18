@@ -7,37 +7,19 @@
   <meta name="description" content="Portfolio of Patryk Antosik (MAIPA): games, custom game engines and renderers, Unity, Unreal Engine and 3D modeling.">
   <meta property="og:title" content="MAIPA — Patryk Antosik">
   <meta property="og:description" content="Games, game engines, rendering and 3D models. This portfolio is playable.">
-  <meta property="og:image" content="images/renders/challenger/front.png">
+  <meta property="og:image" content="images/renders/challenger/front.webp">
   <meta name="theme-color" content="#d11717">
-  <link rel="icon" href="images/icon.ico">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="images/icon.webp">
+  <script>try{var m=JSON.parse(localStorage.getItem('maipa-theme'));document.documentElement.dataset.theme=m||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+<body class="page-home">
   <!--
-    TRANSLATIONS: every element with data-i18n="key" gets its text from data/i18n/<language>.json.
-    data-i18n-attr="attribute:key; attribute2:key2" translates attributes (aria-label, title...).
+    Header, footer and dialogs are added by js/core.js (same on every page).
+    TRANSLATIONS: data-i18n="key" → text from data/i18n/<language>.json;
+    data-i18n-attr="attribute:key; attribute2:key2" translates attributes.
   -->
-  <a class="skip-link" href="#about" data-i18n="nav.skip">Skip to content</a>
-
-  <!-- NAV -->
-  <header class="site-nav" id="top">
-    <a href="#home" class="logo" data-bind="brand">MAIPA</a>
-    <button class="nav-toggle" aria-expanded="false" data-i18n-attr="aria-label:nav.menu" aria-label="Menu"><span></span></button>
-    <nav class="nav-links" aria-label="Main">
-      <a href="#about" data-i18n="nav.about">About</a>
-      <a href="#projects" data-i18n="nav.projects">Projects</a>
-      <a href="#models" data-i18n="nav.models">3D</a>
-      <a href="#characters" data-i18n="nav.characters">Characters</a>
-      <a href="#contact" data-i18n="nav.contact">Contact</a>
-      <div class="lang-switch" hidden>
-        <button class="lang-current" type="button" aria-haspopup="true" aria-expanded="false" data-i18n-attr="aria-label:nav.language; title:nav.language"></button>
-        <ul class="lang-menu" hidden></ul>
-      </div>
-      <button class="btn-pixel play-toggle" type="button" data-i18n-attr="title:nav.playTitle" title="Play this page (P)">
-        <span class="mini-sprite" aria-hidden="true"></span><span class="play-label" data-i18n="nav.play">Play</span>
-      </button>
-    </nav>
-  </header>
 
   <!-- HERO -->
   <section class="hero" id="home">
@@ -45,7 +27,7 @@
       <p class="pixel-label" data-i18n="hero.greeting">&gt; hello world_</p>
       <h1 class="hero-title" data-bind="brand">MAIPA</h1>
       <p class="hero-name" data-bind="name">Patryk Antosik</p>
-      <p class="hero-role"><span class="role-text"></span><span class="caret">_</span></p>
+      <p class="hero-role"><span class="hero-role-box"><span class="role-text"></span><span class="caret">_</span></span></p>
       <p class="hero-tagline" data-bind="tagline"></p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-outline" data-i18n="hero.seeProjects">See projects</a>
@@ -55,9 +37,9 @@
     <a href="#about" class="scroll-hint" data-i18n-attr="aria-label:hero.scroll" aria-label="Scroll down"><span></span></a>
   </section>
 
-  <main>
+  <main id="main">
     <!-- ABOUT -->
-    <section class="section section-light" id="about">
+    <section class="section" id="about">
       <div class="container">
         <div class="section-head">
           <h2 class="title" data-i18n="sections.about.title">About</h2>
@@ -77,14 +59,13 @@
       </div>
     </section>
 
-    <!-- BAND -->
     <section class="band band-1" aria-hidden="true">
       <h2 class="title" data-i18n="sections.projectsBand.title">Projects</h2>
       <p class="subtitle" data-i18n="sections.projectsBand.subtitle"></p>
     </section>
 
     <!-- PROJECTS -->
-    <section class="section section-paper" id="projects">
+    <section class="section section-alt" id="projects">
       <div class="container">
         <div class="section-head">
           <h2 class="title" data-i18n="sections.projects.title">Projects</h2>
@@ -95,32 +76,24 @@
       </div>
     </section>
 
-    <!-- BAND -->
     <section class="band band-2" aria-hidden="true">
       <h2 class="title" data-i18n="sections.modelsBand.title">3D</h2>
       <p class="subtitle" data-i18n="sections.modelsBand.subtitle"></p>
     </section>
 
-    <!-- 3D -->
+    <!-- 3D MODELS -->
     <section class="section section-dark" id="models">
       <div class="container">
         <div class="section-head">
           <h2 class="title" data-i18n="sections.models.title">3D Models</h2>
           <p class="subtitle" data-i18n="sections.models.subtitle"></p>
         </div>
-        <div class="models-block">
-          <h3 class="pixel-label sub-head" data-i18n="sections.models.viewer"></h3>
-          <div class="models-grid"></div>
-        </div>
-        <div class="renders-block">
-          <h3 class="pixel-label sub-head" data-i18n="sections.models.renders"></h3>
-          <div class="renders-grid"></div>
-        </div>
+        <div class="models-grid"></div>
       </div>
     </section>
 
     <!-- CHARACTERS -->
-    <section class="section section-paper" id="characters">
+    <section class="section section-alt" id="characters">
       <div class="container">
         <div class="section-head">
           <h2 class="title" data-i18n="sections.characters.title">Characters</h2>
@@ -132,7 +105,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section class="section section-light" id="contact">
+    <section class="section" id="contact">
       <div class="container">
         <div class="section-head">
           <h2 class="title" data-i18n="sections.contact.title">Contact</h2>
@@ -143,25 +116,6 @@
       </div>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="footer-socials"></div>
-    <p class="footer-note" data-i18n="footer.note"></p>
-    <p class="footer-copy">&copy; <span class="year"></span> <span data-i18n="footer.madeBy">Made by</span> <span data-bind="name">Patryk Antosik</span></p>
-  </footer>
-
-  <!-- Lightbox for renders & characters -->
-  <dialog class="lightbox">
-    <button class="lightbox-close" type="button" data-i18n-attr="aria-label:models.close" aria-label="Close">×</button>
-    <img alt="">
-    <p class="lightbox-caption"></p>
-  </dialog>
-
-  <div class="load-error" hidden>
-    Couldn't load the data files. If you opened <code>index.html</code> straight from disk, run a local server instead:
-    <code>python -m http.server</code> and open <code>http://localhost:8000</code>.<br>
-    Nie udało się wczytać danych. Jeśli otworzyłeś <code>index.html</code> z dysku, uruchom <code>python -m http.server</code> i wejdź na <code>http://localhost:8000</code>.
-  </div>
 
   <script type="module" src="js/app.js"></script>
 </body>

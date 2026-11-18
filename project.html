@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project — MAIPA</title>
+  <meta name="description" content="Project from the portfolio of Patryk Antosik (MAIPA).">
+  <meta name="theme-color" content="#d11717">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="images/icon.webp">
+  <script>try{var m=JSON.parse(localStorage.getItem('maipa-theme'));document.documentElement.dataset.theme=m||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="page-project">
+  <!--
+    ONE template for every project: project.html?id=<id from data/projects.json>.
+    The layout adapts to the project's category (game / model / library / engine / app).
+  -->
+  <main id="main" class="project-page">
+    <div class="pp-loading"><span></span></div>
+  </main>
+  <script type="module" src="js/project.js"></script>
+</body>
+</html>

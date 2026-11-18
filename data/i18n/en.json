@@ -1,7 +1,9 @@
 {
   "meta": {
     "title": "MAIPA — Patryk Antosik · Game & Graphics Programmer",
-    "description": "Portfolio of Patryk Antosik (MAIPA): games, custom game engines and renderers, Unity, Unreal Engine and 3D modeling."
+    "description": "Portfolio of Patryk Antosik (MAIPA): games, custom game engines and renderers, Unity, Unreal Engine and 3D modeling.",
+    "projectTitle": "{title} — MAIPA",
+    "notFoundTitle": "404 — Page not found · MAIPA"
   },
   "nav": {
     "skip": "Skip to content",
@@ -13,21 +15,48 @@
     "contact": "Contact",
     "play": "Play",
     "playTitle": "Play this page (P)",
-    "language": "Language"
+    "language": "Language",
+    "home": "Home",
+    "theme": "Toggle day / night mode",
+    "themeDay": "Day",
+    "themeNight": "Night"
   },
   "hero": {
     "greeting": "> hello world_",
     "seeProjects": "See projects",
     "play": "Play this page",
-    "scroll": "Scroll down"
+    "scroll": "Scroll down",
+    "playShort": "Play"
   },
   "sections": {
-    "about": { "title": "About", "subtitle": "me" },
-    "projectsBand": { "title": "Projects", "subtitle": "games · engines · libraries" },
-    "projects": { "title": "Projects", "subtitle": "things I've built" },
-    "modelsBand": { "title": "3D", "subtitle": "models & renders" },
-    "models": { "title": "3D Models", "subtitle": "drag to rotate", "viewer": "Interactive models", "renders": "Renders" },
-    "characters": { "title": "Characters", "subtitle": "my original characters", "text": "Characters I designed and built — click an image to enlarge it." },
+    "about": {
+      "title": "About",
+      "subtitle": "me"
+    },
+    "projectsBand": {
+      "title": "Projects",
+      "subtitle": "games · engines · libraries"
+    },
+    "projects": {
+      "title": "Projects",
+      "subtitle": "things I've built"
+    },
+    "modelsBand": {
+      "title": "3D",
+      "subtitle": "models & renders"
+    },
+    "models": {
+      "title": "3D Models",
+      "subtitle": "models & renders",
+      "viewer": "Interactive models",
+      "renders": "Renders",
+      "open": "Open project"
+    },
+    "characters": {
+      "title": "Characters",
+      "subtitle": "my original characters",
+      "text": "Characters I designed and built — click an image to enlarge it."
+    },
     "contact": {
       "title": "Contact",
       "subtitle": "let's talk",
@@ -39,7 +68,9 @@
     "googlePlay": "Google Play",
     "featured": "Featured",
     "empty": "No projects yet — add some in data/projects.json",
-    "filterLabel": "Filter projects"
+    "filterLabel": "Filter projects",
+    "open": "Details",
+    "more": "Read more"
   },
   "links": {
     "github": "GitHub",
@@ -50,7 +81,9 @@
     "download": "Download",
     "docs": "Docs",
     "vroid": "VRoid Hub",
-    "link": "Link"
+    "link": "Link",
+    "vimeo": "Video",
+    "play": "Play"
   },
   "models": {
     "loadError": "Couldn't load the model",
@@ -67,13 +100,68 @@
     "madeBy": "Made by"
   },
   "game": {
-    "start": "PLAY MODE — ← → move · SPACE jump · ↓ drop · E open · ESC quit",
+    "start": "PLAY MODE — ← → move · SPACE jump · ↑ climb · ↓ drop · E use · F wave · C character · R restart · ESC quit",
     "startTouch": "PLAY MODE — use the buttons · X quits",
     "open": "E: open",
     "collected": "coins",
-    "won": "GG! You found everything. Thanks for playing!"
+    "won": "GG! All coins collected in {time}.",
+    "pick": "CHOOSE YOUR CHARACTER",
+    "pickHint": "← → choose · ENTER confirm",
+    "time": "time",
+    "best": "best",
+    "newRecord": "NEW RECORD!",
+    "car": "E: get in",
+    "carExit": "E: get out",
+    "carFound": "SECRET FOUND: the Challenger! ← → drive · SPACE jump · F honk · E get out",
+    "openProject": "E: open project",
+    "back": "E: go back",
+    "pickHere": "E: play as {name}"
   },
   "errors": {
     "load": "Couldn't load the data files. If you opened index.html straight from disk, run a local server instead: python -m http.server and open http://localhost:8000"
+  },
+  "video": {
+    "open": "Open on {site}",
+    "close": "Close video",
+    "trailer": "Trailer"
+  },
+  "project": {
+    "back": "Back to projects",
+    "backModels": "Back to 3D models",
+    "notFound": "Project not found",
+    "notFoundText": "There is no project with this id. Check the link or go back to the list.",
+    "overview": "Overview",
+    "about": "About the project",
+    "details": "Details",
+    "year": "Year",
+    "category": "Category",
+    "tech": "Technologies",
+    "links": "Links",
+    "videos": "Videos",
+    "team": "Team",
+    "myRole": "What I did",
+    "you": "me",
+    "play": "Play in browser",
+    "playStart": "Start the game",
+    "playNote": "The game loads only after you click — it may take a moment.",
+    "fullscreen": "Fullscreen",
+    "newTab": "Open in a new tab",
+    "gallery": "Gallery",
+    "screenshots": "Screenshots",
+    "renders": "Renders",
+    "model": "3D model",
+    "variant": "Version",
+    "modelMissing": "This 3D model isn't available right now.",
+    "related": "Related projects"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "This page doesn't exist — maybe it was moved, or the link has a typo. But hey, since you're here: press P and play.",
+    "home": "Back to the home page",
+    "projects": "Browse projects"
+  },
+  "theme": {
+    "day": "Day mode",
+    "night": "Night mode"
   }
 }

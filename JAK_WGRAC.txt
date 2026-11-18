@@ -1,0 +1,26 @@
+JAK WGRAĆ AKTUALIZACJĘ (na gałąź porfolio-update, po commicie 813307d)
+======================================================================
+
+Paczka zawiera tylko NOWE i ZMIENIONE pliki. Ten plik (JAK_WGRAC.txt) nie jest potrzebny w repo.
+
+SPOSÓB A — git (zalecany, bo trzeba też usunąć 3 pliki)
+  1. git checkout porfolio-update
+  2. Rozpakuj zip na wierzch repo (zastąp pliki).
+  3. Usuń:  git rm data/models.json assets/game/player.png models/maipa-logo.glb
+  4. git add -A && git commit -m "Strony projektów, tryb nocny, 404, gra" && git push
+
+SPOSÓB B — przez github.com
+  1. Na gałęzi porfolio-update: "Add file" → "Upload files", przeciągnij całą zawartość rozpakowanej paczki.
+  2. Ręcznie usuń (otwórz plik → ikonka kosza):  data/models.json, assets/game/player.png, models/maipa-logo.glb
+     (data/models.json MUSISZ usunąć albo zostawić — strona go już nie czyta, więc nic się nie zepsuje;
+      dane modeli są teraz w data/projects.json jako projekty kategorii "model").
+
+OPCJONALNIE: oryginalne PNG renderów (images/renders/**/*.png, ~96 MB) nie są już używane przez stronę —
+strona korzysta z lekkich .webp z paczki. Możesz je usunąć z repo albo zostawić jako źródła.
+
+PLIKI MODELI (.glb / .vrm) nie są w repo — strona pokazuje wtedy render z komunikatem.
+Wrzuć je do models/ (ścieżki są w data/projects.json i data/characters.json),
+najlepiej najpierw zaciemnione:  python tools/obfuscate-model.py models/glock18D/HighPoly.glb
+i wtedy w JSON końcówka ".glb.obf". Szczegóły: README.md → "Ochrona modeli".
+
+PODGLĄD LOKALNY: w folderze repo  python -m http.server  →  http://localhost:8000

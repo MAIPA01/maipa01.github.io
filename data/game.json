@@ -1,10 +1,10 @@
 {
-  "_info": "Settings of the playable mode (press P). Texts are in data/i18n/<language>.json under \"game\". Sprites are horizontal sprite sheets — Aseprite: File > Export Sprite Sheet (Sheet type: Horizontal Strip). Frame numbers count from 0, left to right.",
+  "_info": "Play mode settings (press P). Texts are in data/i18n/<lang>.json → \"game\". Playable characters come from data/characters.json (field \"game\"). Sprites are horizontal strips (Aseprite: File > Export Sprite Sheet > Horizontal Strip). Frame numbers count from 0, left to right.",
   "enabled": true,
   "sound": true,
   "pixelScale": 4,
+  "defaultCharacter": "maipa-chan",
   "player": {
-    "sprite": "assets/game/player.png",
     "frameWidth": 16,
     "frameHeight": 16,
     "hitbox": {
@@ -41,6 +41,26 @@
           7
         ],
         "fps": 1
+      },
+      "wave": {
+        "frames": [
+          8,
+          9
+        ],
+        "fps": 5
+      },
+      "climb": {
+        "frames": [
+          10,
+          11
+        ],
+        "fps": 6
+      },
+      "wallslide": {
+        "frames": [
+          12
+        ],
+        "fps": 1
       }
     }
   },
@@ -63,7 +83,26 @@
     "moveSpeed": 340,
     "jumpVelocity": 820,
     "doubleJump": true,
-    "maxFallSpeed": 1100
+    "maxFallSpeed": 1100,
+    "wallSlideSpeed": 140,
+    "climbSpeed": 170,
+    "climbStamina": 4,
+    "wallJumpPush": 360
+  },
+  "car": {
+    "enabled": true,
+    "sprite": "assets/game/car.png",
+    "frameWidth": 32,
+    "frameHeight": 16,
+    "frames": [
+      0,
+      1
+    ],
+    "hideAt": ".band-2",
+    "side": "right",
+    "maxSpeed": 720,
+    "accel": 900,
+    "jumpVelocity": 560
   },
   "platforms": [
     ".section-head",
@@ -72,20 +111,39 @@
     ".about-avatar",
     ".filter-chip",
     ".project-card",
-    ".model-card",
-    ".render-tile",
+    ".model-tile",
+    ".character-card",
     ".contact-text",
     ".social-link",
     ".site-footer",
     ".hero-actions .btn",
-    ".character-card",
-    ".hero-actions .btn-pixel"
+    ".hero-actions .btn-pixel",
+    ".pp-head",
+    ".pp-block",
+    ".pp-gallery-item",
+    ".pp-side-card",
+    ".pp-back",
+    ".nf-card",
+    ".nf-digit",
+    ".project-link"
   ],
   "coinsOn": [
     ".project-card",
     ".skill-card",
-    ".model-card",
-    ".render-tile",
-    ".character-card"
-  ]
+    ".model-tile",
+    ".character-card",
+    ".pp-block",
+    ".pp-gallery-item",
+    ".nf-card"
+  ],
+  "interact": {
+    ".project-card": "open-project",
+    ".model-tile": "open-project",
+    ".pp-back": "back",
+    ".social-link": "click",
+    ".render-tile": "click",
+    ".filter-chip": "click",
+    ".pp-gallery-item": "click",
+    ".character-card": "select-character"
+  }
 }

@@ -2,131 +2,220 @@
 
 Strona: https://maipa01.github.io
 
-Strona jest w czystym HTML/CSS/JS — **bez kroku budowania**. Cała treść siedzi w plikach JSON w folderze `data/`.
-Zmieniasz JSON → commit → po ~1 minucie zmiana jest na stronie.
+Czysty HTML/CSS/JS — **bez kroku budowania**. Cała treść jest w plikach JSON w `data/`.
+Zmieniasz JSON → commit → po ~1 minucie zmiana jest na stronie (odśwież z Ctrl+F5).
+
+## Strony
+| Adres | Co to jest |
+|---|---|
+| `index.html` | strona główna |
+| `project.html?id=<id>` | **strona projektu** — jeden szablon dla wszystkich projektów, generuje się z `data/projects.json` |
+| `404.html` | „nie znaleziono” — GitHub Pages pokazuje ją sam dla każdego złego adresu |
+
+Nagłówek, stopka, tryb dzień/noc, wybór języka i tryb gry działają na każdej stronie (`js/core.js`).
 
 ## Gdzie co edytować
-
 | Plik | Co zawiera |
 |---|---|
-| `data/profile.json` | imię, role w hero, tekst „O mnie”, statystyki, karty umiejętności |
-| `data/i18n/*.json` | **tłumaczenia interfejsu**: menu, przyciski, tytuły sekcji, stopka, teksty gry (patrz niżej) |
-| `data/characters.json` | Twoje postacie (MAIPA-Chan i kolejne) — pozy, opis, linki, opcjonalny model 3D |
-| `data/socials.json` | kontakty i social media (LinkedIn, email, GitHub, YouTube, itch.io, Google Play, VRoid Hub) |
-| `data/projects.json` | projekty: gry, silniki, renderery, biblioteki + kategorie (filtry) |
-| `data/models.json` | rendery (zdjęcia) i interaktywne modele 3D (.glb) |
-| `data/game.json` | ustawienia trybu gry: sprite'y, fizyka, które elementy są platformami |
+| `data/profile.json` | imię, role w hero, „O mnie”, statystyki, karty umiejętności |
+| `data/projects.json` | projekty (gry, silniki, biblioteki, aplikacje, **modele 3D**) + kategorie |
+| `data/characters.json` | postacie (pozy, opis, model VRM/GLB, sprite do gry) |
+| `data/socials.json` | kontakty i social media |
+| `data/game.json` | tryb gry: fizyka, platformy, auto, animacje |
+| `data/i18n/*.json` | tłumaczenia interfejsu (menu, przyciski, tytuły sekcji, teksty gry) |
 
-### Zasady
-- **Ukrycie elementu bez kasowania:** dodaj `"hidden": true` (projekty, postacie, modele, rendery, kontakty, statystyki, umiejętności).
-- **Kontakt bez linku jest ukryty:** `"url": ""` chowa pozycję.
-- Wszystko oznaczone `TODO` to miejsca do uzupełnienia.
+Ogólne zasady: każdy tekst może być zwykłym napisem albo `{"en": "...", "pl": "..."}`;
+`"hidden": true` chowa element bez kasowania; link z pustym `"url"` jest ukryty.
 
-## Języki (tłumaczenia)
-Strona ma przełącznik języka w menu (teraz **EN** i **PL**). Język wybiera się sam według przeglądarki, potem jest zapamiętywany; można też wymusić go linkiem, np. `https://maipa01.github.io/?lang=pl`.
+## Projekty (`data/projects.json`)
+Jeden wpis = karta na stronie głównej + własna podstrona `project.html?id=...`.
 
-Teksty są w dwóch miejscach:
-1. **Interfejs** (menu, przyciski, tytuły sekcji, stopka, gra) — `data/i18n/en.json`, `data/i18n/pl.json`.
-   W `index.html` element z `data-i18n="nav.about"` bierze tekst z klucza `nav.about`;
-   `data-i18n-attr="aria-label:nav.menu"` tłumaczy atrybut.
-2. **Treść** (opisy projektów, „O mnie”, postacie…) — w plikach `data/*.json` każde pole tekstowe może być:
-   - zwykłym tekstem: `"title": "Stack"` (taki sam we wszystkich językach), albo
-   - obiektem z językami: `"description": { "en": "Space shooter.", "pl": "Kosmiczna strzelanka." }`.
-
-### Dodanie nowego języka (np. niemieckiego)
-1. W `data/i18n/languages.json` dopisz `{ "code": "de", "label": "Deutsch", "short": "DE" }`.
-2. Skopiuj `data/i18n/en.json` jako `data/i18n/de.json` i przetłumacz wartości (klucze zostaw).
-3. W plikach z treścią dopisuj `"de": "..."` obok `"en"`/`"pl"` — możesz to robić stopniowo.
-
-Wszystko, czego brakuje, wyświetla się w języku domyślnym (`"default"` w `languages.json`), a w konsoli przeglądarki
-(F12 → Console) pojawia się lista nieprzetłumaczonych tekstów z dokładną ścieżką — łatwo znaleźć, co jeszcze zostało.
-
-## Postacie
-`data/characters.json` — każda postać to karta z:
-- `images` — lista póz (PNG z przezroczystym tłem, ok. 800 px wysokości). Pod obrazkiem pojawiają się kropki do przełączania póz, kliknięcie powiększa.
-- `description`, `tags`, `links` (np. `{ "type": "vroid", "url": "..." }`).
-- `model` — opcjonalnie plik `.glb`; wtedy na karcie jest przycisk „Zobacz w 3D”.
-  VRoid Studio eksportuje `.vrm` — najprościej zaimportować go do Blendera (dodatek *VRM Add-on for Blender*) i wyeksportować jako `.glb`.
-
-Nowa postać: skopiuj blok `"TODO: next character"`, ustaw `"hidden": false`, wrzuć obrazki do `images/characters/<nazwa>/`.
-Sekcja i link w menu chowają się same, gdy nie ma żadnej widocznej postaci.
-
-## Font
-Tytuły sekcji: **Exo 2 Black Italic** (ma cyfry i polskie znaki). Napis **MAIPA** (logo i hero) zostaje w oryginalnym foncie Viper.
-Font zmienisz w `css/main.css` — zmienne `--font-title` i `--font-logo` na górze pliku.
-
-### Projekt — przykład
-```json
+```jsonc
 {
-  "title": "Mój silnik",
-  "category": "engine",
+  "id": "destiny-painter",                 // adres podstrony: project.html?id=destiny-painter (małe litery, myślniki)
+  "title": "Destiny Painter",
+  "category": "game",                      // game | engine | library | app | model  (lista w "categories")
+  "featured": true,                        // na początek listy + czerwony badge
   "year": "2025",
-  "image": "images/projects/moj-silnik.jpg",
-  "imageFit": "cover",
-  "description": { "en": "C++ engine with ECS and an editor.", "pl": "Silnik w C++ z ECS i edytorem." },
-  "tags": ["C++", "OpenGL", "ECS"],
-  "featured": true,
+  "icon": "images/projects/destiny-painter-icon.webp",
+  "iconFit": "contain",                    // "contain" = cała ikona (kwadratowe ikony), "cover" = wypełnij kartę
+  "banner": "images/projects/destiny-painter-banner.webp",   // opcjonalny: tło nagłówka podstrony i obrazek na karcie
+  "cardImage": "icon",                     // opcjonalnie: na karcie pokaż ikonę zamiast bannera
+  "summary":     { "en": "Krótki opis — karta i nagłówek.", "pl": "..." },
+  "description": { "en": "Długi opis — **Markdown**.",      "pl": "..." },
+  "tags": ["Unity", "C#"],
   "links": [
-    { "type": "github", "url": "https://github.com/MAIPA01/moj-silnik" },
-    { "type": "youtube", "url": "https://youtu.be/..." }
-  ]
+    { "type": "itch", "url": "https://..." },
+    { "type": "youtube", "label": "Trailer", "url": "https://youtu.be/..." }
+  ],
+
+  "gallery": [                             // zrzuty ekranu / rendery / zdjęcia
+    { "src": "images/projects/dp/shot1.webp", "caption": { "en": "Main menu", "pl": "Menu" } },
+    { "caption": "Camera 1", "variants": [ // kilka wersji jednego obrazka (przyciski na obrazku)
+        { "label": { "en": "Day", "pl": "Dzień" }, "src": ".../Day.webp" },
+        { "label": { "en": "Night", "pl": "Noc" }, "src": ".../Night.webp" } ] }
+  ],
+  "galleryTitle": { "en": "Gameplay", "pl": "Rozgrywka" },   // opcjonalnie; domyślnie wg kategorii
+
+  "videos": [ { "url": "https://vimeo.com/123", "title": "Gameplay" } ],   // + automatycznie linki youtube/vimeo z "links"
+
+  "webBuild": { "url": "https://.../index.html", "aspect": "16/9" },       // gra w przeglądarce (iframe, ładuje się po kliknięciu)
+
+  "model": {                               // model 3D w kilku wersjach — to wciąż JEDEN model
+    "variants": [
+      { "label": "HighPoly", "src": "models/glock18D/HighPoly.glb" },
+      { "label": "250",      "src": "models/glock18D/250.glb.obf" }
+    ],
+    "cameraOrbit": "30deg 75deg auto", "autoRotate": true
+  },
+
+  "sections": [                            // dodatkowe sekcje (np. dla bibliotek: instalacja, przykład użycia)
+    { "title": { "en": "Usage", "pl": "Użycie" }, "body": "```cpp\nmargs::Parser p;\n```" }
+  ],
+
+  "team": {                                // zespół (pokazuje się po prawej)
+    "name": "Twin^2 Team", "url": "https://...",
+    "description": { "en": "...", "pl": "..." },
+    "members": [
+      { "name": "Patryk Antosik", "role": { "en": "Engine & graphics", "pl": "Silnik i grafika" }, "url": "https://github.com/MAIPA01", "me": true },
+      { "name": "...", "role": "...", "url": "" }
+    ]
+  },
+  "myRole": { "items": [ { "en": "Rendering pipeline", "pl": "Pipeline renderingu" } ] },   // czym się zajmowałem
+
+  "related": ["twin2-engine"],              // „Powiązane projekty” na dole podstrony
+  "layout": ["play", "videos", "gallery", "about", "sections"]   // opcjonalnie: własna kolejność bloków
 }
 ```
-- `category` — `id` z listy `categories` (domyślnie `game`, `engine`, `library`; możesz dopisać własne, np. `{ "id": "tool", "label": "Tools" }`).
-- `links[].type` — `github`, `itch`, `playstore`, `youtube`, `web`, `download`, `docs`, `vroid`. Pierwszy link jest głównym przyciskiem.
-  Opcjonalnie `"label"` zmienia napis na przycisku.
-- `featured: true` — projekt idzie na początek listy z czerwonym badge.
-- `imageFit: "contain"` — pokazuje cały obrazek (dobre dla kwadratowych ikon aplikacji); bez tego obrazek wypełnia kartę (zrzuty ekranu 16:10).
-- Brak `image` → karta dostaje pixel-artowy placeholder z ikoną kategorii.
-- Filtr **Google Play** pojawia się sam, jeśli któryś projekt ma link `playstore`.
 
-### Modele 3D
-1. W Blenderze: **File → Export → glTF 2.0**, format **glTF Binary (.glb)**, zaznacz *Apply Modifiers*; przy dużych modelach włącz kompresję *Draco*.
-2. Wrzuć plik do `models/`.
-3. Dopisz wpis w `data/models.json`:
-```json
-{ "title": "Dodge Challenger", "src": "models/challenger.glb", "poster": "images/renders/challenger-side.jpg",
-  "description": { "en": "My car model.", "pl": "Mój model auta." }, "autoRotate": true, "cameraOrbit": "30deg 75deg auto" }
+**Typy linków:** `github`, `itch`, `playstore`, `youtube`, `vimeo`, `web`, `download`, `docs`, `vroid`, `play`.
+Linki YouTube/Vimeo otwierają się w odtwarzaczu na stronie (bez wychodzenia), a na podstronie projektu są osadzone.
+
+**Układ podstrony zależy od kategorii** (zmienisz go polem `layout`):
+- `game` — Zagraj w przeglądarce → Filmy → Zrzuty ekranu → O projekcie → Sekcje
+- `model` — Model 3D (z przełącznikiem wersji) → Rendery → O projekcie
+- `library` / `engine` / `app` — O projekcie → Sekcje (Markdown, bloki kodu) → Filmy → Galeria
+
+W projektach jest już szablon `team` i `myRole` z `"hidden": true` i wpisami `TODO` — uzupełnij i usuń `"hidden"`.
+
+**Markdown w opisach:** `**pogrubienie**`, `*kursywa*`, `` `kod` ``, listy `- `, `1. `, nagłówki `## `, linki `[tekst](url)`,
+cytat `> `, bloki kodu ```` ```cpp ... ``` ````. Link do innego projektu: `[Wind Rider](project.html?id=wind-rider)`.
+
+**Kategorie:** w `categories`. `"showInProjects": false` (tak ma `model`) = nie pokazuj w siatce „Projekty”
+(modele 3D mają własną sekcję „Modele 3D”).
+
+## Obrazki
+Wrzucaj duże PNG gdzie chcesz, a potem zrób z nich lekkie WebP:
 ```
-Przeglądarka modeli (Google `<model-viewer>`, plik `js/vendor/model-viewer.min.js`) ładuje się dopiero, gdy użytkownik przewinie do sekcji 3D, więc nie spowalnia strony. Trzymaj pliki .glb najlepiej poniżej ~15 MB.
+pip install pillow
+python tools/optimize-images.py images/renders           # cały folder
+python tools/optimize-images.py images/projects/x.png    # jeden plik
+```
+Tworzy `.webp` obok oryginału — w JSON wpisuj ścieżkę do `.webp`.
+Rendery z repo: 96 MB PNG → 2,3 MB WebP. Oryginalnych PNG strona już nie używa — możesz je usunąć albo zostawić jako źródła.
 
-## Tryb gry (klawisz **P** albo przycisk **PLAY**)
-Strona sama jest poziomem: górne krawędzie kart projektów, nagłówków itd. są platformami. Postać spada przez portfolio, zbiera monety nad projektami, a na karcie projektu `E` otwiera jego link.
+## Modele 3D
+- **.glb / .gltf** → podgląd `<model-viewer>` (Blender: File → Export → glTF 2.0 → *glTF Binary*; przy dużych włącz *Draco*).
+- **.vrm** (VRoid Studio) → osobny podgląd three.js + three-vrm: poprawne cieniowanie VRoid, mruganie, „oddech”,
+  patrzenie w kamerę. Ładuje się dopiero po kliknięciu „Zobacz w 3D”.
+- Wersje jednego modelu (HighPoly / 1500 / LowPoly / cokolwiek): `model.variants` — `label` to dowolny tekst.
 
-Sterowanie: `← →` / `A D` ruch · `Spacja` / `↑` skok (podwójny) · `↓` zeskok z platformy · `E` otwórz · `R` powrót na górę · `Esc` wyjście. Na telefonie są przyciski na ekranie.
+### Ochrona modeli przed pobraniem
+Szczerze: **nie da się w 100% ochronić pliku, który przeglądarka ma wyświetlić** — do pokazania modelu przeglądarka
+musi dostać wszystkie wierzchołki i tekstury, więc zdeterminowana osoba zawsze je wyciągnie (np. z pamięci karty graficznej).
+Osobne repo nic nie zmienia (publiczne → ten sam publiczny URL; prywatne → strona nie może go pobrać bez tokenu, a token musiałby być w kodzie).
 
-### Własne sprite'y z Aseprite
-1. Narysuj animacje w jednym pliku (np. 16×16 px na klatkę).
-2. **File → Export Sprite Sheet** → *Sheet type: Horizontal Strip*, bez paddingu → zapisz jako `assets/game/player.png`.
-3. W `data/game.json` ustaw `frameWidth`/`frameHeight` i numery klatek (liczone od 0, od lewej) dla `idle`, `run`, `jump`, `fall`.
-4. `hitbox` = prostokąt kolizji w pikselach sprite'a (bez przezroczystych brzegów).
-5. Moneta: `assets/game/coin.png` — ta sama zasada.
+Co realnie pomaga (od najskuteczniejszego):
+1. **Pokazuj wersje „wystawowe”**, nie robocze: niższa rozdzielczość tekstur, bez plików .blend / źródeł, ewentualnie znak wodny na teksturze.
+2. **Zaciemnianie plików** (gotowe narzędzie):
+   ```
+   python tools/obfuscate-model.py models/glock18D/HighPoly.glb     # → HighPoly.glb.obf
+   ```
+   i w JSON `"src": "models/glock18D/HighPoly.glb.obf"`. Plik `.obf` nie otwiera się w żadnym programie, a strona
+   dekoduje go w pamięci. Nie wrzucaj wtedy oryginału do repo. Odstrasza 99% osób („zapisz jako”, link z kodu),
+   ale nie jest szyfrowaniem.
+3. **Licencja** w opisie (np. „© Patryk Antosik — all rights reserved”) — daje Ci podstawę prawną.
+4. **Modele VRoid**: na VRoid Hub możesz zablokować pobieranie, ale plik `.vrm` wrzucony do repo GitHub Pages jest publiczny —
+   używaj `.vrm.obf`.
 
-Obecne sprite'y to placeholder (pixelowa MAIPA-Chan) wygenerowany skryptem — podmień na swoje.
-Więcej pomysłów na rozwinięcie gry: [`GAME_IDEA.md`](GAME_IDEA.md).
+## Postacie (`data/characters.json`)
+`images` (pozy), `description`, `tags`, `links`, `model` (`.vrm`, `.glb` lub ich `.obf`) oraz `game`:
+```json
+"game": { "sprite": "assets/game/characters/remi.png" }
+```
+Postać z `game` jest grywalna (wybór klawiszem **C**, albo stań na jej karcie i wciśnij **E**).
+Opcjonalnie w `game`: `frameWidth`, `frameHeight`, `hitbox`, `animations` — nadpisują domyślne z `data/game.json`.
+
+## Języki
+Przełącznik w menu (EN/PL). Język wybiera się sam według przeglądarki i jest zapamiętywany; wymuszenie: `?lang=pl`.
+- Interfejs: `data/i18n/<kod>.json`; w HTML `data-i18n="nav.about"`, atrybuty: `data-i18n-attr="aria-label:nav.menu"`.
+- Treść: `{"en": "...", "pl": "..."}` w dowolnym polu tekstowym.
+- **Nowy język:** dopisz go w `data/i18n/languages.json`, skopiuj `en.json` jako `<kod>.json`, przetłumacz.
+  Braki pokazują się w języku domyślnym, a w konsoli (F12) jest lista nieprzetłumaczonych tekstów ze ścieżkami.
+
+## Tryb dzień / noc
+Przycisk ☀/☾ w menu. Domyślnie według ustawień systemu, wybór jest zapamiętywany.
+Kolory obu trybów są w `css/main.css` na górze (`:root` = dzień, `[data-theme="dark"]` = noc).
+
+## Tryb gry (klawisz **P** albo przycisk **GRAJ**)
+Strona jest poziomem: górne krawędzie elementów to platformy, boki to ściany.
+
+| Klawisz | Akcja |
+|---|---|
+| ← → / A D | ruch |
+| Spacja / Z / K (lub ↑ na ziemi) | skok, w powietrzu drugi skok |
+| dociśnij do ściany w powietrzu | chwyć się ściany |
+| ↑ / ↓ na ścianie | wspinaczka (ograniczona wytrzymałość — postać miga, gdy się kończy) / szybszy zjazd |
+| Spacja na ścianie | odbicie od ściany |
+| ↓ na platformie | zeskok |
+| E | użyj: otwórz projekt, wróć, wybierz postać, kliknij link, wsiądź/wysiądź z auta |
+| F | machnij (w aucie: klakson) |
+| C | wybór postaci |
+| R | od nowa (reset monet i czasu) |
+| Esc | wyjście |
+
+- **Speedrun:** czas startuje przy pierwszym ruchu, kończy się po zebraniu wszystkich monet; rekord każdej strony zapisuje się w przeglądarce.
+- **Wiele stron:** gra zostaje włączona po przejściu na inną stronę. E na karcie projektu otwiera jego podstronę (nowy poziom),
+  E na „Wróć” wraca i stawia postać przy tej samej karcie.
+- **Sekret:** gdzieś na stronie głównej stoi ukryte auto 🙂 (`data/game.json` → `car.hideAt`).
+
+### Własne sprite'y (Aseprite)
+Każda postać ma jeden poziomy pasek klatek 16×16 (`assets/game/characters/<id>.png`), układ wspólny:
+
+| klatki | animacja |
+|---|---|
+| 0–1 | idle |
+| 2–5 | bieg |
+| 6 | skok |
+| 7 | spadanie |
+| 8–9 | machanie |
+| 10–11 | wspinaczka |
+| 12 | zjazd po ścianie |
+
+Aseprite: **File → Export Sprite Sheet → Sheet type: Horizontal Strip**, bez paddingu. Inny układ/rozmiar ustawisz w `data/game.json` → `player`
+(albo per postać w `characters.json` → `game`). Auto: `assets/game/car.png` (2 klatki 32×16), moneta: `assets/game/coin.png`.
+Obecne sprite'y to placeholdery wygenerowane skryptem `tools/placeholder-sprites.py`.
 
 ## Podgląd lokalny
-`fetch()` nie działa z `file://`, więc nie otwieraj `index.html` dwuklikiem. Zamiast tego w folderze repo:
+Nie otwieraj plików dwuklikiem (przeglądarka blokuje JSON z dysku). W folderze repo:
 ```
 python -m http.server
 ```
-i wejdź na http://localhost:8000.
+i wejdź na http://localhost:8000 (404 lokalnie: http://localhost:8000/404.html).
 
 ## Struktura
 ```
-index.html            szkielet strony
-css/main.css          wygląd (kolory na górze pliku w :root)
-js/app.js             renderuje stronę z JSON-ów
-js/i18n.js            tłumaczenia (data-i18n, przełącznik języka)
-js/icons.js           ikony SVG (Simple Icons, CC0)
-js/game/playmode.js   tryb gry
-js/vendor/            model-viewer (bez CDN)
-data/                 TREŚĆ — to edytujesz
-data/i18n/            tłumaczenia interfejsu
-images/characters/    pozy postaci
-assets/game/          sprite'y gry
-images/renders/       rendery auta (zoptymalizowane JPG)
-images/projects/      obrazki projektów
-models/               modele .glb
-Old/, Instalatory/    stara strona i instalatory gier (linki do pobrania nadal działają)
+index.html, project.html, 404.html
+css/main.css            wygląd (kolory dzień/noc na górze)
+js/core.js              wspólne: nagłówek, stopka, motyw, język, lightbox, wideo, podgląd 3D, markdown, gra
+js/app.js               strona główna
+js/project.js           podstrona projektu
+js/notfound.js          404
+js/vrm.js               podgląd postaci VRM
+js/i18n.js, js/icons.js tłumaczenia, ikony (Simple Icons, CC0)
+js/game/playmode.js     tryb gry
+js/vendor/              model-viewer, three.js + three-vrm (bez CDN)
+data/                   TREŚĆ
+assets/game/            sprite'y gry
+tools/                  optimize-images.py, obfuscate-model.py, placeholder-sprites.py
 ```

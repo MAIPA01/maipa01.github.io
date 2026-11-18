@@ -125,3 +125,10 @@ export function reportMissing(contentData) {
   Object.entries(contentData || {}).forEach(([file, data]) => walkData(data, `data/${file}.json`));
   if (missing.length) console.info(`[i18n] "${state.lang}": ${missing.length} text(s) not translated (using "${state.def}"):\n  ${missing.join('\n  ')}`);
 }
+
+/** t() with {placeholders}: tf('game.won', { time: '0:12.34' }) */
+export function tf(key, vars = {}) {
+  let s = String(t(key));
+  for (const [k, v] of Object.entries(vars)) s = s.split(`{${k}}`).join(v);
+  return s;
+}
