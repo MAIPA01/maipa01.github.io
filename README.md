@@ -10,6 +10,7 @@ Zmieniasz JSON → commit → po ~1 minucie zmiana jest na stronie (odśwież z 
 |---|---|
 | `index.html` | strona główna |
 | `project.html?id=<id>` | **strona projektu** — jeden szablon dla wszystkich projektów, generuje się z `data/projects.json` |
+| `team.html?id=<id>` | **strona zespołu** — logo, opis, członkowie z rolami i projekty zespołu (`data/teams.json`) |
 | `404.html` | „nie znaleziono” — GitHub Pages pokazuje ją sam dla każdego złego adresu |
 
 Nagłówek, stopka, tryb dzień/noc, wybór języka i tryb gry działają na każdej stronie (`js/core.js`).
@@ -19,6 +20,8 @@ Nagłówek, stopka, tryb dzień/noc, wybór języka i tryb gry działają na ka�
 |---|---|
 | `data/profile.json` | imię, role w hero, „O mnie”, statystyki, karty umiejętności |
 | `data/projects.json` | projekty (gry, silniki, biblioteki, aplikacje, **modele 3D**) + kategorie |
+| `data/teams.json` | zespoły: nazwa, logo, opis, członkowie (id osób), linki |
+| `data/people.json` | osoby: imię i nazwisko, linki (GitHub, itch…), `"me": true` przy Tobie |
 | `data/characters.json` | postacie (pozy, opis, model VRM/GLB, sprite do gry) |
 | `data/socials.json` | kontakty i social media |
 | `data/game.json` | tryb gry: fizyka, platformy, auto, animacje |
@@ -26,6 +29,30 @@ Nagłówek, stopka, tryb dzień/noc, wybór języka i tryb gry działają na ka�
 
 Ogólne zasady: każdy tekst może być zwykłym napisem albo `{"en": "...", "pl": "..."}`;
 `"hidden": true` chowa element bez kasowania; link z pustym `"url"` jest ukryty.
+
+### Podpowiedzi w VS Code (schematy JSON)
+Każdy plik w `data/` ma na górze `"$schema"` (plus `.vscode/settings.json`), więc VS Code:
+podpowiada nazwy pól (**Ctrl+Spacja**), dozwolone wartości (np. `category`, `type` linku), pokazuje opis pola po najechaniu
+i podkreśla literówki. Schematy są w `schemas/`.
+
+Sprawdzenie wszystkiego naraz (pola, id zespołów/osób/projektów, czy pliki obrazków istnieją):
+```
+pip install jsonschema referencing
+python tools/validate-data.py
+```
+
+### Długie teksty
+Pola z Markdownem (`description`, `sections[].body`, opis zespołu) można pisać na trzy sposoby:
+```jsonc
+"description": { "en": "Jeden długi napis…", "pl": "…" }
+"description": {                                   // tablica krótkich linii — najwygodniej w JSON
+  "en": ["Pierwsze zdanie akapitu,", "ciąg dalszy tego samego akapitu.", "", "Nowy akapit.", "- punkt listy"],
+  "pl": ["…"]
+}
+"description": { "en": { "file": "content/margs.en.md" }, "pl": { "file": "content/margs.pl.md" } }   // osobny plik .md
+```
+W tablicy pojedyncze przejście do nowej linii to spacja (ten sam akapit), pusta linia `""` zaczyna nowy akapit,
+a linia zakończona dwiema spacjami albo `\` wymusza złamanie wiersza.
 
 ## Projekty (`data/projects.json`)
 Jeden wpis = karta na stronie głównej + własna podstrona `project.html?id=...`.
@@ -57,9 +84,12 @@ Jeden wpis = karta na stronie głównej + własna podstrona `project.html?id=...
   ],
   "galleryTitle": { "en": "Gameplay", "pl": "Rozgrywka" },   // opcjonalnie; domyślnie wg kategorii
 
-  "videos": [ { "url": "https://vimeo.com/123", "title": "Gameplay" } ],   // + automatycznie linki youtube/vimeo z "links"
+  "videos": [ { "url": "https://vimeo.com/123", "title": "Gameplay", "cover": "images/projects/x/cover.webp" } ],
+                                           // + automatycznie linki youtube/vimeo z "links" (tam też można dać "cover")
 
   "webBuild": { "url": "https://.../index.html", "aspect": "16/9" },       // gra w przeglądarce (iframe, ładuje się po kliknięciu)
+  // gra z układem w stałych pikselach (np. p5.js createCanvas(windowWidth, windowHeight)):
+  // "webBuild": { "url": "...", "width": 1280, "height": 760 }  → renderuje się w 1280×760 i skaluje do bloku
 
   "model": {                               // model 3D w kilku wersjach — to wciąż JEDEN model
     "variants": [
@@ -73,15 +103,17 @@ Jeden wpis = karta na stronie głównej + własna podstrona `project.html?id=...
     { "title": { "en": "Usage", "pl": "Użycie" }, "body": "```cpp\nmargs::Parser p;\n```" }
   ],
 
-  "team": {                                // zespół (pokazuje się po prawej)
-    "name": "Twin^2 Team", "url": "https://...",
-    "description": { "en": "...", "pl": "..." },
+  "team": {                                // zespół z data/teams.json + role osób W TYM projekcie
+    "id": "drop-table",
+    "name": "Drop Table – 1",              // opcjonalnie: inna nazwa tylko w tym projekcie
     "members": [
-      { "name": "Patryk Antosik", "role": { "en": "Engine & graphics", "pl": "Silnik i grafika" }, "url": "https://github.com/MAIPA01", "me": true },
-      { "name": "...", "role": "...", "url": "" }
+      { "person": "patryk-antosik", "role": { "en": "Gameplay programmer", "pl": "Programista rozgrywki" } },
+      { "person": "marceli-antosik", "role": { "en": "Art lead", "pl": "Lider artystyczny" } }
     ]
   },
-  "myRole": { "items": [ { "en": "Rendering pipeline", "pl": "Pipeline renderingu" } ] },   // czym się zajmowałem
+  "whatIDid": [                            // lista: co konkretnie zrobiłem (Markdown w linii dozwolony)
+    { "en": "Player movement", "pl": "Poruszanie się postaci" }
+  ],
 
   "related": ["twin2-engine"],              // „Powiązane projekty” na dole podstrony
   "layout": ["play", "videos", "gallery", "about", "sections"]   // opcjonalnie: własna kolejność bloków
@@ -96,7 +128,16 @@ Linki YouTube/Vimeo otwierają się w odtwarzaczu na stronie (bez wychodzenia), 
 - `model` — Model 3D (z przełącznikiem wersji) → Rendery → O projekcie
 - `library` / `engine` / `app` — O projekcie → Sekcje (Markdown, bloki kodu) → Filmy → Galeria
 
-W projektach jest już szablon `team` i `myRole` z `"hidden": true` i wpisami `TODO` — uzupełnij i usuń `"hidden"`.
+**Okładki filmów:** pole `cover`; bez niego okładka pobiera się sama (YouTube — miniatura filmu, Vimeo — przez publiczne API Vimeo).
+
+**Gry w przeglądarce:** strzałki i spacja w grze nie przewijają strony (działa dla gier z tej samej domeny `maipa01.github.io`;
+wyłączysz to `"captureKeys": false`).
+
+## Zespoły i osoby
+- `data/people.json` — każda osoba raz: `id`, `name`, `links`, opcjonalnie `avatar`, `title`, `"me": true`.
+- `data/teams.json` — `id`, `name`, `logo` (puste = pikselowy znak z inicjałami), `banner`, `summary`, `description`, `members` (id osób), `links`.
+- W projekcie podajesz tylko `team.id` i role osób w tym projekcie. Strona zespołu (`team.html?id=…`) sama zbiera
+  wszystkie jego projekty i role każdej osoby we wszystkich projektach.
 
 **Markdown w opisach:** `**pogrubienie**`, `*kursywa*`, `` `kod` ``, listy `- `, `1. `, nagłówki `## `, linki `[tekst](url)`,
 cytat `> `, bloki kodu ```` ```cpp ... ``` ````. Link do innego projektu: `[Wind Rider](project.html?id=wind-rider)`.
@@ -116,6 +157,7 @@ Rendery z repo: 96 MB PNG → 2,3 MB WebP. Oryginalnych PNG strona już nie uży
 
 ## Modele 3D
 - **.glb / .gltf** → podgląd `<model-viewer>` (Blender: File → Export → glTF 2.0 → *glTF Binary*; przy dużych włącz *Draco*).
+  Dekodery Draco/Meshopt są w `js/vendor/` — skompresowane modele działają bez zewnętrznych serwerów.
 - **.vrm** (VRoid Studio) → osobny podgląd three.js + three-vrm: poprawne cieniowanie VRoid, mruganie, „oddech”,
   patrzenie w kamerę. Ładuje się dopiero po kliknięciu „Zobacz w 3D”.
 - Wersje jednego modelu (HighPoly / 1500 / LowPoly / cokolwiek): `model.variants` — `label` to dowolny tekst.
@@ -134,6 +176,11 @@ Co realnie pomaga (od najskuteczniejszego):
    i w JSON `"src": "models/glock18D/HighPoly.glb.obf"`. Plik `.obf` nie otwiera się w żadnym programie, a strona
    dekoduje go w pamięci. Nie wrzucaj wtedy oryginału do repo. Odstrasza 99% osób („zapisz jako”, link z kodu),
    ale nie jest szyfrowaniem.
+   **Czy klucz można trzymać w `.env`?** Nie da się tego zrobić na GitHub Pages: to hosting plików statycznych, bez serwera,
+   który mógłby przeczytać `.env`. Wszystko, czego potrzebuje przeglądarka do odkodowania modelu, musi do niej trafić —
+   gdyby klucz był w `.env` wrzuconym do repo, strona by go udostępniła; gdyby go nie było w repo, strona nie mogłaby odkodować modeli.
+   Zmiana klucza też nic nie daje: dekoder jest w `js/core.js`. Prawdziwa ochrona wymagałaby serwera z logowaniem (np. Cloudflare Workers),
+   a i tak to, co trafi do karty graficznej, da się przechwycić.
 3. **Licencja** w opisie (np. „© Patryk Antosik — all rights reserved”) — daje Ci podstawę prawną.
 4. **Modele VRoid**: na VRoid Hub możesz zablokować pobieranie, ale plik `.vrm` wrzucony do repo GitHub Pages jest publiczny —
    używaj `.vrm.obf`.
@@ -158,26 +205,41 @@ Przycisk ☀/☾ w menu. Domyślnie według ustawień systemu, wybór jest zapam
 Kolory obu trybów są w `css/main.css` na górze (`:root` = dzień, `[data-theme="dark"]` = noc).
 
 ## Tryb gry (klawisz **P** albo przycisk **GRAJ**)
-Strona jest poziomem: górne krawędzie elementów to platformy, boki to ściany.
+Strona jest poziomem: górne krawędzie elementów to platformy, a **boki strony** to ściany, po których można się wspinać.
 
 | Klawisz | Akcja |
 |---|---|
 | ← → / A D | ruch |
-| Spacja / Z / K (lub ↑ na ziemi) | skok, w powietrzu drugi skok |
-| dociśnij do ściany w powietrzu | chwyć się ściany |
-| ↑ / ↓ na ścianie | wspinaczka (ograniczona wytrzymałość — postać miga, gdy się kończy) / szybszy zjazd |
-| Spacja na ścianie | odbicie od ściany |
+| Spacja / Z / K / ↑ / W | skok, w powietrzu drugi skok |
+| dociśnij do boku strony w powietrzu | chwyć się ściany; ↑ wspinaczka (ograniczona wytrzymałość), ↓ zjazd, Spacja odbicie |
 | ↓ na platformie | zeskok |
-| E | użyj: otwórz projekt, wróć, wybierz postać, kliknij link, wsiądź/wysiądź z auta |
-| F | machnij (w aucie: klakson) |
+| E | użyj: otwórz projekt / zespół, wróć, wybierz postać, kliknij link |
+| F | machnij |
 | C | wybór postaci |
-| R | od nowa (reset monet i czasu) |
-| Esc | wyjście |
+| **T** | **wyzwanie** na tej stronie |
+| **G** | **garaż** (tuning auta za monety) |
+| R | bez wyzwania: na górę strony · w wyzwaniu: od nowa · w grze autem: od nowa |
+| Esc | zawsze wyjście z trybu gry |
 
-- **Speedrun:** czas startuje przy pierwszym ruchu, kończy się po zebraniu wszystkich monet; rekord każdej strony zapisuje się w przeglądarce.
-- **Wiele stron:** gra zostaje włączona po przejściu na inną stronę. E na karcie projektu otwiera jego podstronę (nowy poziom),
-  E na „Wróć” wraca i stawia postać przy tej samej karcie.
-- **Sekret:** gdzieś na stronie głównej stoi ukryte auto 🙂 (`data/game.json` → `car.hideAt`).
+**Tryb swobodny** (po P): chodzisz po stronie, monet nie ma.
+
+**Wyzwanie (T):** teleport na górę strony, pojawiają się monety, czas rusza przy pierwszym ruchu. Zbierz wszystkie →
+rekord czasu, monety do garażu (tylko za pierwsze ukończenie) i odblokowanie następnego poziomu.
+W trakcie wyzwania nie da się przejść na inną stronę (ani E, ani kliknięciem), filtry projektów są wyłączone, auto jest niedostępne.
+Wyjście z trybu gry (Esc) przerywa wyzwanie.
+
+**Poziomy:** strona główna to hub. Podstrony projektów odblokowują się po kolei, w kolejności kart na stronie głównej
+(najpierw siatka projektów, potem modele 3D). Zablokowane mają kłódkę, ukończone — ptaszka. Blokady działają **tylko w trybie gry** —
+zwykły odwiedzający zawsze ma dostęp do wszystkiego. Strony zespołów i 404 nie są poziomami (można po nich chodzić, ale nie ma wyzwania).
+
+**Garaż (G):** kolory auta (klasyczna czerwień + kolor każdej grywalnej postaci, ustawisz go w `characters.json` → `game.carColor`)
+i tuning: sportowe sprężyny (wyższy skok), nitro-skok (drugi skok), klatka bezpieczeństwa (przetrwanie jednej kraksy).
+Ceny liczą się same: waga przedmiotu / suma wag × **wszystkie monety możliwe do zdobycia na wszystkich poziomach**,
+więc za komplet ukończonych wyzwań kupisz dokładnie wszystko. Wagi zmienisz w `data/game.json` → `shop`.
+
+**Sekret:** gdzieś na stronie głównej, w odpowiednim miejscu, E robi coś specjalnego 🙂 (`data/game.json` → `car.secretAt`).
+
+Postęp (ukończone poziomy, monety, zakupy) zapisuje się w przeglądarce (`localStorage`: `maipa-progress`).
 
 ### Własne sprite'y (Aseprite)
 Każda postać ma jeden poziomy pasek klatek 16×16 (`assets/game/characters/<id>.png`), układ wspólny:
@@ -205,11 +267,12 @@ i wejdź na http://localhost:8000 (404 lokalnie: http://localhost:8000/404.html)
 
 ## Struktura
 ```
-index.html, project.html, 404.html
+index.html, project.html, team.html, 404.html
 css/main.css            wygląd (kolory dzień/noc na górze)
 js/core.js              wspólne: nagłówek, stopka, motyw, język, lightbox, wideo, podgląd 3D, markdown, gra
 js/app.js               strona główna
 js/project.js           podstrona projektu
+js/team.js              strona zespołu
 js/notfound.js          404
 js/vrm.js               podgląd postaci VRM
 js/i18n.js, js/icons.js tłumaczenia, ikony (Simple Icons, CC0)
@@ -217,5 +280,6 @@ js/game/playmode.js     tryb gry
 js/vendor/              model-viewer, three.js + three-vrm (bez CDN)
 data/                   TREŚĆ
 assets/game/            sprite'y gry
-tools/                  optimize-images.py, obfuscate-model.py, placeholder-sprites.py
+schemas/                schematy JSON (podpowiedzi w VS Code)
+tools/                  optimize-images.py, obfuscate-model.py, validate-data.py, placeholder-sprites.py
 ```

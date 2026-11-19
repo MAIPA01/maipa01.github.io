@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "common.schema.json",
+  "title": "MAIPA portfolio — wspólne typy",
+  "definitions": {
+    "langCode": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2})?$", "description": "Kod języka z data/i18n/languages.json, np. \"en\", \"pl\"." },
+    "text": {
+      "description": "Tekst: zwykły napis (taki sam we wszystkich językach) albo obiekt z wersjami językowymi {\"en\": \"...\", \"pl\": \"...\"}.",
+      "anyOf": [
+        { "type": "string" },
+        { "type": "object", "propertyNames": { "$ref": "#/definitions/langCode" }, "additionalProperties": { "type": "string" }, "minProperties": 1,
+          "defaultSnippets": [{ "label": "en + pl", "body": { "en": "$1", "pl": "$2" } }] }
+      ]
+    },
+    "markdownValue": {
+      "description": "Markdown jako jeden napis, tablica linii (pusta linia \"\" = nowy akapit) albo {\"file\": \"content/plik.md\"}.",
+      "anyOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } },
+        { "type": "object", "required": ["file"], "additionalProperties": false,
+          "properties": { "file": { "type": "string", "description": "Ścieżka do pliku .md względem katalogu strony, np. content/projects/margs.en.md" } } }
+      ]
+    },
+    "markdown": {
+      "description": "Dłuższy tekst w Markdownie (**pogrubienie**, *kursywa*, `kod`, listy, [linki](url), ```bloki kodu```). Może być tablicą linii, plikiem .md albo obiektem z językami.",
+      "defaultSnippets": [
+        { "label": "linie en + pl", "body": { "en": ["$1"], "pl": ["$2"] } },
+        { "label": "pliki .md en + pl", "body": { "en": { "file": "content/$1.en.md" }, "pl": { "file": "content/$1.pl.md" } } }
+      ],
+      "anyOf": [
+        { "$ref": "#/definitions/markdownValue" },
+        { "type": "object", "propertyNames": { "$ref": "#/definitions/langCode" }, "additionalProperties": { "$ref": "#/definitions/markdownValue" }, "minProperties": 1 }
+      ]
+    },
+    "textList": {
+      "description": "Lista tekstów albo obiekt {\"en\": [...], \"pl\": [...]}.",
+      "anyOf": [
+        { "type": "array", "items": { "$ref": "#/definitions/text" } },
+        { "type": "object", "additionalProperties": { "type": "array", "items": { "type": "string" } } }
+      ]
+    },
+    "linkType": {
+      "type": "string",
+      "enum": ["github", "itch", "playstore", "youtube", "vimeo", "web", "download", "docs", "vroid", "play"],
+      "description": "Rodzaj linku — decyduje o ikonie i domyślnym napisie. youtube/vimeo otwierają się w odtwarzaczu na stronie."
+    },
+    "icon": {
+      "type": "string",
+      "enum": ["github", "itch", "playstore", "youtube", "vimeo", "linkedin", "email", "vroid", "web", "download", "docs", "link", "gamepad", "engine", "render", "cube", "app", "play", "image", "users", "twitter", "discord"],
+      "description": "Nazwa ikony z js/icons.js."
+    },
+    "link": {
+      "type": "object", "required": ["url"], "additionalProperties": false,
+      "properties": {
+        "type": { "$ref": "#/definitions/linkType" },
+        "url": { "type": "string", "description": "Adres. Ścieżki względne (np. Instalatory/...) są względem katalogu strony." },
+        "label": { "$ref": "#/definitions/text", "description": "Napis na przycisku (domyślnie zależy od typu)." },
+        "icon": { "$ref": "#/definitions/icon", "description": "Inna ikona niż domyślna dla typu." },
+        "cover": { "type": "string", "description": "Tylko youtube/vimeo: własna okładka filmu (obrazek). Bez tego okładka pobiera się sama z YouTube/Vimeo." },
+        "hidden": { "type": "boolean", "description": "Ukryj link bez kasowania." }
+      },
+      "defaultSnippets": [{ "label": "link", "body": { "type": "${1|github,itch,playstore,youtube,vimeo,web,download,docs,vroid,play|}", "url": "$2" } }]
+    },
+    "image": { "type": "string", "description": "Ścieżka do obrazka (najlepiej .webp — tools/optimize-images.py)." },
+    "hidden": { "type": "boolean", "description": "true = ukryj bez kasowania." },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "description": "Identyfikator: małe litery, cyfry i myślniki (np. destiny-painter)." }
+  }
+}

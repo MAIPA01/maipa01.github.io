@@ -1,5 +1,5 @@
 /* =========================================================
-   MAIPA portfolio — shared code for every page (home, project page, 404).
+   MAIPA portfolio — shared code for every page (home, project, team, 404).
    Header, footer, theme, language, lightbox, video player, 3D viewer,
    markdown, play-mode bootstrap.
    ========================================================= */
@@ -18,6 +18,7 @@ export const txt = (v) => esc(tr(v) ?? '');
 export const visible = (item) => item && !item.hidden;
 export const isExternal = (url) => /^(https?:)?\/\//.test(url) || /^mailto:/.test(url);
 export const projectUrl = (id) => `project.html?id=${encodeURIComponent(id)}`;
+export const teamUrl = (id) => `team.html?id=${encodeURIComponent(id)}`;
 
 export async function loadJSON(url) {
   const res = await fetch(url, { cache: 'no-cache' });
@@ -40,13 +41,15 @@ const DATA = {
   profile: 'data/profile.json',
   socials: 'data/socials.json',
   projects: 'data/projects.json',
+  teams: 'data/teams.json',
+  people: 'data/people.json',
   characters: 'data/characters.json',
   game: 'data/game.json',
 };
 
 /**
  * @param {object} o
- * @param {'home'|'project'|'notfound'} o.page
+ * @param {'home'|'project'|'team'|'notfound'} o.page
  * @param {(data) => void} o.render  called after data load and on every language change
  */
 export async function bootPage({ page, render }) {
@@ -283,16 +286,39 @@ export function linksHTML(links, { cls = 'project-links', primaryFirst = true } 
     const attrs = ext ? (l.url.startsWith('mailto:') ? '' : 'target="_blank" rel="noopener"') : (l.type === 'download' ? 'download' : '');
     const label = tr(l.label) || t(`links.${l.type}`, t('links.link'));
     const href = ext ? l.url : encodeURI(l.url);
-    return `<a class="project-link${primaryFirst && i === 0 ? ' primary' : ''}" href="${esc(href)}" ${attrs}${video ? ` data-video="${esc(l.url)}" data-video-title="${esc(label)}"` : ''}>${icon(l.icon || LINK_ICONS[l.type] || 'link')}${esc(label)}</a>`;
+    return `<a class="project-link${primaryFirst && i === 0 ? ' primary' : ''}" href="${esc(href)}" ${attrs}${video ? ` data-video="${esc(l.url)}" data-video-title="${esc(label)}"` : ''}${l.cover ? ` data-video-cover="${esc(l.cover)}"` : ''}>${icon(l.icon || LINK_ICONS[l.type] || 'link')}${esc(label)}</a>`;
   }).join('')}</div>`;
 }
 
 /* =========================================================
    Markdown (small & safe subset) for long descriptions
    ========================================================= */
+const mdFiles = new Map();
+/** Loads every {"file": "..."} referenced in the given values (call before rendering, then render again). */
+export async function loadMarkdownFiles(values) {
+  const files = new Set();
+  const walk = (v) => {
+    if (!v || typeof v !== 'object') return;
+    if (typeof v.file === 'string' && Object.keys(v).length === 1) { if (!mdFiles.has(v.file)) files.add(v.file); return; }
+    Object.values(v).forEach(walk);
+  };
+  values.forEach(walk);
+  if (!files.size) return false;
+  await Promise.all([...files].map(async (f) => {
+    try { const r = await fetch(f, { cache: 'no-cache' }); mdFiles.set(f, r.ok ? await r.text() : ''); } catch { mdFiles.set(f, ''); }
+  }));
+  return true;
+}
+
+/**
+ * Markdown → HTML. Accepts a string, an array of lines ("" = new paragraph) or {"file": "x.md"}.
+ * A single line break inside a paragraph is a space (so long text can be split into short lines);
+ * end a line with two spaces or a backslash for a hard line break.
+ */
 export function markdown(src) {
   if (src == null) return '';
-  if (Array.isArray(src)) src = src.join('\n\n');
+  if (typeof src === 'object' && !Array.isArray(src) && typeof src.file === 'string') src = mdFiles.get(src.file) ?? '';
+  if (Array.isArray(src)) src = src.join('\n');
   let s = esc(String(src)).replace(/\r\n?/g, '\n');
   const codeBlocks = [];
   s = s.replace(/```([\w+-]*)\n([\s\S]*?)```/g, (_, lang, code) => {
@@ -322,7 +348,7 @@ export function markdown(src) {
     if (lines.every((l) => /^\s*[-*]\s+/.test(l))) { out.push(`<ul>${lines.map((l) => `<li>${inline(l.replace(/^\s*[-*]\s+/, ''))}</li>`).join('')}</ul>`); continue; }
     if (lines.every((l) => /^\s*\d+[.)]\s+/.test(l))) { out.push(`<ol>${lines.map((l) => `<li>${inline(l.replace(/^\s*\d+[.)]\s+/, ''))}</li>`).join('')}</ol>`); continue; }
     if (lines.every((l) => /^&gt;\s?/.test(l))) { out.push(`<blockquote>${inline(lines.map((l) => l.replace(/^&gt;\s?/, '')).join(' '))}</blockquote>`); continue; }
-    out.push(`<p>${lines.map(inline).join('<br>')}</p>`);
+    out.push(`<p>${lines.map((l, i) => inline(l.replace(/(\s{2,}|\\)$/, '')) + (i < lines.length - 1 ? (/(\s{2,}|\\)$/.test(l) ? '<br>' : ' ') : '')).join('')}</p>`);
   }
   return out.join('\n').replace(/\u0000(\d+)\u0000/g, (_, i) => codeBlocks[i]);
 }
@@ -403,6 +429,8 @@ function initDialogs() {
    ========================================================= */
 let modelViewerLib = null;
 export function loadModelViewer() {
+  // decoders for compressed models are served from this site (no Google CDN needed)
+  self.ModelViewerElement = { ...(self.ModelViewerElement || {}), dracoDecoderLocation: new URL('js/vendor/draco/', document.baseURI).href };
   modelViewerLib ??= import('./vendor/model-viewer.min.js').catch((err) => console.error('[portfolio] model-viewer failed', err));
   return modelViewerLib;
 }
@@ -501,7 +529,9 @@ async function ensureGame() {
     site.game = await m.createPlayMode(cfg, {
       texts: () => tObj('game'),
       characters: playableCharacters,
-      pageKey: site.page === 'project' ? `project:${new URLSearchParams(location.search).get('id')}` : site.page,
+      pageKey: ['project', 'team'].includes(site.page) ? `${site.page}:${new URLSearchParams(location.search).get('id')}` : site.page,
+      levels: () => levelList(),
+      cars: () => playableCharacters().map((c) => ({ id: c.id, name: c.name, color: c.game?.carColor })),
       onActiveChange: (active) => { try { active ? sessionStorage.setItem(PLAY_KEY, '1') : sessionStorage.removeItem(PLAY_KEY); } catch { /* ignore */ } },
     });
     window.__maipaGame = site.game;
@@ -537,4 +567,142 @@ async function resumePlayIfActive() {
   if (!on || site.data?.game?.enabled === false) return;
   const g = await ensureGame();
   if (g && !g.active) g.start({ resumed: true });
+}
+
+/* =========================================================
+   Teams & people (data/teams.json, data/people.json)
+   ========================================================= */
+export const personById = (id) => (site.data?.people?.people || []).find((x) => x.id === id);
+export const teamById = (id) => (site.data?.teams?.teams || []).find((x) => x.id === id && !x.hidden);
+/** Members of a project's team with their role in THIS project: [{ person, role }] */
+export function projectMembers(p) {
+  return (p.team?.members || []).map((m) => ({ person: personById(m.person) || { id: m.person, name: m.person }, role: m.role })).filter((m) => m.person);
+}
+export const projectsOfTeam = (teamId) => (site.data?.projects?.projects || []).filter((p) => visible(p) && p.team?.id === teamId);
+export function personLink(person, cls = '') {
+  const url = (person.links || []).find((l) => l.url)?.url || person.url;
+  return url ? `<a class="${cls}" href="${esc(url)}" target="_blank" rel="noopener">${txt(person.name)}</a>` : `<span class="${cls}">${txt(person.name)}</span>`;
+}
+export function teamLogoHTML(team, cls = 'team-logo') {
+  if (team.logo) return `<img class="${cls}" src="${esc(team.logo)}" alt="">`;
+  const initials = String(tr(team.name) || '?').replace(/[^\p{L}\p{N} ]/gu, '').split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase() || '?';
+  return `<span class="${cls} team-logo-ph" aria-hidden="true">${esc(initials)}</span>`;
+}
+
+/* =========================================================
+   Project cards (home page + team pages)
+   ========================================================= */
+export const CATEGORY_ICONS = { game: 'gamepad', engine: 'engine', renderer: 'render', library: 'docs', app: 'app', tool: 'app', model: 'cube' };
+export const categoryOf = (p) => (site.data?.projects?.categories || []).find((c) => c.id === p.category);
+
+function cardMediaHTML(p, cat) {
+  const img = p.banner && p.cardImage !== 'icon' ? p.banner : (p.icon || p.image);
+  if (!img) return `<div class="project-placeholder">${icon((cat && cat.icon) || CATEGORY_ICONS[p.category] || 'cube')}</div>`;
+  const contain = img === (p.icon || p.image) && (p.iconFit || p.imageFit) === 'contain';
+  return `<div class="project-media-inner${contain ? ' contain' : ''}"${contain ? ` style="--img:url('${esc(new URL(img, location.href).href)}')"` : ''}>
+    <img src="${esc(img)}" alt="" loading="lazy"></div>`;
+}
+export function projectCardHTML(p, { reveal = true } = {}) {
+  const cat = categoryOf(p);
+  const hasPlay = (p.links || []).some((l) => l.type === 'playstore' && l.url);
+  const title = tr(p.title);
+  const href = p.id ? projectUrl(p.id) : '';
+  const badges = [
+    p.featured ? `<span class="badge badge-featured">${esc(t('projects.featured'))}</span>` : '',
+    cat ? `<span class="badge">${txt(cat.label)}</span>` : '',
+    p.webBuild?.url ? `<span class="badge badge-play">${icon('play')}${esc(t('links.play'))}</span>` : '',
+  ].join('');
+  const summary = p.summary || p.description;
+  return `
+  <article class="project-card${reveal ? ' reveal' : ''}" data-id="${esc(p.id || '')}" data-category="${esc(p.category)}" data-play="${hasPlay ? 1 : 0}" data-title="${esc(title)}">
+    ${href ? `<a class="card-link" href="${esc(href)}" aria-label="${esc(title)} — ${esc(t('projects.open'))}"></a>` : ''}
+    <div class="project-media">${cardMediaHTML(p, cat)}<div class="project-badges">${badges}</div></div>
+    <div class="project-body">
+      <div class="project-meta"><h3>${esc(title)}</h3>${p.year ? `<span class="project-year">${txt(p.year)}</span>` : ''}</div>
+      ${summary && typeof tr(summary) === 'string' ? `<p class="project-desc">${txt(summary)}</p>` : ''}
+      ${tagsHTML(p.tags)}
+      <div class="card-actions">
+        ${linksHTML(p.links)}
+        ${href ? `<a class="details-link" href="${esc(href)}">${esc(t('projects.open'))} →</a>` : ''}
+      </div>
+    </div>
+  </article>`;
+}
+
+/** Order of projects on the home page (featured first, then JSON order). */
+export function homeProjectOrder(data = site.data) {
+  const cats = data.projects.categories || [];
+  const shown = (p) => visible(p) && cats.find((c) => c.id === p.category)?.showInProjects !== false;
+  const list = (data.projects.projects || []).map((p, i) => ({ p, i }));
+  const grid = list.filter(({ p }) => shown(p)).sort((a, b) => (!!b.p.featured - !!a.p.featured) || a.i - b.i).map(({ p }) => p);
+  const models = list.filter(({ p }) => visible(p) && p.category === 'model').map(({ p }) => p);
+  return { grid, models };
+}
+
+/* =========================================================
+   Video covers: custom "cover" → YouTube thumbnail → Vimeo oEmbed thumbnail
+   ========================================================= */
+const vimeoThumbs = new Map();
+export async function hydrateVideoCovers(root = document) {
+  for (const el of $$('[data-vimeo-id]:not([data-cover-done])', root)) {
+    el.dataset.coverDone = '1';
+    const id = el.dataset.vimeoId;
+    try {
+      if (!vimeoThumbs.has(id)) {
+        vimeoThumbs.set(id, fetch(`https://vimeo.com/api/oembed.json?url=${encodeURIComponent(`https://vimeo.com/${id}`)}&width=1280`)
+          .then((r) => (r.ok ? r.json() : null)).then((j) => j?.thumbnail_url || '').catch(() => ''));
+      }
+      const url = await vimeoThumbs.get(id);
+      if (url) el.style.setProperty('--thumb', `url("${url}")`);
+    } catch { /* offline: keep the placeholder */ }
+  }
+}
+
+/* =========================================================
+   Game levels: hub (home) → every project page, in home-page order.
+   Coins per level are computed from the data (same rules as the play mode),
+   so shop prices can add up to exactly what can be earned.
+   ========================================================= */
+export const PROJECT_LAYOUTS = {
+  game:    ['play', 'videos', 'gallery', 'about', 'sections', 'model'],
+  model:   ['model', 'gallery', 'about', 'sections', 'videos'],
+  library: ['about', 'sections', 'videos', 'gallery', 'play'],
+  engine:  ['about', 'videos', 'sections', 'gallery', 'play'],
+  app:     ['about', 'videos', 'gallery', 'sections', 'play'],
+  default: ['play', 'model', 'about', 'videos', 'gallery', 'sections'],
+};
+export function projectVideos(p) {
+  const seen = new Set(), list = [];
+  const add = (url, title, cover) => {
+    const v = parseVideo(url);
+    if (!v || seen.has(v.site + v.id)) return;
+    seen.add(v.site + v.id);
+    list.push({ ...v, title: title || t('video.trailer'), cover: cover || '' });
+  };
+  (p.videos || []).filter(visible).forEach((v) => add(v.url, tr(v.title), v.cover));
+  (p.links || []).filter(visible).forEach((l) => add(l.url, tr(l.label), l.cover));
+  return list;
+}
+export function projectBlocks(p) {
+  const layout = p.layout || PROJECT_LAYOUTS[p.category] || PROJECT_LAYOUTS.default;
+  const has = {
+    about: !!(p.description || p.summary),
+    sections: (p.sections || []).filter(visible).length,
+    play: !!p.webBuild?.url,
+    videos: projectVideos(p).length > 0,
+    gallery: (p.gallery || []).filter((g) => visible(g) && (g.src || (g.variants || []).length)).length > 0,
+    model: !!(p.model && ((p.model.variants || []).length || p.model.src)),
+  };
+  return layout.flatMap((b) => (b === 'sections' ? Array(has.sections).fill('sections') : has[b] ? [b] : []));
+}
+export function levelList(data = site.data) {
+  const { grid, models } = homeProjectOrder(data);
+  const chars = (data.characters?.characters || []).filter((c) => visible(c) && (c.images || []).length).length;
+  const skills = (data.profile.skills || []).filter(visible).length;
+  const levels = [{ key: 'home', title: t('nav.home'), url: 'index.html', coins: grid.length + models.length + chars + skills }];
+  [...grid, ...models].forEach((p) => {
+    const gallery = (p.gallery || []).filter((g) => visible(g) && (g.src || (g.variants || []).length)).length;
+    levels.push({ key: `project:${p.id}`, id: p.id, title: tr(p.title), url: projectUrl(p.id), coins: projectBlocks(p).length + gallery });
+  });
+  return levels;
 }

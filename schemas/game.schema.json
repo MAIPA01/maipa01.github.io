@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "game.schema.json",
+  "title": "MAIPA portfolio — tryb gry (data/game.json)",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" }, "_info": { "type": "string" },
+    "enabled": { "type": "boolean", "description": "false = wyłącz tryb gry i przycisk GRAJ." },
+    "sound": { "type": "boolean" },
+    "pixelScale": { "type": "number", "description": "Powiększenie pikseli sprite'ów (4 = 16 px → 64 px)." },
+    "defaultCharacter": { "type": "string", "description": "Id postaci z data/characters.json." },
+    "player": { "type": "object", "description": "Domyślny układ klatek sprite'ów postaci.", "properties": {
+      "frameWidth": { "type": "number" }, "frameHeight": { "type": "number" },
+      "hitbox": { "type": "object", "properties": { "x": { "type": "number" }, "y": { "type": "number" }, "w": { "type": "number" }, "h": { "type": "number" } } },
+      "animations": { "type": "object", "description": "idle, run, jump, fall, wave, climb, wallslide → { frames: [...], fps }",
+        "additionalProperties": { "type": "object", "properties": { "frames": { "type": "array", "items": { "type": "integer" } }, "fps": { "type": "number" } } } } } },
+    "collectible": { "type": "object" },
+    "physics": { "type": "object", "properties": {
+      "gravity": { "type": "number" }, "moveSpeed": { "type": "number" }, "jumpVelocity": { "type": "number" }, "doubleJump": { "type": "boolean" },
+      "maxFallSpeed": { "type": "number" }, "wallSlideSpeed": { "type": "number" }, "climbSpeed": { "type": "number" }, "climbStamina": { "type": "number" },
+      "wallJumpPush": { "type": "number" }, "elementWalls": { "type": "boolean", "description": "true = boki elementów też są ścianami (domyślnie tylko boki strony)." } } },
+    "car": { "type": "object", "description": "Sekretna gra z autem.", "properties": {
+      "enabled": { "type": "boolean" }, "sprite": { "type": "string" }, "secretAt": { "type": "string", "description": "Selektor elementu, w którym E uruchamia grę z autem." },
+      "speed": { "type": "number" }, "speedUp": { "type": "number" }, "jumpVelocity": { "type": "number" }, "slamSpeed": { "type": "number" } } },
+    "shop": { "type": "object", "description": "Garaż: przedmioty i ich wagi cen. Ceny = waga / suma wag × liczba monet możliwych do zdobycia." },
+    "platforms": { "type": "array", "items": { "type": "string" }, "description": "Selektory CSS elementów, których górne krawędzie są platformami." },
+    "coinsOn": { "type": "array", "items": { "type": "string" }, "description": "Selektory CSS elementów, nad którymi pojawiają się monety w wyzwaniu." },
+    "interact": { "type": "object", "additionalProperties": { "type": "string", "enum": ["open-project", "open-team", "back", "click", "select-character"] }, "description": "Selektor → akcja pod klawiszem E." }
+  }
+}

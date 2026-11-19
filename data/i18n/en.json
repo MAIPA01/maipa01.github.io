@@ -100,8 +100,8 @@
     "madeBy": "Made by"
   },
   "game": {
-    "start": "PLAY MODE — ← → move · SPACE jump · ↑ climb · ↓ drop · E use · F wave · C character · R restart · ESC quit",
-    "startTouch": "PLAY MODE — use the buttons · X quits",
+    "start": "PLAY MODE — ← → move · SPACE / ↑ jump (twice) · grab the page edge and ↑ climb · E use · T challenge · G garage · C character · R to the top · ESC quit",
+    "startTouch": "PLAY MODE — buttons below · T challenge · G garage · X quits",
     "open": "E: open",
     "collected": "coins",
     "won": "GG! All coins collected in {time}.",
@@ -112,10 +112,47 @@
     "newRecord": "NEW RECORD!",
     "car": "E: get in",
     "carExit": "E: get out",
-    "carFound": "SECRET FOUND: the Challenger! ← → drive · SPACE jump · F honk · E get out",
+    "carFound": "SECRET FOUND! The Challenger runner: SPACE / ↑ jump · ↓ slam down · R restart · E get out",
     "openProject": "E: open project",
     "back": "E: go back",
-    "pickHere": "E: play as {name}"
+    "pickHere": "E: play as {name}",
+    "toTop": "Back to the top!",
+    "hintFree": "T: challenge · G: garage",
+    "hintFreeNoLevel": "G: garage · no challenge on this page",
+    "levelOpen": "level open",
+    "levelDone": "level done",
+    "levelLocked": "level locked",
+    "challengeStart": "CHALLENGE! Collect every coin. The timer starts when you move. R restarts, ESC quits.",
+    "challengeRestart": "Challenge restarted.",
+    "challengeAborted": "Challenge stopped — the page changed.",
+    "challengeBlock": "Finish the challenge first (R restarts, ESC quits).",
+    "noChallenge": "There's no challenge on this page — the levels are the home page and the project pages.",
+    "locked": "LOCKED — first complete the challenge on: {level}",
+    "lockedShort": "LOCKED",
+    "reward": "+{coins} coins for the garage.",
+    "unlocked": "Unlocked: {level}.",
+    "carHint": "E: get in",
+    "carStart": "SPACE / ↑ jump · ↓ slam down · R restart · E get out",
+    "carOver": "CRASH! Score: {score} · SPACE again · E get out",
+    "score": "score",
+    "carClassic": "Classic red",
+    "carColorDesc": "Paint job",
+    "up_springs": "Sport springs",
+    "up_springs_desc": "Car jumps 22% higher",
+    "up_doubleJump": "Nitro hop",
+    "up_doubleJump_desc": "Second jump in the air",
+    "up_shield": "Roll cage",
+    "up_shield_desc": "Survive one crash per run",
+    "garage": "GARAGE",
+    "wallet": "Coins: {coins} (all levels: {total})",
+    "garageColors": "Colours",
+    "garageUpgrades": "Tuning",
+    "garageHint": "↑ ↓ choose · ENTER buy / use · G or ESC close. Coins come from completing level challenges.",
+    "equipped": "IN USE",
+    "equip": "USE",
+    "owned": "OWNED",
+    "notEnough": "Not enough coins — you need {coins} more.",
+    "garageBusy": "The garage is closed during a challenge."
   },
   "errors": {
     "load": "Couldn't load the data files. If you opened index.html straight from disk, run a local server instead: python -m http.server and open http://localhost:8000"
@@ -163,5 +200,15 @@
   "theme": {
     "day": "Day mode",
     "night": "Night mode"
+  },
+  "team": {
+    "label": "Team",
+    "open": "Team page",
+    "about": "About the team",
+    "members": "Members",
+    "projects": "Projects",
+    "counts": "{members} members · {projects} projects",
+    "notFound": "Team not found",
+    "notFoundText": "There is no team with this id. Check the link or go back to the projects."
   }
 }

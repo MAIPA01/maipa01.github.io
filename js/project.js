@@ -4,19 +4,10 @@
    category (override per project with "layout": ["play", "videos", ...]).
    ========================================================= */
 import {
-  bootPage, $, $$, esc, txt, tr, t, tf, icon, visible, tagsHTML, linksHTML, projectUrl,
-  markdown, parseVideo, openLightbox, mountModel,
+  bootPage, $, $$, esc, txt, tr, t, tf, icon, visible, tagsHTML, linksHTML, projectUrl, teamUrl,
+  markdown, loadMarkdownFiles, openLightbox, mountModel, PROJECT_LAYOUTS, projectVideos, CATEGORY_ICONS,
+  teamById, projectMembers, personLink, teamLogoHTML, hydrateVideoCovers,
 } from './core.js';
-
-const LAYOUTS = {
-  game:    ['play', 'videos', 'gallery', 'about', 'sections', 'model'],
-  model:   ['model', 'gallery', 'about', 'sections', 'videos'],
-  library: ['about', 'sections', 'videos', 'gallery', 'play'],
-  engine:  ['about', 'videos', 'sections', 'gallery', 'play'],
-  app:     ['about', 'videos', 'gallery', 'sections', 'play'],
-  default: ['play', 'model', 'about', 'videos', 'gallery', 'sections'],
-};
-const CATEGORY_ICONS = { game: 'gamepad', engine: 'engine', renderer: 'render', library: 'docs', app: 'app', model: 'cube' };
 const state = { project: null, gallery: [], viewer: null };
 const id = new URLSearchParams(location.search).get('id');
 
@@ -26,6 +17,11 @@ initEvents();
 function render(d) {
   const cfg = d.projects;
   const p = (cfg.projects || []).find((x) => x.id === id && !x.hidden);
+  // long texts can live in .md files: load them first, then render again
+  if (p) {
+    const team = p.team && teamById(p.team.id);
+    loadMarkdownFiles([p.description, ...(p.sections || []).map((x) => x.body), team?.description]).then((loaded) => { if (loaded) render(d); });
+  }
   const main = $('#main');
   state.viewer?.destroy(); state.viewer = null;
   if (!p) {
@@ -48,7 +44,7 @@ function render(d) {
   document.querySelector('meta[name="description"]')?.setAttribute('content', tr(p.summary) || '');
   document.body.dataset.category = p.category;
 
-  const layout = p.layout || LAYOUTS[p.category] || LAYOUTS.default;
+  const layout = p.layout || PROJECT_LAYOUTS[p.category] || PROJECT_LAYOUTS.default;
   const blocks = layout.map((b) => BLOCKS[b]?.(p)).filter(Boolean).join('');
   const back = p.category === 'model' ? ['index.html#models', t('project.backModels')] : ['index.html#projects', t('project.back')];
   const iconSrc = p.icon || p.image;
@@ -63,7 +59,7 @@ function render(d) {
             <div class="pp-badges">
               ${cat ? `<span class="badge">${txt(cat.label)}</span>` : ''}
               ${p.year ? `<span class="badge badge-ghost">${txt(p.year)}</span>` : ''}
-              ${p.team && !p.team.hidden && p.team.name ? `<span class="badge badge-ghost">${icon('users')}${txt(p.team.name)}</span>` : ''}
+              ${teamBadge(p)}
             </div>
             <h1 class="pp-title">${esc(title)}</h1>
             ${p.summary ? `<p class="pp-summary">${txt(p.summary)}</p>` : ''}
@@ -81,6 +77,13 @@ function render(d) {
   // mount interactive parts
   const mv = $('.pp-model-host', main);
   if (mv) state.viewer = mountModel(mv, p.model, { fallbackImage: firstImage(p), alt: title });
+  hydrateVideoCovers(main);
+}
+
+function teamBadge(p) {
+  const team = p.team && teamById(p.team.id);
+  if (!team) return '';
+  return `<a class="badge badge-ghost badge-link" href="${esc(teamUrl(team.id))}">${icon('users')}${txt(p.team.name || team.name)}</a>`;
 }
 
 /* ---------- Blocks ---------- */
@@ -101,8 +104,9 @@ const BLOCKS = {
     const w = p.webBuild;
     if (!w || !w.url) return '';
     const poster = w.poster || p.banner || '';
+    const aspect = w.width && w.height ? `${+w.width}/${+w.height}` : (w.aspect || '16/9');
     return block('play', t('project.play'), `
-      <div class="pp-play-frame" style="--aspect:${esc(w.aspect || '16/9')}${w.height ? `;--h:${+w.height}px` : ''}" data-src="${esc(w.url)}">
+      <div class="pp-play-frame" style="--aspect:${esc(aspect)}" data-src="${esc(w.url)}" ${w.width && w.height ? `data-vw="${+w.width}" data-vh="${+w.height}"` : ''} data-keys="${w.captureKeys === false ? 0 : 1}">
         <button type="button" class="pp-play-start" ${poster ? `style="--poster:url('${esc(new URL(poster, location.href).href)}')"` : ''}>
           <span class="btn-pixel btn-pixel-lg">${icon('play')}${esc(t('project.playStart'))}</span>
           <small>${esc(t('project.playNote'))}</small>
@@ -114,16 +118,19 @@ const BLOCKS = {
       </div>`);
   },
   videos(p) {
-    const list = videoList(p);
+    const list = projectVideos(p);
     if (!list.length) return '';
-    return block('videos', t('project.videos'), `<div class="pp-videos">${list.map((v) => `
+    return block('videos', t('project.videos'), `<div class="pp-videos">${list.map((v) => {
+      const cover = v.cover ? new URL(v.cover, location.href).href : v.thumb;
+      return `
       <figure class="pp-video">
-        <button type="button" class="pp-video-start" data-embed="${esc(v.embed)}" data-title="${esc(v.title)}" ${v.thumb ? `style="--thumb:url('${esc(v.thumb)}')"` : ''}>
+        <button type="button" class="pp-video-start" data-embed="${esc(v.embed)}" data-title="${esc(v.title)}" ${cover ? `style="--thumb:url('${esc(cover)}')"` : v.site === 'Vimeo' ? `data-vimeo-id="${esc(v.id)}"` : ''}>
           <span class="pp-video-play">${icon('play')}</span>
           <span class="pp-video-site">${icon(v.site === 'YouTube' ? 'youtube' : 'vimeo')}${esc(v.site)}</span>
         </button>
         <figcaption>${esc(v.title)} · <a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(tf('video.open', { site: v.site }))}</a></figcaption>
-      </figure>`).join('')}</div>`);
+      </figure>`;
+    }).join('')}</div>`);
   },
   gallery(p) {
     const items = (p.gallery || []).filter((g) => visible(g) && (g.src || (g.variants || []).length));
@@ -147,20 +154,6 @@ const BLOCKS = {
   },
 };
 
-function videoList(p) {
-  const seen = new Set();
-  const list = [];
-  const add = (url, title) => {
-    const v = parseVideo(url);
-    if (!v || seen.has(v.site + v.id)) return;
-    seen.add(v.site + v.id);
-    list.push({ ...v, title: title || t('video.trailer') });
-  };
-  (p.videos || []).filter(visible).forEach((v) => add(v.url, tr(v.title)));
-  (p.links || []).forEach((l) => add(l.url, tr(l.label)));
-  return list;
-}
-
 function firstImage(p) {
   const g = (p.gallery || [])[0];
   return p.banner || g?.src || g?.variants?.[0]?.src || p.icon || '';
@@ -178,29 +171,26 @@ function sideHTML(p, cat) {
       <dl>${rows.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${v}</dd></div>`).join('')}</dl>
       ${(tr(p.tags) || []).length ? `<h4>${esc(t('project.tech'))}</h4>${tagsHTML(p.tags)}` : ''}
     </div>`;
-  const team = p.team;
-  if (team && !team.hidden) {
-    const members = (team.members || []).filter(visible);
+  const team = p.team && teamById(p.team.id);
+  const members = projectMembers(p);
+  if (team || members.length) {
     html += `
     <div class="pp-side-card pp-team reveal">
       <h3>${icon('users')}${esc(t('project.team'))}</h3>
-      ${team.name ? `<p class="pp-team-name">${team.url ? `<a href="${esc(team.url)}" target="_blank" rel="noopener">${txt(team.name)}</a>` : txt(team.name)}</p>` : ''}
-      ${team.description ? `<div class="md small">${markdown(tr(team.description))}</div>` : ''}
-      ${members.length ? `<ul class="pp-members">${members.map((m) => `
-        <li class="${m.me ? 'me' : ''}">
-          <span class="pp-member-name">${m.url ? `<a href="${esc(m.url)}" target="_blank" rel="noopener">${txt(m.name)}</a>` : txt(m.name)}${m.me ? `<span class="badge badge-featured">${esc(t('project.you'))}</span>` : ''}</span>
-          ${m.role ? `<span class="pp-member-role">${txt(m.role)}</span>` : ''}
+      ${team ? `<a class="pp-team-head" href="${esc(teamUrl(team.id))}">${teamLogoHTML(team, 'pp-team-logo')}<span><strong>${txt(p.team.name || team.name)}</strong><small>${esc(t('team.open'))} →</small></span></a>` : ''}
+      ${members.length ? `<ul class="pp-members">${members.map(({ person, role }) => `
+        <li class="${person.me ? 'me' : ''}">
+          <span class="pp-member-name">${personLink(person)}${person.me ? `<span class="badge badge-featured">${esc(t('project.you'))}</span>` : ''}</span>
+          ${role ? `<span class="pp-member-role">${txt(role)}</span>` : ''}
         </li>`).join('')}</ul>` : ''}
     </div>`;
   }
-  const role = p.myRole;
-  if (role && !role.hidden) {
-    const items = role.items || (Array.isArray(role) ? role : null);
+  const did = (p.whatIDid || p.myRole?.items || []).filter(Boolean);
+  if (did.length) {
     html += `
     <div class="pp-side-card pp-role reveal">
       <h3>${esc(t('project.myRole'))}</h3>
-      ${items ? `<ul class="pp-role-list">${items.map((it) => `<li>${markdown(tr(it)).replace(/^<p>|<\/p>$/g, '')}</li>`).join('')}</ul>`
-              : `<div class="md small">${markdown(tr(role.text || role))}</div>`}
+      <ul class="pp-role-list">${did.map((it) => `<li>${markdown(tr(it)).replace(/^<p>|<\/p>$/g, '')}</li>`).join('')}</ul>
     </div>`;
   }
   return html;
@@ -213,7 +203,7 @@ function relatedHTML(p, cfg) {
   <section class="container pp-related reveal">
     <h2 class="pp-block-title">${esc(t('project.related'))}</h2>
     <div class="pp-related-grid">${rel.map((r) => `
-      <a class="pp-related-card" href="${esc(projectUrl(r.id))}">
+      <a class="pp-related-card" href="${esc(projectUrl(r.id))}" data-pid="${esc(r.id)}">
         ${r.icon ? `<img src="${esc(r.icon)}" alt="">` : `<span class="pp-related-ph">${icon(CATEGORY_ICONS[r.category] || 'cube')}</span>`}
         <span><strong>${txt(r.title)}</strong>${r.summary ? `<small>${txt(r.summary)}</small>` : ''}</span>
       </a>`).join('')}</div>
@@ -227,9 +217,7 @@ function initEvents() {
     // web build: load only on click
     const start = e.target.closest('.pp-play-start');
     if (start) {
-      const frame = start.closest('.pp-play-frame');
-      frame.innerHTML = `<iframe src="${esc(frame.dataset.src)}" title="${esc(tr(state.project.title))}" allow="fullscreen; autoplay; gamepad; accelerometer; gyroscope" allowfullscreen></iframe>`;
-      frame.classList.add('running');
+      startWebBuild(start.closest('.pp-play-frame'));
       return;
     }
     if (e.target.closest('.pp-fullscreen')) {
@@ -256,16 +244,59 @@ function initEvents() {
       return;
     }
     // gallery: lightbox with the currently selected variants
+    // gallery → lightbox. Every variant is its own slide, so ← → goes through
+    // Textured → Wireframe of one render first, then on to the next render.
     const open = e.target.closest('.pp-gallery-open');
     if (open) {
-      const items = $$('.pp-gallery-item', main).map((el) => {
+      const slides = [];
+      let start = 0;
+      const clicked = open.closest('.pp-gallery-item');
+      $$('.pp-gallery-item', main).forEach((el) => {
         const g = state.gallery[+el.dataset.i];
         const vars = (g.variants || []).filter(visible);
-        const v = vars[+el.dataset.v || 0];
-        const cap = [tr(g.caption), v ? tr(v.label) : ''].filter(Boolean).join(' — ');
-        return { src: v?.src || g.src, alt: tr(g.alt || g.caption) || '', caption: cap };
+        const list = vars.length ? vars : [{ src: g.src }];
+        list.forEach((v, vi) => {
+          if (el === clicked && vi === (+el.dataset.v || 0)) start = slides.length;
+          slides.push({ src: v.src, alt: tr(g.alt || g.caption) || '', caption: [tr(g.caption), vars.length ? tr(v.label) : ''].filter(Boolean).join(' — ') });
+        });
       });
-      openLightbox(items, +open.closest('.pp-gallery-item').dataset.i);
+      openLightbox(slides, start);
     }
   });
+}
+
+/* ---------- Web builds ---------- */
+// Games with a fixed pixel layout (e.g. p5.js createCanvas(windowWidth, windowHeight) + absolute positions)
+// get a virtual resolution (webBuild.width/height): the iframe is rendered at that size and scaled to fit.
+function startWebBuild(frame) {
+  const vw = +frame.dataset.vw, vh = +frame.dataset.vh;
+  frame.innerHTML = `<iframe src="${esc(frame.dataset.src)}" title="${esc(tr(state.project.title))}" allow="fullscreen; autoplay; gamepad; accelerometer; gyroscope" allowfullscreen
+    ${vw && vh ? `style="width:${vw}px;height:${vh}px"` : ''}></iframe>`;
+  frame.classList.add('running');
+  const iframe = $('iframe', frame);
+  if (vw && vh) {
+    frame.classList.add('scaled');
+    const fit = () => {
+      const fs = document.fullscreenElement === frame;
+      const s = Math.min(frame.clientWidth / vw, (fs ? frame.clientHeight : Infinity) / vh);
+      iframe.style.transform = `scale(${s})`;
+      iframe.style.left = `${Math.max(0, (frame.clientWidth - vw * s) / 2)}px`;
+      iframe.style.top = `${Math.max(0, (frame.clientHeight - vh * s) / 2)}px`;
+    };
+    fit();
+    new ResizeObserver(fit).observe(frame);
+    document.addEventListener('fullscreenchange', fit);
+  }
+  // Arrow keys / space inside the game must not scroll this page.
+  // Works for games on the same domain (maipa01.github.io); other domains can't be touched.
+  if (frame.dataset.keys !== '0') {
+    iframe.addEventListener('load', () => {
+      try {
+        const keys = new Set(['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' ', 'PageUp', 'PageDown', 'Home', 'End']);
+        iframe.contentWindow.addEventListener('keydown', (e) => { if (keys.has(e.key)) e.preventDefault(); }, { capture: true });
+        iframe.contentWindow.focus();
+      } catch { /* cross-origin game: the browser doesn't allow it */ }
+    });
+  }
+  iframe.focus();
 }

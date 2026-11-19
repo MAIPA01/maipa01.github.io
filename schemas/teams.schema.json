@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "teams.schema.json",
+  "title": "MAIPA portfolio — zespoły (data/teams.json)",
+  "type": "object", "required": ["teams"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "teams": { "type": "array", "items": {
+      "type": "object", "required": ["id", "name"], "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "common.schema.json#/definitions/id", "description": "Adres strony zespołu: team.html?id=<id>. Projekty odwołują się do zespołu tym id." },
+        "name": { "type": "string" },
+        "logo": { "$ref": "common.schema.json#/definitions/image", "description": "Logo (kwadratowe, przezroczyste tło mile widziane). Puste = pikselowy znak z inicjałami." },
+        "banner": { "$ref": "common.schema.json#/definitions/image", "description": "Tło nagłówka strony zespołu." },
+        "summary": { "$ref": "common.schema.json#/definitions/text" },
+        "description": { "$ref": "common.schema.json#/definitions/markdown" },
+        "members": { "type": "array", "items": { "type": "string" }, "description": "Id osób z data/people.json (kolejność = kolejność na stronie)." },
+        "links": { "type": "array", "items": { "$ref": "common.schema.json#/definitions/link" } },
+        "hidden": { "$ref": "common.schema.json#/definitions/hidden" }
+      }
+    } }
+  }
+}

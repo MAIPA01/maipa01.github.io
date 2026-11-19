@@ -3,10 +3,8 @@
    ========================================================= */
 import {
   bootPage, $, $$, esc, txt, tr, t, icon, visible, tagsHTML, linksHTML, projectUrl,
-  openLightbox, mountModel, playableCharacters,
+  openLightbox, mountModel, playableCharacters, projectCardHTML, homeProjectOrder,
 } from './core.js';
-
-const CATEGORY_ICONS = { game: 'gamepad', engine: 'engine', renderer: 'render', library: 'docs', app: 'app', tool: 'app', model: 'cube' };
 const home = { filter: '*', typeToken: 0, characters: [], viewers: new Map() };
 
 bootPage({ page: 'home', render });
@@ -70,13 +68,9 @@ function typeRoles(roles) {
 /* ---------- Projects ---------- */
 function renderProjects(cfg) {
   const cats = cfg.categories || [];
-  const catById = Object.fromEntries(cats.map((c) => [c.id, c]));
-  const shown = (p) => visible(p) && catById[p.category]?.showInProjects !== false;
-  const projects = (cfg.projects || []).filter(shown)
-    .map((p, i) => ({ ...p, _i: i }))
-    .sort((a, b) => (!!b.featured - !!a.featured) || a._i - b._i);
+  const projects = homeProjectOrder().grid;
 
-  $('.projects-grid').innerHTML = projects.map((p) => projectCard(p, catById[p.category])).join('') ||
+  $('.projects-grid').innerHTML = projects.map((p) => projectCardHTML(p)).join('') ||
     `<p class="empty-note">${esc(t('projects.empty'))}</p>`;
 
   const filters = [{ id: '*', label: t('projects.all'), count: projects.length }];
@@ -102,40 +96,6 @@ function applyFilter() {
     const show = f === '*' || card.dataset.category === f || (f === '@playstore' && card.dataset.play === '1');
     card.classList.toggle('is-hidden', !show);
   });
-}
-
-function mediaHTML(p, cat) {
-  const img = p.banner && p.cardImage !== 'icon' ? p.banner : (p.icon || p.image);
-  if (!img) return `<div class="project-placeholder">${icon((cat && cat.icon) || CATEGORY_ICONS[p.category] || 'cube')}</div>`;
-  const contain = img === (p.icon || p.image) && (p.iconFit || p.imageFit) === 'contain';
-  return `<div class="project-media-inner${contain ? ' contain' : ''}"${contain ? ` style="--img:url('${esc(new URL(img, location.href).href)}')"` : ''}>
-    <img src="${esc(img)}" alt="" loading="lazy"></div>`;
-}
-
-function projectCard(p, cat) {
-  const hasPlay = (p.links || []).some((l) => l.type === 'playstore' && l.url);
-  const title = tr(p.title);
-  const href = p.id ? projectUrl(p.id) : '';
-  const badges = [
-    p.featured ? `<span class="badge badge-featured">${esc(t('projects.featured'))}</span>` : '',
-    cat ? `<span class="badge">${txt(cat.label)}</span>` : '',
-    p.webBuild?.url ? `<span class="badge badge-play">${icon('play')}${esc(t('links.play'))}</span>` : '',
-  ].join('');
-  const summary = p.summary || p.description;
-  return `
-  <article class="project-card reveal" data-id="${esc(p.id || '')}" data-category="${esc(p.category)}" data-play="${hasPlay ? 1 : 0}" data-title="${esc(title)}">
-    ${href ? `<a class="card-link" href="${esc(href)}" aria-label="${esc(title)} — ${esc(t('projects.open'))}"></a>` : ''}
-    <div class="project-media">${mediaHTML(p, cat)}<div class="project-badges">${badges}</div></div>
-    <div class="project-body">
-      <div class="project-meta"><h3>${esc(title)}</h3>${p.year ? `<span class="project-year">${txt(p.year)}</span>` : ''}</div>
-      ${summary ? `<p class="project-desc">${txt(summary)}</p>` : ''}
-      ${tagsHTML(p.tags)}
-      <div class="card-actions">
-        ${linksHTML(p.links)}
-        ${href ? `<a class="details-link" href="${esc(href)}">${esc(t('projects.open'))} →</a>` : ''}
-      </div>
-    </div>
-  </article>`;
 }
 
 /* ---------- 3D models: project tiles ---------- */
@@ -225,9 +185,10 @@ function renderSocials(cfg) {
 
 /* ---------- Events that survive re-rendering ---------- */
 function initDelegatedEvents() {
+  document.addEventListener('game:challenge', () => { home.filter = '*'; applyFilter(); });
   $('.filters').addEventListener('click', (e) => {
     const btn = e.target.closest('.filter-chip');
-    if (!btn) return;
+    if (!btn || document.body.classList.contains('game-challenge')) return; // all cards stay visible during a challenge
     home.filter = btn.dataset.filter;
     applyFilter();
     document.dispatchEvent(new Event('portfolio:layout'));

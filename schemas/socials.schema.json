@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "socials.schema.json",
+  "title": "MAIPA portfolio — kontakty (data/socials.json)",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" }, "_info": { "type": "string" },
+    "socials": { "type": "array", "items": { "type": "object", "required": ["label", "url", "icon"], "additionalProperties": false,
+      "properties": { "label": { "$ref": "common.schema.json#/definitions/text" }, "handle": { "$ref": "common.schema.json#/definitions/text" },
+        "url": { "type": "string", "description": "Puste = ukryte." }, "icon": { "$ref": "common.schema.json#/definitions/icon" }, "hidden": { "type": "boolean" } } } }
+  }
+}

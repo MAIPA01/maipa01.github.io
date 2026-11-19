@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "languages.schema.json",
+  "title": "MAIPA portfolio — języki (data/i18n/languages.json)",
+  "type": "object", "required": ["default", "languages"],
+  "properties": {
+    "$schema": { "type": "string" }, "_info": { "type": "string" },
+    "default": { "type": "string", "description": "Język domyślny i zapasowy (brakujące teksty)." },
+    "languages": { "type": "array", "items": { "type": "object", "required": ["code", "label"], "additionalProperties": false,
+      "properties": { "code": { "type": "string" }, "label": { "type": "string", "description": "Nazwa w menu, w tym języku (np. Deutsch)." }, "short": { "type": "string", "description": "Skrót na przycisku, np. DE." } } } }
+  }
+}

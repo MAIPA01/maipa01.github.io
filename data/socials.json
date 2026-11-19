@@ -1,4 +1,5 @@
 {
+  "$schema": "../schemas/socials.schema.json",
   "_info": "Links shown in the Contact section and the footer. Leave \"url\" empty (\"\") to hide an entry. Icons: linkedin, email, youtube, github, itch, playstore, vroid, web, twitter, discord. \"label\" can be a string or {\"en\": \"...\", \"pl\": \"...\"}.",
   "socials": [
     {

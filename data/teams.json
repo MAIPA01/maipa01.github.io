@@ -1,0 +1,180 @@
+{
+  "$schema": "../schemas/teams.schema.json",
+  "teams": [
+    {
+      "id": "twin2",
+      "name": "Twin^2",
+      "logo": "images/teams/twin2/logo.webp",
+      "banner": "images/teams/twin2/banner.webp",
+      "summary": {
+        "en": "Five-person team behind our own C++ game engine and the game built on it.",
+        "pl": "Pięcioosobowy zespół, który stworzył własny silnik gier w C++ i grę na nim."
+      },
+      "description": {
+        "en": [
+          "Team formed at **Lodz University of Technology** for the *ZTGK 2024 – Game Development* course.",
+          "In four months we wrote our own game engine, **Twin^2 Engine**, and made the game **Echoes of Fame** on top of it.",
+          "Both advanced to the **finals of ZTGK 2024** in the Game Development category."
+        ],
+        "pl": [
+          "Zespół założony na **Politechnice Łódzkiej** na potrzeby zajęć *ZTGK 2024 – Game Development*.",
+          "W cztery miesiące napisaliśmy własny silnik gier **Twin^2 Engine** i zrobiliśmy na nim grę **Echoes of Fame**.",
+          "Gra i silnik dostały się do **finału ZTGK 2024** w kategorii Game Development."
+        ]
+      },
+      "members": [
+        "patryk-antosik",
+        "marceli-antosik",
+        "lukasz-gapinski",
+        "mateusz-gapinski",
+        "maja-ochmanska"
+      ],
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/Muppetsg2/Twin-2-Engine"
+        }
+      ]
+    },
+    {
+      "id": "drop-table",
+      "name": "Drop Table",
+      "logo": "images/teams/drop-table/logo.webp",
+      "banner": "images/teams/drop-table/banner.webp",
+      "summary": {
+        "en": "Student team from Lodz University of Technology making games for courses and game jams.",
+        "pl": "Studencki zespół z Politechniki Łódzkiej tworzący gry na zajęcia i game jamy."
+      },
+      "description": {
+        "en": [
+          "We make games together for the **ZTGK** courses at Lodz University of Technology and for game jams —",
+          "from a VR office satire to a mobile arcade game and a logic platformer made in a weekend."
+        ],
+        "pl": [
+          "Razem tworzymy gry na zajęcia **ZTGK** na Politechnice Łódzkiej i na game jamy —",
+          "od satyry na biuro w VR, przez mobilną zręcznościówkę, po logiczną platformówkę zrobioną w weekend."
+        ]
+      },
+      "members": [
+        "patryk-antosik",
+        "marceli-antosik",
+        "bartlomiej-wlodarski",
+        "maja-ochmanska"
+      ],
+      "links": []
+    },
+    {
+      "id": "psy-apokalipsy",
+      "name": "Psy Apokalipsy",
+      "logo": "images/teams/psy-apokalipsy/logo.webp",
+      "banner": "images/teams/psy-apokalipsy/banner.webp",
+      "summary": {
+        "en": "Game jam team behind Dog Of War.",
+        "pl": "Zespół z game jamu, który stworzył Dog Of War."
+      },
+      "description": {
+        "en": [
+          "Team formed for **Komiks Game Jam 2k26**, where we made the roguelike **Dog Of War**."
+        ],
+        "pl": [
+          "Zespół założony na **Komiks Game Jam 2k26**, gdzie powstał roguelike **Dog Of War**."
+        ]
+      },
+      "members": [
+        "patryk-antosik",
+        "marceli-antosik",
+        "mikolaj-kisiel",
+        "konrad-karwowski"
+      ],
+      "links": []
+    },
+    {
+      "id": "crab-club",
+      "name": "Crab Club",
+      "logo": "images/teams/crab-club/logo.webp",
+      "banner": "images/teams/crab-club/banner.webp",
+      "summary": {
+        "en": "Global Game Jam 2025 team behind Bubble Hunt.",
+        "pl": "Zespół z Global Game Jam 2025, który stworzył Bubble Hunt."
+      },
+      "description": {
+        "en": [
+          "Team formed for **Global Game Jam 2025** (theme: *Bubble*), where we made **Bubble Hunt** in Unreal Engine."
+        ],
+        "pl": [
+          "Zespół założony na **Global Game Jam 2025** (temat: *Bubble*), gdzie w Unreal Engine powstał **Bubble Hunt**."
+        ]
+      },
+      "members": [
+        "patryk-antosik",
+        "marceli-antosik",
+        "maciej-poncyleusz",
+        "agata-granosik"
+      ],
+      "links": []
+    },
+    {
+      "id": "the-long-cat",
+      "name": "The Long Cat",
+      "logo": "images/teams/the-long-cat/logo.webp",
+      "banner": "images/teams/the-long-cat/banner.webp",
+      "summary": {
+        "en": "Team behind the puzzle platformer Wind Rider.",
+        "pl": "Zespół, który stworzył logiczną platformówkę Wind Rider."
+      },
+      "description": {
+        "en": [
+          "Team formed at **Lodz University of Technology** for *ZTGK 2023 – Game Design*.",
+          "Our game **Wind Rider** later got a mobile version for *ZTGK 2024 – Mobile*."
+        ],
+        "pl": [
+          "Zespół założony na **Politechnice Łódzkiej** na zajęcia *ZTGK 2023 – Game Design*.",
+          "Nasza gra **Wind Rider** dostała później wersję mobilną na *ZTGK 2024 – Mobile*."
+        ]
+      },
+      "members": [
+        "patryk-antosik",
+        "marceli-antosik",
+        "jakub-biniek",
+        "mateusz-rybicki",
+        "katarzyna-tyszka"
+      ],
+      "links": [
+        {
+          "type": "itch",
+          "url": "https://thelongcat.itch.io/"
+        }
+      ]
+    },
+    {
+      "id": "lava-lamp-games",
+      "name": "Lava Lamp Games",
+      "logo": "images/teams/lava-lamp-games/logo.webp",
+      "banner": "images/teams/lava-lamp-games/banner.webp",
+      "summary": {
+        "en": "Two-person studio behind our games released on Google Play.",
+        "pl": "Dwuosobowe studio, które wydało nasze gry w Google Play."
+      },
+      "description": {
+        "en": [
+          "Our two-person studio — **Patryk and Marceli Antosik**.",
+          "This is where our first released games came from, starting with **The Wizards** in 2017."
+        ],
+        "pl": [
+          "Nasze dwuosobowe studio — **Patryk i Marceli Antosik**.",
+          "Stąd pochodzą nasze pierwsze wydane gry, zaczynając od **The Wizards** w 2017 roku."
+        ]
+      },
+      "members": [
+        "patryk-antosik",
+        "marceli-antosik"
+      ],
+      "links": [
+        {
+          "type": "playstore",
+          "url": "https://play.google.com/store/apps/dev?id=9148978594936176812"
+        }
+      ]
+    }
+  ]
+}

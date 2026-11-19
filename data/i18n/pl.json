@@ -100,8 +100,8 @@
     "madeBy": "Wykonał"
   },
   "game": {
-    "start": "TRYB GRY — ← → ruch · SPACJA skok · ↑ wspinaczka · ↓ zeskok · E użyj · F machnij · C postać · R od nowa · ESC wyjście",
-    "startTouch": "TRYB GRY — użyj przycisków · X wychodzi",
+    "start": "TRYB GRY — ← → ruch · SPACJA / ↑ skok (podwójny) · złap krawędź strony i ↑ wspinaczka · E użyj · T wyzwanie · G garaż · C postać · R na górę · ESC wyjście",
+    "startTouch": "TRYB GRY — przyciski na dole · T wyzwanie · G garaż · X wychodzi",
     "open": "E: otwórz",
     "collected": "monet",
     "won": "GG! Wszystkie monety zebrane w {time}.",
@@ -112,10 +112,47 @@
     "newRecord": "NOWY REKORD!",
     "car": "E: wsiądź",
     "carExit": "E: wysiądź",
-    "carFound": "SEKRET ZNALEZIONY: Challenger! ← → jazda · SPACJA skok · F klakson · E wysiądź",
+    "carFound": "SEKRET ZNALEZIONY! Wyścig Challengerem: SPACJA / ↑ skok · ↓ docisk do ziemi · R od nowa · E wysiądź",
     "openProject": "E: otwórz projekt",
     "back": "E: wróć",
-    "pickHere": "E: graj jako {name}"
+    "pickHere": "E: graj jako {name}",
+    "toTop": "Z powrotem na górę!",
+    "hintFree": "T: wyzwanie · G: garaż",
+    "hintFreeNoLevel": "G: garaż · tu nie ma wyzwania",
+    "levelOpen": "poziom otwarty",
+    "levelDone": "poziom ukończony",
+    "levelLocked": "poziom zablokowany",
+    "challengeStart": "WYZWANIE! Zbierz wszystkie monety. Czas rusza, gdy się poruszysz. R od nowa, ESC wyjście.",
+    "challengeRestart": "Wyzwanie od nowa.",
+    "challengeAborted": "Wyzwanie przerwane — strona się zmieniła.",
+    "challengeBlock": "Najpierw ukończ wyzwanie (R od nowa, ESC wyjście).",
+    "noChallenge": "Na tej stronie nie ma wyzwania — poziomy to strona główna i strony projektów.",
+    "locked": "ZABLOKOWANE — najpierw ukończ wyzwanie na: {level}",
+    "lockedShort": "ZABLOKOWANE",
+    "reward": "+{coins} monet do garażu.",
+    "unlocked": "Odblokowano: {level}.",
+    "carHint": "E: wsiądź",
+    "carStart": "SPACJA / ↑ skok · ↓ docisk do ziemi · R od nowa · E wysiądź",
+    "carOver": "KRAKSA! Wynik: {score} · SPACJA jeszcze raz · E wysiądź",
+    "score": "wynik",
+    "carClassic": "Klasyczna czerwień",
+    "carColorDesc": "Lakier",
+    "up_springs": "Sportowe sprężyny",
+    "up_springs_desc": "Auto skacze o 22% wyżej",
+    "up_doubleJump": "Nitro-skok",
+    "up_doubleJump_desc": "Drugi skok w powietrzu",
+    "up_shield": "Klatka bezpieczeństwa",
+    "up_shield_desc": "Przetrwaj jedną kraksę na przejazd",
+    "garage": "GARAŻ",
+    "wallet": "Monety: {coins} (wszystkie poziomy: {total})",
+    "garageColors": "Kolory",
+    "garageUpgrades": "Tuning",
+    "garageHint": "↑ ↓ wybór · ENTER kup / użyj · G lub ESC zamknij. Monety zdobywasz, kończąc wyzwania na poziomach.",
+    "equipped": "W UŻYCIU",
+    "equip": "UŻYJ",
+    "owned": "KUPIONE",
+    "notEnough": "Za mało monet — brakuje {coins}.",
+    "garageBusy": "Garaż jest zamknięty w trakcie wyzwania."
   },
   "errors": {
     "load": "Nie udało się wczytać plików z danymi. Jeśli otworzyłeś index.html bezpośrednio z dysku, uruchom lokalny serwer: python -m http.server i wejdź na http://localhost:8000"
@@ -163,5 +200,15 @@
   "theme": {
     "day": "Tryb dzienny",
     "night": "Tryb nocny"
+  },
+  "team": {
+    "label": "Zespół",
+    "open": "Strona zespołu",
+    "about": "O zespole",
+    "members": "Członkowie",
+    "projects": "Projekty",
+    "counts": "członkowie: {members} · projekty: {projects}",
+    "notFound": "Nie znaleziono zespołu",
+    "notFoundText": "Nie ma zespołu o takim identyfikatorze. Sprawdź link albo wróć do projektów."
   }
 }

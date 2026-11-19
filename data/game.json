@@ -1,5 +1,6 @@
 {
-  "_info": "Play mode settings (press P). Texts are in data/i18n/<lang>.json → \"game\". Playable characters come from data/characters.json (field \"game\"). Sprites are horizontal strips (Aseprite: File > Export Sprite Sheet > Horizontal Strip). Frame numbers count from 0, left to right.",
+  "$schema": "../schemas/game.schema.json",
+  "_info": "Play mode settings (press P). Texts: data/i18n/<lang>.json → \"game\". Playable characters: data/characters.json → \"game\". Levels = home + project pages (order of the cards). \"shop\": garage items; prices = weight / sum of weights × all coins that can be earned.",
   "enabled": true,
   "sound": true,
   "pixelScale": 4,
@@ -87,7 +88,8 @@
     "wallSlideSpeed": 140,
     "climbSpeed": 170,
     "climbStamina": 4,
-    "wallJumpPush": 360
+    "wallJumpPush": 360,
+    "elementWalls": false
   },
   "car": {
     "enabled": true,
@@ -98,11 +100,29 @@
       0,
       1
     ],
-    "hideAt": ".band-2",
-    "side": "right",
-    "maxSpeed": 720,
-    "accel": 900,
-    "jumpVelocity": 560
+    "secretAt": ".band-1",
+    "speed": 430,
+    "speedUp": 14,
+    "maxSpeed": 1150,
+    "jumpVelocity": 900,
+    "slamSpeed": 1700
+  },
+  "shop": {
+    "colorWeight": 1,
+    "upgrades": [
+      {
+        "id": "springs",
+        "weight": 2
+      },
+      {
+        "id": "doubleJump",
+        "weight": 3
+      },
+      {
+        "id": "shield",
+        "weight": 3
+      }
+    ]
   },
   "platforms": [
     ".section-head",
@@ -125,7 +145,12 @@
     ".pp-back",
     ".nf-card",
     ".nf-digit",
-    ".project-link"
+    ".project-link",
+    ".project-body",
+    ".pp-team-head",
+    ".tp-member",
+    ".pp-related-card",
+    ".section"
   ],
   "coinsOn": [
     ".project-card",
@@ -144,6 +169,8 @@
     ".render-tile": "click",
     ".filter-chip": "click",
     ".pp-gallery-item": "click",
-    ".character-card": "select-character"
+    ".character-card": "select-character",
+    ".pp-team-head": "open-team",
+    ".pp-related-card": "open-project"
   }
 }

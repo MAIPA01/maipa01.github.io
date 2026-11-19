@@ -1,16 +1,26 @@
 {
+  "$schema": "../schemas/profile.schema.json",
   "_info": "Personal content. Any text can be a plain string (same in every language) or an object like {\"en\": \"...\", \"pl\": \"...\"}. Interface texts (menu, buttons, section titles) are in data/i18n/<language>.json.",
   "name": "Patryk Antosik",
   "brand": "MAIPA",
   "roles": {
-    "en": ["Game Developer", "Game Engine Programmer", "Graphics Programmer", "3D Artist"],
-    "pl": ["Programista gier", "Twórca silników gier", "Programista grafiki", "Grafik 3D"]
+    "en": [
+      "Game Developer",
+      "Game Engine Programmer",
+      "Graphics Programmer",
+      "3D Artist"
+    ],
+    "pl": [
+      "Programista gier",
+      "Twórca silników gier",
+      "Programista grafiki",
+      "Grafik 3D"
+    ]
   },
   "tagline": {
     "en": "I build games, my own game & rendering engines, and the 3D models that live inside them.",
     "pl": "Tworzę gry, własne silniki gier i renderery oraz modele 3D, które w nich żyją."
   },
-
   "about": {
     "paragraphs": [
       {
@@ -23,52 +33,111 @@
       }
     ],
     "avatar": "images/characters/maipa-senpai/pose-1.webp",
-    "avatarAlt": { "en": "MAIPA-Senpai — my VRoid Studio avatar", "pl": "MAIPA-Senpai — mój awatar z VRoid Studio" },
-    "avatarCaption": { "en": "MAIPA-Senpai · made in VRoid Studio", "pl": "MAIPA-Senpai · stworzony w VRoid Studio" }
+    "avatarAlt": {
+      "en": "MAIPA-Senpai — my VRoid Studio avatar",
+      "pl": "MAIPA-Senpai — mój awatar z VRoid Studio"
+    },
+    "avatarCaption": {
+      "en": "MAIPA-Senpai · made in VRoid Studio",
+      "pl": "MAIPA-Senpai · stworzony w VRoid Studio"
+    }
   },
-
   "stats": [
-    { "value": "2017", "label": { "en": "first published game", "pl": "pierwsza wydana gra" } },
-    { "value": "15k+", "label": { "en": "downloads of Marry Kiss & Kill", "pl": "pobrań Marry Kiss & Kill" } },
-    { "value": "16+", "label": { "en": "released games", "pl": "wydanych gier" } }
+    {
+      "value": "2017",
+      "label": {
+        "en": "first published game",
+        "pl": "pierwsza wydana gra"
+      }
+    },
+    {
+      "value": "15k+",
+      "label": {
+        "en": "downloads of Marry Kiss & Kill",
+        "pl": "pobrań Marry Kiss & Kill"
+      }
+    },
+    {
+      "value": "16+",
+      "label": {
+        "en": "released games",
+        "pl": "wydanych gier"
+      }
+    }
   ],
-
   "skills": [
     {
       "icon": "gamepad",
-      "title": { "en": "Games", "pl": "Gry" },
+      "title": {
+        "en": "Games",
+        "pl": "Gry"
+      },
       "text": {
         "en": "Gameplay programming and full game production — from prototype to store release.",
         "pl": "Programowanie rozgrywki i pełna produkcja gier — od prototypu do wydania w sklepie."
       },
-      "tags": ["Unity", "Unreal Engine", "C#", "C++", "Unreal Blueprints"]
+      "tags": [
+        "Unity",
+        "Unreal Engine",
+        "C#",
+        "C++",
+        "Unreal Blueprints"
+      ]
     },
     {
       "icon": "engine",
-      "title": { "en": "Game engines", "pl": "Silniki gier" },
+      "title": {
+        "en": "Game engines",
+        "pl": "Silniki gier"
+      },
       "text": {
         "en": "My own engines written from scratch: architecture, ECS, tooling, physics and scripting.",
         "pl": "Własne silniki pisane od zera: architektura, ECS, narzędzia, fizyka i skrypty."
       },
-      "tags": ["C++", { "en": "Engine architecture", "pl": "Architektura silnika" }, { "en": "Tools", "pl": "Narzędzia" }]
+      "tags": [
+        "C++",
+        {
+          "en": "Engine architecture",
+          "pl": "Architektura silnika"
+        },
+        {
+          "en": "Tools",
+          "pl": "Narzędzia"
+        }
+      ]
     },
     {
       "icon": "render",
-      "title": { "en": "Rendering & graphics", "pl": "Rendering i grafika" },
+      "title": {
+        "en": "Rendering & graphics",
+        "pl": "Rendering i grafika"
+      },
       "text": {
         "en": "Custom renderers, real-time lighting and shaders — understanding every pixel on the screen.",
         "pl": "Własne renderery, oświetlenie w czasie rzeczywistym i shadery — rozumiem każdy piksel na ekranie."
       },
-      "tags": ["OpenGL", "Vulkan", "Shaders", "GLSL"]
+      "tags": [
+        "OpenGL",
+        "Vulkan",
+        "Shaders",
+        "GLSL"
+      ]
     },
     {
       "icon": "cube",
-      "title": { "en": "3D modeling", "pl": "Modelowanie 3D" },
+      "title": {
+        "en": "3D modeling",
+        "pl": "Modelowanie 3D"
+      },
       "text": {
         "en": "Hard-surface models, materials and final renders — plus characters made in VRoid Studio.",
         "pl": "Modele hard-surface, materiały i finalne rendery — a do tego postacie tworzone w VRoid Studio."
       },
-      "tags": ["Blender", "VRoid Studio", "Rendering"]
+      "tags": [
+        "Blender",
+        "VRoid Studio",
+        "Rendering"
+      ]
     }
   ]
 }

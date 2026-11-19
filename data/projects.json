@@ -1,5 +1,5 @@
 {
-  "_info": "One entry = one project card + its own page (project.html?id=<id>). Full field reference: README.md → 'Projekty'. Every text can be a string or {\"en\": \"...\", \"pl\": \"...\"}; long \"description\" supports Markdown (**bold**, *italic*, `code`, lists, [links](url), ``` code blocks ```).",
+  "$schema": "../schemas/projects.schema.json",
   "categories": [
     {
       "id": "game",
@@ -54,13 +54,113 @@
       "iconFit": "contain",
       "banner": "images/projects/twin2-engine/cover.webp",
       "summary": {
-        "en": "A C++20 game engine built from scratch in four months as a team project at Lodz University of Technology.",
-        "pl": "Silnik gier w C++20 napisany od zera w cztery miesiące jako zespołowy projekt na Politechnice Łódzkiej."
+        "en": "A C++20 game engine with its own editor, written from scratch in four months by our team at Lodz University of Technology.",
+        "pl": "Silnik gier w C++20 z własnym edytorem, napisany od zera w cztery miesiące przez nasz zespół na Politechnice Łódzkiej."
       },
       "description": {
-        "en": "Twin^2 Engine is a custom game engine written in **C++20** with **OpenGL** rendering, built in four months for the *ZTGK 2024 – Game Development* course at Lodz University of Technology.\n\nThe engine was then used to create our game **Echoes of Fame**.",
-        "pl": "Twin^2 Engine to własny silnik gier napisany w **C++20** z renderingiem w **OpenGL**, stworzony w cztery miesiące w ramach zajęć *ZTGK 2024 – Game Development* na Politechnice Łódzkiej.\n\nNa tym silniku powstała później nasza gra **Echoes of Fame**."
+        "en": [
+          "**Twin^2 Engine** is a game engine written in **C++20** with **OpenGL** rendering,",
+          "created in four months for the *ZTGK 2024 – Game Development* course at Lodz University of Technology.",
+          "Its architecture follows the **object–component model known from Unity**.",
+          "",
+          "We used it to make our game [Echoes of Fame](project.html?id=echoes-of-fame) —",
+          "the game and the engine **advanced to the finals of ZTGK 2024** in the Game Development category."
+        ],
+        "pl": [
+          "**Twin^2 Engine** to silnik gier napisany w **C++20** z renderingiem w **OpenGL**,",
+          "stworzony w cztery miesiące na zajęcia *ZTGK 2024 – Game Development* na Politechnice Łódzkiej.",
+          "Jego architektura opiera się na **modelu obiekt–komponent znanym z Unity**.",
+          "",
+          "Zrobiliśmy na nim grę [Echoes of Fame](project.html?id=echoes-of-fame) —",
+          "gra i silnik **dostały się do finału ZTGK 2024** w kategorii Game Development."
+        ]
       },
+      "sections": [
+        {
+          "title": {
+            "en": "Engine systems",
+            "pl": "Systemy silnika"
+          },
+          "body": {
+            "en": [
+              "- 3D physics: collision detection and ray intersection",
+              "- Resource managers for sharing models, textures and other assets",
+              "- UI system",
+              "- Input and event systems",
+              "- Procedural map generation"
+            ],
+            "pl": [
+              "- Fizyka 3D: wykrywanie kolizji i przecięcia z promieniem",
+              "- Menedżery zasobów do współdzielenia modeli, tekstur i innych zasobów",
+              "- System UI",
+              "- Systemy wejścia i zdarzeń",
+              "- Proceduralne generowanie mapy"
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Editor",
+            "pl": "Edytor"
+          },
+          "body": {
+            "en": [
+              "- Loading scenes and prefabs, saving scenes",
+              "- Adding objects and components, exporting objects to prefabs",
+              "- Custom inspectors for specific components",
+              "- Debug logging"
+            ],
+            "pl": [
+              "- Wczytywanie scen i prefabów, zapisywanie scen",
+              "- Dodawanie obiektów i komponentów, eksport obiektów do prefabów",
+              "- Własne inspektory dla wybranych komponentów",
+              "- Logowanie debugowe"
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Rendering",
+            "pl": "Rendering"
+          },
+          "body": {
+            "en": [
+              "Forward rendering with:",
+              "",
+              "- Screen Space Ambient Occlusion (SSAO)",
+              "- Shadow mapping",
+              "- Volumetric clouds",
+              "- Multisample anti-aliasing (MSAA)",
+              "- Particles and particle emitters (CPU)"
+            ],
+            "pl": [
+              "Forward rendering, a w nim:",
+              "",
+              "- Screen Space Ambient Occlusion (SSAO)",
+              "- Mapy cieni (shadow mapping)",
+              "- Wolumetryczne chmury",
+              "- Wygładzanie krawędzi MSAA",
+              "- Cząsteczki i emitery cząsteczek (na CPU)"
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Third-party libraries",
+            "pl": "Biblioteki zewnętrzne"
+          },
+          "body": {
+            "en": [
+              "ImGui (editor UI), SoLoud (audio), FreeType (fonts), GLM (math), yaml-cpp (serialization),",
+              "GLFW (window), spdlog (logging), Tracy (profiling), stb_image (images), Assimp (3D models)."
+            ],
+            "pl": [
+              "ImGui (interfejs edytora), SoLoud (dźwięk), FreeType (fonty), GLM (matematyka), yaml-cpp (serializacja),",
+              "GLFW (okno), spdlog (logi), Tracy (profilowanie), stb_image (obrazy), Assimp (modele 3D)."
+            ]
+          }
+        }
+      ],
       "tags": [
         "C++20",
         "OpenGL",
@@ -71,6 +171,56 @@
         {
           "type": "github",
           "url": "https://github.com/Muppetsg2/Twin-2-Engine"
+        }
+      ],
+      "team": {
+        "id": "twin2",
+        "members": [
+          {
+            "person": "patryk-antosik",
+            "role": {
+              "en": "UI rendering & scene system programmer",
+              "pl": "Programista renderowania UI i systemu scen"
+            }
+          },
+          {
+            "person": "marceli-antosik",
+            "role": {
+              "en": "Code quality & testing lead",
+              "pl": "Lider jakości kodu i testów"
+            }
+          },
+          {
+            "person": "lukasz-gapinski",
+            "role": {
+              "en": "Physics programmer",
+              "pl": "Programista fizyki"
+            }
+          },
+          {
+            "person": "mateusz-gapinski",
+            "role": {
+              "en": "Rendering programmer",
+              "pl": "Programista renderingu"
+            }
+          },
+          {
+            "person": "maja-ochmanska",
+            "role": {
+              "en": "2D & 3D artist",
+              "pl": "Artystka 2D i 3D"
+            }
+          }
+        ]
+      },
+      "whatIDid": [
+        {
+          "en": "UI rendering system",
+          "pl": "System renderowania interfejsu (UI)"
+        },
+        {
+          "en": "Scene serialization and deserialization",
+          "pl": "Serializacja i deserializacja scen"
         }
       ],
       "gallery": [
@@ -84,69 +234,7 @@
       ],
       "related": [
         "echoes-of-fame"
-      ],
-      "team": {
-        "name": "Twin^2",
-        "description": {
-          "en": "Team created while studing at Lodz University of Technology.",
-          "pl": "Zespół stworzony podczas uczenia się na Politechnice Łódzkiej."
-        },
-        "members": [
-          {
-            "name": "Patryk Antosik",
-            "role": {
-              "en": "UI rendering & scene system programmer",
-              "pl": "Programista renderowania UI i systemu scen"
-            },
-            "url": "https://github.com/MAIPA01",
-            "me": true
-          },
-          {
-            "name": "Marceli Antosik",
-            "role": {
-              "en": "Code Quality & Testing Lead",
-              "pl": "Lead jakości kodu i testowania"
-            },
-            "url": "https://github.com/Muppetsg2"
-          },
-          {
-            "name": "Łukasz Gapiński",
-            "role": {
-              "en": "Physics Programmer",
-              "pl": "Programista fizyki"
-            },
-            "url": "https://github.com/lgapinski18"
-          },
-          {
-            "name": "Mateusz Gapiński",
-            "role": {
-              "en": "Rendering Programmer",
-              "pl": "Programista renderingu"
-            },
-            "url": "https://github.com/mateusz-gapinski"
-          },
-          {
-            "name": "Maja Ochmańska",
-            "role": {
-              "en": "2D & 3D Artist",
-              "pl": "Artystka 2D i 3D"
-            },
-            "url": "https://github.com/Maikomi"
-          }
-        ]
-      },
-      "myRole": {
-        "items": [
-          {
-            "en": "System for rendering UI",
-            "pl": "System renderowania UI"
-          },
-          {
-            "en": "Scene serialization and deserialization system",
-            "pl": "System serializacji i deserializacji scen"
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "echoes-of-fame",
@@ -158,12 +246,26 @@
       "iconFit": "contain",
       "banner": "images/projects/echoes-of-fame/cover.webp",
       "summary": {
-        "en": "A strategy endless runner built on our own Twin^2 Engine — lead a music band and spread its influence.",
-        "pl": "Strategiczny endless runner zbudowany na naszym własnym silniku Twin^2 Engine — poprowadź zespół muzyczny i zdobywaj wpływy."
+        "en": "An area-control strategy game on our own Twin^2 Engine — lead a music band that wants to conquer the world with its music.",
+        "pl": "Strategia o kontroli obszaru na naszym silniku Twin^2 Engine — poprowadź zespół muzyczny, który chce podbić świat swoją muzyką."
       },
       "description": {
-        "en": "Echoes of Fame is a **strategy endless runner** with area-control mechanics. You lead a music band on its way to fame and fight for influence over the map.\n\nThe game runs on **Twin^2 Engine** — a custom C++20 engine our team wrote from scratch for the *ZTGK 2024 – Game Development* course.",
-        "pl": "Echoes of Fame to **strategiczny endless runner** z mechaniką kontroli obszaru. Prowadzisz zespół muzyczny na drodze do sławy i walczysz o wpływy na mapie.\n\nGra działa na **Twin^2 Engine** — własnym silniku w C++20, który nasz zespół napisał od zera na zajęciach *ZTGK 2024 – Game Development*."
+        "en": [
+          "**Echoes of Fame** is an **area-control strategy game**: you play as a music band that wants to conquer",
+          "the world with its music — and rival bands are after exactly the same goal.",
+          "",
+          "The game runs on [Twin^2 Engine](project.html?id=twin2-engine), the C++20 engine our team wrote from scratch",
+          "in four months for *ZTGK 2024 – Game Development*. The map is generated procedurally,",
+          "and the game together with the engine **advanced to the finals of ZTGK 2024**."
+        ],
+        "pl": [
+          "**Echoes of Fame** to **strategia o kontroli obszaru**: wcielasz się w zespół muzyczny, który chce podbić",
+          "świat swoją muzyką — a konkurencyjne zespoły mają dokładnie ten sam cel.",
+          "",
+          "Gra działa na [Twin^2 Engine](project.html?id=twin2-engine) — silniku w C++20, który nasz zespół napisał od zera",
+          "w cztery miesiące na zajęcia *ZTGK 2024 – Game Development*. Mapa jest generowana proceduralnie,",
+          "a gra razem z silnikiem **dostała się do finału ZTGK 2024**."
+        ]
       },
       "tags": [
         "C++20",
@@ -185,6 +287,60 @@
           "url": "https://github.com/Muppetsg2/Twin-2-Engine/releases/download/v1.2.2-After-Finals/build.zip"
         }
       ],
+      "team": {
+        "id": "twin2",
+        "members": [
+          {
+            "person": "patryk-antosik",
+            "role": {
+              "en": "UI & AI programmer",
+              "pl": "Programista UI i SI"
+            }
+          },
+          {
+            "person": "marceli-antosik",
+            "role": {
+              "en": "Code quality & testing lead",
+              "pl": "Lider jakości kodu i testów"
+            }
+          },
+          {
+            "person": "lukasz-gapinski",
+            "role": {
+              "en": "Procedural generation programmer",
+              "pl": "Programista generowania proceduralnego"
+            }
+          },
+          {
+            "person": "mateusz-gapinski",
+            "role": {
+              "en": "Gameplay programmer",
+              "pl": "Programista rozgrywki"
+            }
+          },
+          {
+            "person": "maja-ochmanska",
+            "role": {
+              "en": "2D & 3D artist",
+              "pl": "Artystka 2D i 3D"
+            }
+          }
+        ]
+      },
+      "whatIDid": [
+        {
+          "en": "Opponent AI — behaviour tree",
+          "pl": "SI przeciwników — drzewo zachowań"
+        },
+        {
+          "en": "Opponent AI — state machine",
+          "pl": "SI przeciwników — maszyna stanów"
+        },
+        {
+          "en": "Game UI",
+          "pl": "Interfejs gry"
+        }
+      ],
       "gallery": [
         {
           "src": "images/projects/echoes-of-fame/cover.webp",
@@ -203,86 +359,85 @@
       ],
       "related": [
         "twin2-engine"
-      ],
-      "team": {
-        "name": "Twin^2",
-        "description": {
-          "en": "Team created while studing at Lodz University of Technology.",
-          "pl": "Zespół stworzony podczas uczenia się na Politechnice Łódzkiej."
-        },
-        "members": [
-          {
-            "name": "Patryk Antosik",
-            "role": {
-              "en": "UI & AI programmer",
-              "pl": "Programista UI i SI"
-            },
-            "url": "https://github.com/MAIPA01",
-            "me": true
-          },
-          {
-            "name": "Marceli Antosik",
-            "role": {
-              "en": "Code Quality & Testing Lead",
-              "pl": "Przewodniczący jakości kodu i Testowania"
-            },
-            "url": "https://github.com/Muppetsg2"
-          },
-          {
-            "name": "Łukasz Gapiński",
-            "role": {
-              "en": "Procedular Generation Programmer",
-              "pl": "Programista Generowania Procedularnego"
-            },
-            "url": "https://github.com/lgapinski18"
-          },
-          {
-            "name": "Mateusz Gapiński",
-            "role": {
-              "en": "Gameplay Programmer",
-              "pl": "Programista Rozgrywki"
-            },
-            "url": "https://github.com/mateusz-gapinski"
-          },
-          {
-            "name": "Maja Ochmańska",
-            "role": {
-              "en": "2D & 3D Artist",
-              "pl": "Artystka 2D i 3D"
-            },
-            "url": "https://github.com/Maikomi"
-          }
-        ]
-      },
-      "myRole": {
-        "items": [
-          {
-            "en": "AI behaviour tree",
-            "pl": "Drzewo zachowań SI"
-          },
-          {
-            "en": "AI state machine",
-            "pl": "Maszyna stanów SI"
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "pcre2cpp",
       "title": "pcre2cpp",
       "category": "library",
       "year": "2026",
-      "icon": "",
       "iconFit": "cover",
-      "banner": "",
       "summary": {
-        "en": "A C++ wrapper for PCRE2 — a friendly, object-oriented regex API that keeps the performance and flexibility of the original library.",
-        "pl": "Nakładka C++ na PCRE2 — wygodne, obiektowe API do wyrażeń regularnych, które zachowuje wydajność i elastyczność oryginalnej biblioteki."
+        "en": "An object-oriented C++ wrapper for PCRE2 — a friendly regex API with almost no overhead over the original library.",
+        "pl": "Obiektowa nakładka C++ na PCRE2 — wygodne API do wyrażeń regularnych praktycznie bez narzutu względem oryginału."
       },
       "description": {
-        "en": "**pcre2cpp** wraps the C library [PCRE2](https://github.com/PCRE2Project/pcre2) in a more user-friendly, object-oriented C++ interface for working with regular expressions — while keeping the performance and flexibility of the original.\n\n- C++17, header-only\n- CMake integration\n- Full documentation available online",
-        "pl": "**pcre2cpp** opakowuje bibliotekę C [PCRE2](https://github.com/PCRE2Project/pcre2) w wygodniejszy, obiektowy interfejs C++ do pracy z wyrażeniami regularnymi — bez utraty wydajności i elastyczności oryginału.\n\n- C++17, header-only\n- Integracja z CMake\n- Pełna dokumentacja dostępna online"
+        "en": [
+          "**pcre2cpp** wraps the C library [PCRE2](https://github.com/PCRE2Project/pcre2) (Perl Compatible Regular Expressions)",
+          "in an object-oriented C++ interface, while keeping the same functionality and behaviour.",
+          "",
+          "In the project's benchmarks (10 000 iterations) it compiles patterns about **3× faster** and matches",
+          "about **25× faster** than `std::regex`, with only a small overhead over raw PCRE2."
+        ],
+        "pl": [
+          "**pcre2cpp** opakowuje bibliotekę C [PCRE2](https://github.com/PCRE2Project/pcre2) (Perl Compatible Regular Expressions)",
+          "w obiektowy interfejs C++, zachowując tę samą funkcjonalność i zachowanie.",
+          "",
+          "W benchmarkach projektu (10 000 iteracji) kompiluje wzorce około **3× szybciej** i dopasowuje",
+          "około **25× szybciej** niż `std::regex`, z niewielkim narzutem względem czystego PCRE2."
+        ]
       },
+      "sections": [
+        {
+          "title": {
+            "en": "Features",
+            "pl": "Funkcje"
+          },
+          "body": {
+            "en": [
+              "- Object-oriented interface to PCRE2 10.47",
+              "- C++17 or newer (optional C++20 features)",
+              "- Matching with built-in result capturing",
+              "- UTF-8 / UTF-16 / UTF-32 support (each can be disabled)",
+              "- Asserts can be switched to exceptions",
+              "- CMake 3.30+, `find_package(pcre2cpp)` with optional components"
+            ],
+            "pl": [
+              "- Obiektowy interfejs do PCRE2 10.47",
+              "- C++17 lub nowszy (opcjonalnie funkcje C++20)",
+              "- Dopasowywanie z wbudowanym przechwytywaniem wyników",
+              "- Obsługa UTF-8 / UTF-16 / UTF-32 (każdą można wyłączyć)",
+              "- Asercje można zamienić na wyjątki",
+              "- CMake 3.30+, `find_package(pcre2cpp)` z opcjonalnymi komponentami"
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Example",
+            "pl": "Przykład"
+          },
+          "body": [
+            "```cpp",
+            "#include <pcre2cpp/pcre2cpp.hpp>",
+            "#include <iostream>",
+            "",
+            "using namespace pcre2cpp;",
+            "",
+            "int main() {",
+            "    regex expression(\"\\\\d+\");",
+            "",
+            "    match_result result;",
+            "    if (expression.match(\"aa2\", result, 2)) {",
+            "        std::cout << \"Match: \" << result.get_result_value()",
+            "                  << \" at: \" << result.get_result_global_offset() << '\\n';",
+            "        // Match: 2 at: 2",
+            "    }",
+            "}",
+            "```"
+          ]
+        }
+      ],
       "tags": [
         "C++17",
         "CMake",
@@ -305,17 +460,83 @@
       "title": "glslstruct",
       "category": "library",
       "year": "2026",
-      "icon": "",
       "iconFit": "cover",
-      "banner": "",
       "summary": {
-        "en": "A C++ library for representing GLSL structures, made for OpenGL and Vulkan projects.",
-        "pl": "Biblioteka C++ do reprezentowania struktur GLSL, przeznaczona do projektów w OpenGL i Vulkanie."
+        "en": "Describe GLSL uniform and storage buffers in C++ once — get exact sizes and offsets for std140, std430 and scalar layouts.",
+        "pl": "Opisz bufory uniform i storage z GLSL raz w C++ — i dostań dokładne rozmiary i przesunięcia dla układów std140, std430 i scalar."
       },
       "description": {
-        "en": "**glslstruct** lets you describe GLSL structures in C++ code.\n\n- C++17\n- Works with OpenGL and Vulkan\n- CMake integration",
-        "pl": "**glslstruct** pozwala opisywać struktury GLSL w kodzie C++.\n\n- C++17\n- Działa z OpenGL i Vulkanem\n- Integracja z CMake"
+        "en": [
+          "**glslstruct** is a C++ library for representing GLSL **Uniform Buffer Objects (UBO)** and",
+          "**Shader Storage Buffer Objects (SSBO)** in C++.",
+          "",
+          "You define a structure once and get its precise size and field offsets according to GLSL packing rules —",
+          "**`std140`**, **`std430`** or **`scalar`** — with no manual padding and no tedious calculations.",
+          "It can also parse GLSL code into structures and write GLSL code for OpenGL and Vulkan."
+        ],
+        "pl": [
+          "**glslstruct** to biblioteka C++ do reprezentowania w C++ buforów GLSL: **Uniform Buffer Objects (UBO)** i",
+          "**Shader Storage Buffer Objects (SSBO)**.",
+          "",
+          "Strukturę definiujesz raz, a dostajesz jej dokładny rozmiar i przesunięcia pól zgodnie z regułami pakowania GLSL —",
+          "**`std140`**, **`std430`** lub **`scalar`** — bez ręcznego paddingu i żmudnych obliczeń.",
+          "Biblioteka potrafi też przetworzyć kod GLSL na struktury i wygenerować kod GLSL dla OpenGL i Vulkana."
+        ]
       },
+      "sections": [
+        {
+          "title": {
+            "en": "Features",
+            "pl": "Funkcje"
+          },
+          "body": {
+            "en": [
+              "- Built-in support for `std140`, `std430` and `scalar` packing",
+              "- Get, set and type-check fields by name",
+              "- Parser: build structures from GLSL code",
+              "- Writer: generate GLSL code for OpenGL and Vulkan",
+              "- C++17 or newer, CMake 3.30+"
+            ],
+            "pl": [
+              "- Wbudowana obsługa pakowania `std140`, `std430` i `scalar`",
+              "- Odczyt, zapis i sprawdzanie typów pól po nazwie",
+              "- Parser: tworzenie struktur z kodu GLSL",
+              "- Writer: generowanie kodu GLSL dla OpenGL i Vulkana",
+              "- C++17 lub nowszy, CMake 3.30+"
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Example",
+            "pl": "Przykład"
+          },
+          "body": [
+            "```cpp",
+            "std140_struct SceneSettings {",
+            "    glsl_value<glm::mat4>(\"viewProjection\"),",
+            "    glsl_value<glm::vec3>(\"cameraPosition\"),",
+            "    glsl_value<float>(\"globalTime\"),",
+            "    glsl_value<int>(\"renderMode\")",
+            "};",
+            "",
+            "SceneSettings.size();                     // total std140 size",
+            "SceneSettings.get_offset(\"cameraPosition\"); // field offset",
+            "SceneSettings.set(\"cameraPosition\", glm::vec3{ 1.f, 0.f, 5.f });",
+            "auto data = SceneSettings.data();         // ready to upload",
+            "```",
+            "",
+            "```glsl",
+            "layout(std140, binding = 0) uniform SceneSettingsUBO {",
+            "    mat4 viewProjection;",
+            "    vec3 cameraPosition;",
+            "    float globalTime;",
+            "    int renderMode;",
+            "};",
+            "```"
+          ]
+        }
+      ],
       "tags": [
         "C++17",
         "CMake",
@@ -339,17 +560,89 @@
       "title": "tinypbrt",
       "category": "library",
       "year": "2026",
-      "icon": "",
       "iconFit": "cover",
-      "banner": "",
       "summary": {
-        "en": "A tiny but powerful loader for pbrt-v4 scenes.",
-        "pl": "Mała, ale potężna biblioteka do wczytywania scen pbrt-v4."
+        "en": "A tiny but powerful pbrt-v4 scene loader in C11, with an optional header-only C++20 wrapper.",
+        "pl": "Mała, ale potężna biblioteka do wczytywania scen pbrt-v4 w C11, z opcjonalną nakładką C++20 (header-only)."
       },
       "description": {
-        "en": "**tinypbrt** loads scene files in the [pbrt-v4](https://github.com/mmp/pbrt-v4) format.\n\n- Core written in C11, with a C++20 wrapper\n- CMake integration",
-        "pl": "**tinypbrt** wczytuje pliki scen w formacie [pbrt-v4](https://github.com/mmp/pbrt-v4).\n\n- Rdzeń napisany w C11, z nakładką w C++20\n- Integracja z CMake"
+        "en": [
+          "**tinypbrt** parses [pbrt-v4](https://pbrt.org/fileformat-v4) `.pbrt` scene descriptions — cameras, film, samplers,",
+          "integrators, shapes, materials, textures, lights, participating media, object instancing, animated transforms",
+          "and `Include`/`Import` — into plain C structures you can feed into your own renderer.",
+          "",
+          "It doesn't render anything and doesn't load external assets (PLY meshes, images, spectra files) —",
+          "it gives you their file names. No runtime dependencies, only the C standard library."
+        ],
+        "pl": [
+          "**tinypbrt** przetwarza opisy scen [pbrt-v4](https://pbrt.org/fileformat-v4) (`.pbrt`) — kamery, film, samplery,",
+          "integratory, kształty, materiały, tekstury, światła, ośrodki, instancjonowanie obiektów, animowane transformacje",
+          "oraz `Include`/`Import` — na zwykłe struktury C, które możesz przekazać do własnego renderera.",
+          "",
+          "Sama niczego nie renderuje i nie wczytuje zewnętrznych zasobów (siatek PLY, obrazów, plików widm) —",
+          "podaje ich nazwy plików. Bez zależności w czasie działania, tylko biblioteka standardowa C."
+        ]
       },
+      "sections": [
+        {
+          "title": {
+            "en": "Features",
+            "pl": "Funkcje"
+          },
+          "body": {
+            "en": [
+              "- The whole pbrt-v4 scene language, with pbrt-v4 defaults and semantics",
+              "- Every parameter type and spectra (RGB, blackbody, sampled, named)",
+              "- Validation: every problem is reported as an error code",
+              "- Compact output: identical matrices are stored once",
+              "- C++20 wrapper: RAII scene, zero-copy views, `std::variant` for tagged unions — same performance as the C API",
+              "- Built warning-free with `-Wpedantic` (GCC 13, Clang 18), CMake 3.30+"
+            ],
+            "pl": [
+              "- Cały język scen pbrt-v4, z domyślnymi wartościami i semantyką pbrt-v4",
+              "- Wszystkie typy parametrów i widm (RGB, ciało doskonale czarne, próbkowane, nazwane)",
+              "- Walidacja: każdy problem zgłaszany jako kod błędu",
+              "- Zwięzły wynik: identyczne macierze zapisywane raz",
+              "- Nakładka C++20: scena RAII, widoki bez kopiowania, `std::variant` dla unii z tagiem — z tą samą wydajnością co API C",
+              "- Kompiluje się bez ostrzeżeń z `-Wpedantic` (GCC 13, Clang 18), CMake 3.30+"
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Example",
+            "pl": "Przykład"
+          },
+          "body": [
+            "```c",
+            "tpbrt_scene_t scene;",
+            "if (tpbrt_scene_load_from_file(\"scene.pbrt\", &scene) == TPBRT_ERROR_NONE) {",
+            "    printf(\"%zu shapes\\n\", scene.shapes.count);",
+            "    tpbrt_scene_free(&scene);",
+            "}",
+            "```",
+            "",
+            "```cpp",
+            "if (const auto scene = tpbrt::load_scene_from_file(\"scene.pbrt\")) {",
+            "    std::printf(\"%zu shapes\\n\", scene->shapes().size());",
+            "}",
+            "```"
+          ]
+        },
+        {
+          "title": {
+            "en": "Installation (CPM)",
+            "pl": "Instalacja (CPM)"
+          },
+          "body": [
+            "```cmake",
+            "CPMAddPackage(\"gh:MAIPA01/tinypbrt@v1.1.1\")",
+            "target_link_libraries(my_renderer PRIVATE tinypbrt::tinypbrt)",
+            "# C++20: tinypbrt::tinypbrt_cpp",
+            "```"
+          ]
+        }
+      ],
       "tags": [
         "C11",
         "C++20",
@@ -373,17 +666,70 @@
       "title": "margs",
       "category": "library",
       "year": "2025",
-      "icon": "",
       "iconFit": "cover",
-      "banner": "",
       "summary": {
-        "en": "Maipa's Args Analyzer — a header-only C++20 library for parsing command-line arguments, with automatic error and help messages.",
-        "pl": "Maipa's Args Analyzer — biblioteka C++20 (header-only) do parsowania argumentów wiersza poleceń, z automatycznymi komunikatami błędów i pomocy."
+        "en": "Maipa's Args Analyzer — a header-only C++20 library for command-line arguments, with automatic error and help messages.",
+        "pl": "Maipa's Args Analyzer — biblioteka C++20 (header-only) do argumentów wiersza poleceń, z automatycznymi komunikatami błędów i pomocy."
       },
       "description": {
-        "en": "**margs** (*Maipa's Args Analyzer*) is a C++ library for parsing command-line arguments.\n\n- **Flags** — `--flag`\n- **Values** — `--value value`\n- **Grouped arguments** — `group --group-flag`\n\nValid arguments are easy to define; the library automatically reports invalid input with clear error messages and can generate a help message for you.",
-        "pl": "**margs** (*Maipa's Args Analyzer*) to biblioteka C++ do parsowania argumentów wiersza poleceń.\n\n- **Flagi** — `--flag`\n- **Wartości** — `--value value`\n- **Argumenty grupowe** — `group --group-flag`\n\nPoprawne argumenty definiuje się w prosty sposób, biblioteka sama zgłasza błędne dane czytelnymi komunikatami i potrafi wygenerować tekst pomocy."
+        "en": [
+          "**margs** (*Maipa's Args Analyzer*) is a C++ library for parsing command-line arguments.",
+          "It supports **flags** (`--flag`), **values** (`--value value`) and **grouped arguments** (`group --group-flag`).",
+          "",
+          "Valid arguments are easy to define; the library reports invalid input with clear error messages",
+          "and generates the help message for you."
+        ],
+        "pl": [
+          "**margs** (*Maipa's Args Analyzer*) to biblioteka C++ do parsowania argumentów wiersza poleceń.",
+          "Obsługuje **flagi** (`--flag`), **wartości** (`--value value`) i **argumenty grupowe** (`group --group-flag`).",
+          "",
+          "Poprawne argumenty definiuje się w prosty sposób, a biblioteka zgłasza błędne dane czytelnymi komunikatami",
+          "i sama generuje tekst pomocy."
+        ]
       },
+      "sections": [
+        {
+          "title": {
+            "en": "Features",
+            "pl": "Funkcje"
+          },
+          "body": {
+            "en": [
+              "- Flags, values and grouped arguments",
+              "- Automatic help message — no extra setup",
+              "- Custom argument decoders and help messages",
+              "- Header-only, C++20, Windows / macOS / Linux",
+              "- Depends only on [mstd](https://github.com/MAIPA01/mstd)"
+            ],
+            "pl": [
+              "- Flagi, wartości i argumenty grupowe",
+              "- Automatyczny tekst pomocy — bez dodatkowej konfiguracji",
+              "- Własne dekodery argumentów i teksty pomocy",
+              "- Header-only, C++20, Windows / macOS / Linux",
+              "- Zależy tylko od [mstd](https://github.com/MAIPA01/mstd)"
+            ]
+          }
+        },
+        {
+          "title": {
+            "en": "Example",
+            "pl": "Przykład"
+          },
+          "body": [
+            "```cpp",
+            "args_analizer args(",
+            "    help_data{ .description = \"Sample program\" },",
+            "    args_builder::makeValue(\"value\", 'v', 1, help_data{ .description = \"a value\" }),",
+            "    args_builder::makeFlag(\"flag\", 'f', help_data{ .description = \"a flag\" })",
+            ");",
+            "",
+            "args_map values = args.analize(argc, argv);",
+            "if (values.contains_value(\"value\"))",
+            "    std::string v = values.get_value(\"value\").as<std::string>();",
+            "```"
+          ]
+        }
+      ],
       "tags": [
         "C++20",
         "CMake",
@@ -414,8 +760,14 @@
         "pl": "Zręcznościówka, w której przeskakujesz między kolorowymi planetami, zostawiając za sobą ślad farby."
       },
       "description": {
-        "en": "Destiny Painter is a mobile **arcade game** for Android made for the *ZTGK 2025 – Mobile* course. Leap from planet to planet, leave a trail of paint behind you and see how far you can go. You can only land on planets that match your current colour, so every jump requires careful planning. Collect colour changers, avoid dangerous black planets, and find your way to the end of each level. Your precision and the number of jumps you make determine how many stars you earn. Each level is a new mural inspired by Tauros by Opiemme, waiting for you to bring it to life with your colourful trail.",
-        "pl": "Destiny Painter to mobilna **gra zręcznościowa** na Androida stworzona na zajęciach *ZTGK 2025 – Mobile*. Skacz z planety na planetę, zostawiaj za sobą ślad farby i sprawdź, jak daleko zajdziesz. Możesz lądować tylko na planetach odpowiadających Twojemu aktualnemu kolorowi, dlatego każdy skok wymaga starannego planowania. Zbieraj elementy zmieniające kolor, unikaj niebezpiecznych czarnych planet i dotrzyj do końca każdego poziomu. Twoja precyzja oraz liczba wykonanych skoków decydują o tym, ile gwiazdek zdobędziesz. Każdy poziom to nowy mural, inspirowany dziełem „Tauros” autorstwa Opiemme – ożyw go, pozostawiając za sobą kolorowy ślad."
+        "en": [
+          "**Destiny Painter** is a mobile **arcade game** for Android made for the *ZTGK 2025 – Mobile* course.",
+          "Leap from planet to planet, leave a trail of paint behind you and see how far you can go."
+        ],
+        "pl": [
+          "**Destiny Painter** to mobilna **gra zręcznościowa** na Androida stworzona na zajęciach *ZTGK 2025 – Mobile*.",
+          "Skacz z planety na planetę, zostawiaj za sobą ślad farby i sprawdź, jak daleko zajdziesz."
+        ]
       },
       "tags": [
         "Unity",
@@ -437,6 +789,52 @@
           "type": "vimeo",
           "label": "Trailer",
           "url": "https://vimeo.com/1092907356?fl=pl&fe=sh"
+        }
+      ],
+      "team": {
+        "id": "drop-table",
+        "name": "Drop Table – 1",
+        "logo": "images/teams/drop-table/logo-1.png",
+        "members": [
+          {
+            "person": "patryk-antosik",
+            "role": {
+              "en": "Gameplay & animation programmer, level designer",
+              "pl": "Programista rozgrywki i animacji, projektant poziomów"
+            }
+          },
+          {
+            "person": "marceli-antosik",
+            "role": {
+              "en": "Art lead, VFX artist & game designer",
+              "pl": "Lider artystyczny, artysta VFX i projektant gry"
+            }
+          },
+          {
+            "person": "bartlomiej-wlodarski",
+            "role": {
+              "en": "Planet behaviour programmer",
+              "pl": "Programista zachowań planet"
+            }
+          }
+        ]
+      },
+      "whatIDid": [
+        {
+          "en": "Player movement",
+          "pl": "Poruszanie się postaci"
+        },
+        {
+          "en": "Paint splash shader",
+          "pl": "Shader plam farby"
+        },
+        {
+          "en": "Level design",
+          "pl": "Projekty poziomów"
+        },
+        {
+          "en": "Font design",
+          "pl": "Projekt fontu"
         }
       ],
       "gallery": [
@@ -472,66 +870,7 @@
             "pl": "Koniec poziomu"
           }
         }
-      ],
-      "team": {
-        "name": "Drop Table - 1",
-        "url": "",
-        "description": {
-          "en": "Team created to make a mobile game for ZTGK 2025.",
-          "pl": "Zespół stworzony by stworzyć grę mobilną na ZTGK 2025."
-        },
-        "members": [
-          {
-            "name": "Patryk Antosik",
-            "role": {
-              "en": "Gameplay & Animation Programmer & Level Designer",
-              "pl": "Programista Rozgrywki i Animacji i Designer Poziomów"
-            },
-            "url": "https://github.com/MAIPA01",
-            "me": true
-          },
-          {
-            "name": "Marceli Antosik",
-            "role": {
-              "en": "Art Lead, VFX Artist & Game Designer",
-              "pl": "Przewodniczący Artystyczny, Artysta VFX i Designer Gry"
-            },
-            "url": "https://github.com/Muppetsg2"
-          },
-          {
-            "name": "Bartłomiej Włodarski",
-            "role": {
-              "en": "Planets Behaviour Programmer",
-              "pl": "Programista Zachowań Planet"
-            },
-            "url": "https://github.com/BartlomiejWlodarski"
-          }
-        ]
-      },
-      "myRole": {
-        "items": [
-          {
-            "en": "Player Movement",
-            "pl": "Poruszanie Postacji"
-          },
-          {
-            "en": "Paint Splashes Shader",
-            "pl": "Shader Plam Farby"
-          },
-          {
-            "en": "Levels Projects and Designes",
-            "pl": "Projekty i Wygląd Poziomów"
-          },
-          {
-            "en": "Font Design",
-            "pl": "Wygląd Fonta"
-          },
-          {
-            "en": "Font Design",
-            "pl": "Wygląd Fonta"
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "ceo-simulator",
@@ -546,8 +885,22 @@
         "pl": "Satyryczny symulator zarządzania w VR w stylistyce low-poly — przeglądaj dokumenty od pracowników i podejmuj decyzje „tak” albo „nie”, które ukształtują przyszłość firmy."
       },
       "description": {
-        "en": "CEO Simulator is a satirical, low-poly **management simulator for VR** (Meta Quest 2 & 3), made for the *ZTGK 2025 – VR* course. You step into the shoes of a company's CEO: employees keep bringing you documents, and every yes-or-no decision you make shapes the company's future. You can make your decisions in various creative ways: Red/Green Stamp – Approve or reject documents. Trapdoor Button – Send unwanted employees or documents away. Confetti Button – Celebrate your questionable decisions. \"Good Job\" Sticker – Reward your employees. Shredder – Get rid of documents you don't want to deal with. Throw Objects – Sometimes the simplest solution is to throw things at your employees. Every decision affects four key company statistics: Money – Keep the company financially stable. Production – Make sure the company keeps running. Employee Satisfaction – Keep your workforce happy. Law and Order – Maintain order within the company. You can monitor all these statistics on your office computer and try to keep them balanced. Your goal is to keep the company running for as long as possible. Make poor decisions, neglect your employees, or let your finances fall apart, and you might face bankruptcy, employee protests, or even a full-blown riot. How long can you survive as CEO?",
-        "pl": "CEO Simulator to satyryczny **symulator zarządzania w VR** (Meta Quest 2 i 3) w stylistyce low-poly, stworzony na zajęciach *ZTGK 2025 – VR*. Wcielasz się w prezesa firmy: pracownicy przynoszą ci kolejne dokumenty, a każda decyzja „tak” albo „nie” kształtuje przyszłość przedsiębiorstwa. Decyzje możesz podejmować na wiele kreatywnych sposobów: użyj czerwonej lub zielonej pieczątki, by zatwierdzać bądź odrzucać dokumenty; skorzystaj z zapadni, aby pozbyć się niechcianych pracowników lub pism; świętuj swoje kontrowersyjne wybory za pomocą konfetti; nagradzaj podwładnych naklejkami z napisem „Dobra robota”; albo użyj niszczarki, by usunąć dokumenty, którymi nie chcesz się zajmować. Możesz też po prostu rzucać przedmiotami w swoich pracowników – czasem to najprostsze rozwiązanie! Każda decyzja wpływa na cztery kluczowe wskaźniki firmy: finanse (dbaj o stabilność budżetu), produkcję (zapewnij ciągłość działania przedsiębiorstwa), satysfakcję pracowników (zadbaj o zadowolenie zespołu) oraz ład i porządek (utrzymuj dyscyplinę w firmie). Wszystkie te parametry możesz śledzić na komputerze w swoim biurze, starając się zachować między nimi równowagę. Twoim celem jest utrzymanie firmy na powierzchni tak długo, jak to możliwe. Podejmuj złe decyzje, zaniedbuj pracowników lub doprowadź do ruiny finansowej, a ryzykujesz bankructwo, protesty załogi, a nawet prawdziwe zamieszki. Jak długo zdołasz utrzymać się na stanowisku dyrektora generalnego?"
+        "en": [
+          "**CEO Simulator** is a satirical, low-poly **management simulator for VR** (Meta Quest 2 and 3),",
+          "made for the *ZTGK 2025 – VR* course.",
+          "",
+          "You play as the CEO of a company and decide its fate by interacting with the documents brought in",
+          "by employees and other characters — stamp them, read them or shred them. Every yes-or-no decision",
+          "shapes the company's future."
+        ],
+        "pl": [
+          "**CEO Simulator** to satyryczny **symulator zarządzania w VR** (Meta Quest 2 i 3) w stylistyce low-poly,",
+          "stworzony na zajęciach *ZTGK 2025 – VR*.",
+          "",
+          "Wcielasz się w prezesa firmy i decydujesz o jej losie, obsługując dokumenty przynoszone",
+          "przez pracowników i inne postacie — podbijasz je stemplem, czytasz albo wrzucasz do niszczarki.",
+          "Każda decyzja „tak” albo „nie” kształtuje przyszłość firmy."
+        ]
       },
       "tags": [
         "Unity",
@@ -572,6 +925,53 @@
           "url": "https://vimeo.com/1092811852?fl=pl&fe=sh"
         }
       ],
+      "team": {
+        "id": "drop-table",
+        "members": [
+          {
+            "person": "patryk-antosik",
+            "role": {
+              "en": "Stamp programmer & physics objects technical designer",
+              "pl": "Programista stempla i projektant techniczny obiektów fizycznych"
+            }
+          },
+          {
+            "person": "marceli-antosik",
+            "role": {
+              "en": "In-game computer programmer & target platform tester",
+              "pl": "Programista komputera w grze i tester platformy docelowej"
+            }
+          },
+          {
+            "person": "bartlomiej-wlodarski",
+            "role": {
+              "en": "Documents & environment programmer, game designer",
+              "pl": "Programista dokumentów i otoczenia, projektant gry"
+            }
+          },
+          {
+            "person": "maja-ochmanska",
+            "role": {
+              "en": "Game designer, 2D & 3D artist",
+              "pl": "Projektantka gry, artystka 2D i 3D"
+            }
+          }
+        ]
+      },
+      "whatIDid": [
+        {
+          "en": "The in-game stamp",
+          "pl": "Stempel w grze"
+        },
+        {
+          "en": "Fitting 3D objects to the player's hands",
+          "pl": "Dopasowanie obiektów 3D do dłoni gracza"
+        },
+        {
+          "en": "The in-game shredder",
+          "pl": "Niszczarka w grze"
+        }
+      ],
       "gallery": [
         {
           "src": "images/projects/ceo-simulator/cover.webp",
@@ -590,22 +990,22 @@
         {
           "src": "images/projects/ceo-simulator/document-reading.webp",
           "caption": {
-            "en": "Document Reading",
-            "pl": "Czytanie Dokumentu"
+            "en": "Reading a document",
+            "pl": "Czytanie dokumentu"
           }
         },
         {
           "src": "images/projects/ceo-simulator/document-accepted.webp",
           "caption": {
             "en": "Accept Document",
-            "pl": "Akceptacja Dokumentu"
+            "pl": "Akceptacja dokumentu"
           }
         },
         {
           "src": "images/projects/ceo-simulator/document-rejected.webp",
           "caption": {
             "en": "Reject Document",
-            "pl": "Odrzucenie Dokumentu"
+            "pl": "Odrzucenie dokumentu"
           }
         },
         {
@@ -619,69 +1019,10 @@
           "src": "images/projects/ceo-simulator/game-over.webp",
           "caption": {
             "en": "Game Over",
-            "pl": "Koniec Gry"
+            "pl": "Koniec gry"
           }
         }
-      ],
-      "team": {
-        "name": "Drop Table",
-        "url": "",
-        "description": {
-          "en": "Team created to make a VR game for ZTGK 2025.",
-          "pl": "Zespół stworzony by stworzyć grę VR na ZTGK 2025."
-        },
-        "members": [
-          {
-            "name": "Patryk Antosik",
-            "role": {
-              "en": "Stamp Programmer & Physics Objects Technical Designer",
-              "pl": "Programista Stempla i Techniczny Designer Fizycznych Objektów"
-            },
-            "url": "https://github.com/MAIPA01",
-            "me": true
-          },
-          {
-            "name": "Marceli Antosik",
-            "role": {
-              "en": "In-Game Computer Programmer & Platform Compatibility Tester",
-              "pl": "Programista Komputera Wenątrz Gry i Tester Zgodności Platformy Docelowej"
-            },
-            "url": "https://github.com/Muppetsg2"
-          },
-          {
-            "name": "Bartłomiej Włodarski",
-            "role": {
-              "en": "Documents & Enviroment Programmer & Game Designer",
-              "pl": "Programista Dokumentów i Środowiska i Designer Gry"
-            },
-            "url": "https://github.com/BartlomiejWlodarski"
-          },
-          {
-            "name": "Maja Ochmańska",
-            "role": {
-              "en": "Game Designer, 2D & 3D Artist",
-              "pl": "Designer Gry, 2D i 3D Artystka"
-            },
-            "url": "https://github.com/Maikomi"
-          }
-        ]
-      },
-      "myRole": {
-        "items": [
-          {
-            "en": "In-Game Stamp",
-            "pl": "Stemple Wewnątrz Gry"
-          },
-          {
-            "en": "Adjusting 3D Objects with Hands",
-            "pl": "Dopasowywanie Objektów 3D do Rąk"
-          },
-          {
-            "en": "In-Game Shredder",
-            "pl": "Niszczarka Wewnątrz Gry"
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "dog-of-war",
@@ -696,8 +1037,16 @@
         "pl": "Pies przeklęty na wieczne cierpienie pokłada ostatnią nadzieję w Gwieździe Życzeń — jedynej szansie, by wreszcie uwolnić się od męki."
       },
       "description": {
-        "en": "Dog Of War is a **roguelike** made during *Komiks Game Jam 2k26*. Cursed to suffer for all eternity, a dog turns to the Wishing Star as his last hope of finally breaking free from the torment. This is a roguelike game featuring procedurally generated levels. Your goal is to help the dog collect all three pieces of the Wishing Star and finally free himself from his curse. Made for Komiks Game Jam 2k26, based on the theme \"Per Aspera Ad Astra\".",
-        "pl": "Dog Of War to **roguelike** stworzony podczas *Komiks Game Jam 2k26*. Pies przeklęty na wieczne cierpienie szuka ratunku w Gwieździe Życzeń, licząc, że wreszcie uwolni się od swojej męki. To gra typu roguelike z proceduralnie generowanymi poziomami. Twoim celem jest pomóc psu zebrać wszystkie trzy fragmenty Gwiazdy Życzeń i ostatecznie uwolnić się od klątwy. Gra powstała na potrzeby Komiks Game Jam 2k26, w oparciu o temat „Per Aspera Ad Astra”."
+        "en": [
+          "**Dog Of War** is a **roguelike** made during *Komiks Game Jam 2k26*.",
+          "Cursed to suffer for all eternity, a dog turns to the Wishing Star as his last hope",
+          "of finally breaking free from the torment — collect its shards to make the wish come true."
+        ],
+        "pl": [
+          "**Dog Of War** to **roguelike** stworzony podczas *Komiks Game Jam 2k26*.",
+          "Pies przeklęty na wieczne cierpienie pokłada ostatnią nadzieję w Gwieździe Życzeń,",
+          "która może go wreszcie uwolnić od męki — zbierz jej odłamki, aby życzenie się spełniło."
+        ]
       },
       "tags": [
         "Unity",
@@ -719,6 +1068,49 @@
           "type": "youtube",
           "label": "Trailer",
           "url": "https://youtu.be/KrlpQl53lzg"
+        }
+      ],
+      "team": {
+        "id": "psy-apokalipsy",
+        "members": [
+          {
+            "person": "patryk-antosik",
+            "role": {
+              "en": "Game designer & gameplay programmer",
+              "pl": "Projektant gry i programista rozgrywki"
+            }
+          },
+          {
+            "person": "marceli-antosik",
+            "role": {
+              "en": "Procedural generation programmer & level designer",
+              "pl": "Programista generowania proceduralnego i projektant poziomów"
+            }
+          },
+          {
+            "person": "mikolaj-kisiel",
+            "role": {
+              "en": "AI programmer",
+              "pl": "Programista SI"
+            }
+          },
+          {
+            "person": "konrad-karwowski",
+            "role": {
+              "en": "2D artist",
+              "pl": "Artysta 2D"
+            }
+          }
+        ]
+      },
+      "whatIDid": [
+        {
+          "en": "Player movement",
+          "pl": "Poruszanie się postaci"
+        },
+        {
+          "en": "Collecting the star shards",
+          "pl": "Zbieranie odłamków gwiazdy"
         }
       ],
       "gallery": [
@@ -751,7 +1143,7 @@
           "src": "images/projects/dog-of-war/path-with-vines.webp",
           "caption": {
             "en": "Path with Vines",
-            "pl": "Ścieżka z Pnączami"
+            "pl": "Ścieżka z pnączami"
           }
         },
         {
@@ -765,72 +1157,17 @@
           "src": "images/projects/dog-of-war/star-piece.webp",
           "caption": {
             "en": "Star Piece",
-            "pl": "Fragment Gwiazdy"
+            "pl": "Fragment gwiazdy"
           }
         },
         {
           "src": "images/projects/dog-of-war/health-loss.webp",
           "caption": {
             "en": "Health Loss",
-            "pl": "Utrata Zdrowia"
+            "pl": "Utrata zdrowia"
           }
         }
-      ],
-      "team": {
-        "name": "Psy Apokalipsy",
-        "url": "",
-        "description": {
-          "en": "Team created to make game on Komiks Game Jam 2k26.",
-          "pl": "Zespół stworzony w celu stworzenia gry na Komiks Game Jam 2k26."
-        },
-        "members": [
-          {
-            "name": "Patryk Antosik",
-            "role": {
-              "en": "Game Designer & Gameplay Programmer",
-              "pl": "Designer Gry i Programista Rozgrywki"
-            },
-            "url": "https://github.com/MAIPA01",
-            "me": true
-          },
-          {
-            "name": "Marceli Antosik",
-            "role": {
-              "en": "Procedular Generation Programmer & Level Designer",
-              "pl": "Programista Generowania Procedularnego i Designer Poziomów"
-            },
-            "url": "https://github.com/Muppetsg2"
-          },
-          {
-            "name": "Mikołaj Kisiel",
-            "role": {
-              "en": "AI Programmer",
-              "pl": "Programista SI"
-            },
-            "url": "https://github.com/Westesc"
-          },
-          {
-            "name": "Konrad Karwowski",
-            "role": {
-              "en": "2D Artist",
-              "pl": "Artysta 2D"
-            },
-            "url": "https://www.linkedin.com/in/konradkarvovski1507123456/"
-          }
-        ]
-      },
-      "myRole": {
-        "items": [
-          {
-            "en": "Player Movement",
-            "pl": "Poruszanie się postacji"
-          },
-          {
-            "en": "Star Pieces Collecting",
-            "pl": "Zbieranie Odłamów Gwiazdy"
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "there-are-signs",
@@ -841,12 +1178,26 @@
       "iconFit": "contain",
       "banner": "images/projects/there-are-signs/cover.webp",
       "summary": {
-        "en": "A logic platformer where signs are more than decoration — they're tools for changing the world and the way you move through it.",
-        "pl": "Logiczna platformówka, w której znaki to coś więcej niż dekoracja — to narzędzia do zmieniania świata i sposobu poruszania się po nim."
+        "en": "A logic platformer where signs are more than decoration — they're tools that change the world and the way you move.",
+        "pl": "Logiczna platformówka, w której znaki to coś więcej niż dekoracja — to narzędzia, które zmieniają świat i sposób poruszania się."
       },
       "description": {
-        "en": "There Are Signs is a **logic-based platformer** made during *Komiks Game Jam 2k25*. Signs are more than just decorations — they're tools you can use to manipulate the environment and change how you move through the world. Use your kicks to take down enemies and overcome challenges as you explore Japanese streets and school grounds. Defeat your rivals and take on the school's toughest students to climb the social ladder and become popular! Made for Komiks Game Jam 2k25, based on the theme \"There's No Accidents, Only Signs\".",
-        "pl": "There Are Signs to **logiczna gra platformowa** stworzona podczas *Komiks Game Jam 2k25*. Znaki są tu czymś więcej niż dekoracją — to narzędzia, dzięki którym możesz manipulować otoczeniem i zmieniać sposób poruszania się po świecie gry. Wykorzystuj kopnięcia, by pokonywać przeciwników i mierzyć się z wyzwaniami, przemierzając japońskie ulice oraz teren szkoły. Zwyciężaj w starciach z rywalami i staw czoła najtwardszym uczniom, aby wspiąć się po szczeblach drabiny społecznej i zyskać popularność! Stworzono na potrzeby Komiks Game Jam 2k25, w oparciu o temat „Nie ma przypadków, są tylko znaki”."
+        "en": [
+          "**There Are Signs** is a **logic platformer** made in Unity during *Komiks Game Jam 2k25*,",
+          "whose theme was *\"There are no accidents, only signs\"*.",
+          "",
+          "Signs are more than decorations — you use them to manipulate the environment and your movement.",
+          "Kick your way through enemies on Japanese streets and in a school, beat the elites",
+          "and become the most popular student."
+        ],
+        "pl": [
+          "**There Are Signs** to **logiczna gra platformowa** zrobiona w Unity podczas *Komiks Game Jam 2k25*,",
+          "którego tematem było *„Nie ma przypadków, są tylko znaki”*.",
+          "",
+          "Znaki są tu czymś więcej niż dekoracją — za ich pomocą zmieniasz otoczenie i sposób poruszania się.",
+          "Pokonuj przeciwników kopniakami na japońskich ulicach i w szkole, rozpraw się z elitą",
+          "i zostań najpopularniejszym uczniem."
+        ]
       },
       "tags": [
         "Unity",
@@ -868,6 +1219,53 @@
           "type": "youtube",
           "label": "Trailer",
           "url": "https://youtu.be/Ybg7Kx91Qes"
+        }
+      ],
+      "team": {
+        "id": "drop-table",
+        "members": [
+          {
+            "person": "patryk-antosik",
+            "role": {
+              "en": "Level designer & gameplay programmer",
+              "pl": "Projektant poziomów i programista rozgrywki"
+            }
+          },
+          {
+            "person": "marceli-antosik",
+            "role": {
+              "en": "UI designer & narrative system programmer",
+              "pl": "Projektant UI i programista systemu narracji"
+            }
+          },
+          {
+            "person": "bartlomiej-wlodarski",
+            "role": {
+              "en": "Narrative & game designer, gameplay programmer",
+              "pl": "Projektant narracji i gry, programista rozgrywki"
+            }
+          },
+          {
+            "person": "maja-ochmanska",
+            "role": {
+              "en": "Game designer & 2D artist",
+              "pl": "Projektantka gry i artystka 2D"
+            }
+          }
+        ]
+      },
+      "whatIDid": [
+        {
+          "en": "Player movement",
+          "pl": "Poruszanie się postaci"
+        },
+        {
+          "en": "Level and puzzle design",
+          "pl": "Projekty poziomów i łamigłówek"
+        },
+        {
+          "en": "Sign mechanics",
+          "pl": "Mechaniki znaków"
         }
       ],
       "gallery": [
@@ -903,66 +1301,7 @@
           "src": "images/projects/there-are-signs/nerd.webp",
           "caption": "Nerd"
         }
-      ],
-      "team": {
-        "name": "Drop Table",
-        "url": "",
-        "description": {
-          "en": "Team created to make a VR game for ZTGK 2025.",
-          "pl": "Zespół stworzony by stworzyć grę VR na ZTGK 2025."
-        },
-        "members": [
-          {
-            "name": "Patryk Antosik",
-            "role": {
-              "en": "Level Designer & Gameplay Programmer",
-              "pl": "Designer Poziomów i Programista Rozgrywki"
-            },
-            "url": "https://github.com/MAIPA01",
-            "me": true
-          },
-          {
-            "name": "Marceli Antosik",
-            "role": {
-              "en": "UI Designer & Narrative System Programmer",
-              "pl": "Designer UI i Programista Systemu Narracji"
-            },
-            "url": "https://github.com/Muppetsg2"
-          },
-          {
-            "name": "Bartłomiej Włodarski",
-            "role": {
-              "en": "Narrative Designer, Game Designer & Gameplay Programmer",
-              "pl": "Designer Narracji, Desginer Gry i Programista Rozgrywki"
-            },
-            "url": "https://github.com/BartlomiejWlodarski"
-          },
-          {
-            "name": "Maja Ochmańska",
-            "role": {
-              "en": "Game Designer & 2D Artist",
-              "pl": "Designer Gry i 2D Artystka"
-            },
-            "url": "https://github.com/Maikomi"
-          }
-        ]
-      },
-      "myRole": {
-        "items": [
-          {
-            "en": "Player Movement",
-            "pl": "Poruszanie się postaci"
-          },
-          {
-            "en": "Designed Levels & Puzzles",
-            "pl": "Zaprojektowanie Poziomów i Łamigłówek"
-          },
-          {
-            "en": "Signs Mechanics",
-            "pl": "Mechanizmy Znaków"
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "bubble-hunt",
@@ -977,8 +1316,20 @@
         "pl": "Pierwszoosobowa gra akcji: utknąłeś w jaskini z ogromnym potworem, a jedyna droga ucieczki to nakarmić go jego ulubionym przysmakiem — robakami."
       },
       "description": {
-        "en": "Bubble Hunt is a **first-person action game** made in Unreal Engine (Blueprints) during *Global Game Jam 2025*. You find yourself trapped in a cave with a giant monster, and there's only one way to escape: fulfil the monster's wish by collecting bugs — its favourite snack! Armed with a bubble gun, you'll need to trap bugs inside giant bubbles and deliver them to your hungry captor. But it's not going to be easy! The bugs leave a nasty mess that slows you down, they're not exactly friendly, and the monster isn't known for its patience. Can you fulfill the monster's appetite before you become its next meal? Made for Global Game Jam 2025, based on the theme \"Bubbles\".",
-        "pl": "Bubble Hunt to **pierwszoosobowa gra akcji** stworzona w Unreal Engine (Blueprinty) podczas *Global Game Jam 2025*. Zostajesz uwięziony w jaskini z ogromnym potworem i masz tylko jeden sposób na ucieczkę: spełnić jego życzenie, zbierając robaki — jego ulubiony przysmak! Wyposażony w pistolet do baniek, musisz chwytać owady w gigantyczne bańki i dostarczać je swojemu głodnemu porywaczowi. Nie będzie to jednak łatwe! Owady zostawiają po sobie paskudny śluz, który cię spowalnia, same w sobie nie należą do zbyt przyjaznych, a potwór nie słynie z cierpliwości. Czy zdołasz zaspokoić apetyt potwora, zanim sam staniesz się jego kolejnym posiłkiem? Gra stworzona na potrzeby Global Game Jam 2025, w oparciu o temat przewodni „Bańki” (ang. „Bubbles”)."
+        "en": [
+          "**Bubble Hunt** is a **first-person action game** made in Unreal Engine (Blueprints) during",
+          "*Global Game Jam 2025*, whose theme was *Bubble*.",
+          "",
+          "You're trapped in a cave by a giant monster, and there's only one way out: fulfil its wish",
+          "by collecting bugs — its favourite snack. Can you do it before it decides to eat you instead?"
+        ],
+        "pl": [
+          "**Bubble Hunt** to **pierwszoosobowa gra akcji** stworzona w Unreal Engine (Blueprinty) podczas",
+          "*Global Game Jam 2025*, którego tematem było *Bubble*.",
+          "",
+          "Ogromny potwór więzi cię w jaskini, a jedyna droga ucieczki to spełnić jego życzenie",
+          "i nazbierać robaków — jego ulubionego przysmaku. Zdążysz, zanim postanowi zjeść ciebie?"
+        ]
       },
       "tags": [
         "Unreal Engine",
@@ -998,6 +1349,49 @@
           "url": "https://vimeo.com/1050905531?fl=pl&fe=sh"
         }
       ],
+      "team": {
+        "id": "crab-club",
+        "members": [
+          {
+            "person": "patryk-antosik",
+            "role": {
+              "en": "AI & gameplay programmer",
+              "pl": "Programista SI i rozgrywki"
+            }
+          },
+          {
+            "person": "marceli-antosik",
+            "role": {
+              "en": "UI designer & gameplay programmer",
+              "pl": "Projektant UI i programista rozgrywki"
+            }
+          },
+          {
+            "person": "maciej-poncyleusz",
+            "role": {
+              "en": "VFX artist & gameplay programmer",
+              "pl": "Artysta VFX i programista rozgrywki"
+            }
+          },
+          {
+            "person": "agata-granosik",
+            "role": {
+              "en": "2D & 3D artist",
+              "pl": "Artystka 2D i 3D"
+            }
+          }
+        ]
+      },
+      "whatIDid": [
+        {
+          "en": "Bug AI",
+          "pl": "SI robaków"
+        },
+        {
+          "en": "Bug creatures — gameplay implementation",
+          "pl": "Robaki — implementacja w rozgrywce"
+        }
+      ],
       "gallery": [
         {
           "src": "images/projects/bubble-hunt/cover.webp",
@@ -1009,15 +1403,15 @@
         {
           "src": "images/projects/bubble-hunt/enemy-in-bubble.webp",
           "caption": {
-            "en": "Enemy in Bubble",
-            "pl": "Przeciwnik w Bańce"
+            "en": "Enemy in a bubble",
+            "pl": "Przeciwnik w bańce"
           }
         },
         {
           "src": "images/projects/bubble-hunt/bug.webp",
           "caption": {
             "en": "Bug",
-            "pl": "Robal"
+            "pl": "Robak"
           }
         },
         {
@@ -1031,65 +1425,10 @@
           "src": "images/projects/bubble-hunt/eye-of-evil-crab.webp",
           "caption": {
             "en": "Eye of Evil Crab",
-            "pl": "Oko Złego Kraba"
+            "pl": "Oko złego kraba"
           }
         }
-      ],
-      "team": {
-        "name": "Crab Club",
-        "url": "",
-        "description": {
-          "en": "Team created to make game for Global Game Jam 2025.",
-          "pl": "Zespół stworzony by stworzyć grę na Global Game Jam 2025."
-        },
-        "members": [
-          {
-            "name": "Patryk Antosik",
-            "role": {
-              "en": "AI & Gameplay Programmer",
-              "pl": "Programista SI i Rozgrywki"
-            },
-            "url": "https://github.com/MAIPA01",
-            "me": true
-          },
-          {
-            "name": "Marceli Antosik",
-            "role": {
-              "en": "UI Designer & Gameplay Programmer",
-              "pl": "Projektant UI i Programista Rozgrywki"
-            },
-            "url": "https://github.com/Muppetsg2"
-          },
-          {
-            "name": "Maciej Poncyleusz",
-            "role": {
-              "en": "VFX Artist & Gameplay Programmer",
-              "pl": "Artysta VFX i Programista Rozgrywki"
-            },
-            "url": "https://github.com/Merloran"
-          },
-          {
-            "name": "Agata Granosik",
-            "role": {
-              "en": "2D & 3D Artist",
-              "pl": "Artystka 2D i 3D"
-            },
-            "url": "https://www.linkedin.com/in/agata-granosik/"
-          }
-        ]
-      },
-      "myRole": {
-        "items": [
-          {
-            "en": "Bugs AI",
-            "pl": "SI Robaków"
-          },
-          {
-            "en": "Bugs",
-            "pl": "Robaki"
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "wind-rider",
@@ -1104,8 +1443,26 @@
         "pl": "Logiczna platformówka, w której sterujesz małym papierowym samolotem potrafiącym wykorzystać wiatr do przesuwania obiektów."
       },
       "description": {
-        "en": "Wind Rider is a **puzzle platformer** in which you take control of a small paper plane with the power to harness the wind and move objects around. Navigate enclosed mazes, overcome tricky obstacles, outsmart enemies and find your way to the exit. Not every path will be easy, and you'll probably hit a few walls along the way. Keep experimenting, find creative solutions, and don't give up until you reach your goal!\n\nCreated for *ZTGK 2023 – Game Design* and ported to mobile for *ZTGK 2024 – Mobile*. For this project I also built the [Vertex Map Editor](project.html?id=vertex-map-editor).",
-        "pl": "Wind Rider to **logiczna gra platformowa**, w której przejmujesz kontrolę nad małym papierowym samolotem potrafiącym wykorzystać siłę wiatru do przesuwania obiektów. Przemierzaj zamknięte labirynty, pokonuj podchwytliwe przeszkody, przechytrz przeciwników i znajdź drogę do wyjścia. Nie każda droga będzie łatwa; prawdopodobnie nie raz napotkasz na swojej drodze przeszkody. Eksperymentuj, szukaj kreatywnych rozwiązań i nie poddawaj się, dopóki nie osiągniesz swojego celu!\n\nGra powstała na zajęciach *ZTGK 2023 – Game Design*, a na *ZTGK 2024 – Mobile* trafiła na urządzenia mobilne. Na potrzeby projektu stworzyłem też [Vertex Map Editor](project.html?id=vertex-map-editor)."
+        "en": [
+          "**Wind Rider** is a **puzzle platformer** made in Unity: you control a small paper plane",
+          "with the power to harness the wind and move objects around.",
+          "",
+          "Navigate enclosed mazes, overcome tricky obstacles and outsmart enemies to find the exit.",
+          "Use the wind to move objects, clear your path and solve puzzles — and expect to hit a few walls on the way.",
+          "",
+          "Created for *ZTGK 2023 – Game Design* and ported to mobile for *ZTGK 2024 – Mobile*.",
+          "For this project I also built the [Vertex Map Editor](project.html?id=vertex-map-editor)."
+        ],
+        "pl": [
+          "**Wind Rider** to **logiczna platformówka** zrobiona w Unity: sterujesz małym papierowym samolotem,",
+          "który potrafi wykorzystać siłę wiatru do przesuwania obiektów.",
+          "",
+          "Przemierzaj zamknięte labirynty, pokonuj podchwytliwe przeszkody i przechytrz przeciwników, aby znaleźć wyjście.",
+          "Wiatrem przesuwasz przedmioty, oczyszczasz drogę i rozwiązujesz łamigłówki — po drodze pewnie nie raz odbijesz się od ściany.",
+          "",
+          "Gra powstała na zajęciach *ZTGK 2023 – Game Design*, a na *ZTGK 2024 – Mobile* trafiła na urządzenia mobilne.",
+          "Na potrzeby projektu stworzyłem też [Vertex Map Editor](project.html?id=vertex-map-editor)."
+        ]
       },
       "tags": [
         "Unity",
@@ -1125,6 +1482,64 @@
         {
           "type": "github",
           "url": "https://github.com/MatRyb/Wind-Knight"
+        }
+      ],
+      "team": {
+        "id": "the-long-cat",
+        "members": [
+          {
+            "person": "patryk-antosik",
+            "role": {
+              "en": "Gameplay & tools programmer",
+              "pl": "Programista rozgrywki i narzędzi"
+            }
+          },
+          {
+            "person": "marceli-antosik",
+            "role": {
+              "en": "UI designer, gameplay & tools programmer",
+              "pl": "Projektant UI, programista rozgrywki i narzędzi"
+            }
+          },
+          {
+            "person": "jakub-biniek",
+            "role": {
+              "en": "Game & level designer",
+              "pl": "Projektant gry i poziomów"
+            }
+          },
+          {
+            "person": "mateusz-rybicki",
+            "role": {
+              "en": "Gameplay programmer",
+              "pl": "Programista rozgrywki"
+            }
+          },
+          {
+            "person": "katarzyna-tyszka",
+            "role": {
+              "en": "2D artist",
+              "pl": "Artystka 2D"
+            }
+          }
+        ]
+      },
+      "whatIDid": [
+        {
+          "en": "Player movement",
+          "pl": "Poruszanie się postaci"
+        },
+        {
+          "en": "Enemy that drops objects",
+          "pl": "Przeciwnik zrzucający przedmioty"
+        },
+        {
+          "en": "Paper-folding puzzle",
+          "pl": "Łamigłówka ze składaniem papieru"
+        },
+        {
+          "en": "[Vertex Map Editor](project.html?id=vertex-map-editor) — tool for level backgrounds",
+          "pl": "[Vertex Map Editor](project.html?id=vertex-map-editor) — narzędzie do teł poziomów"
         }
       ],
       "gallery": [
@@ -1157,108 +1572,41 @@
           "src": "images/projects/wind-rider/paper-squid.webp",
           "caption": {
             "en": "Paper Squid Enemy",
-            "pl": "Papierowa Kałamarnica"
+            "pl": "Papierowa kałamarnica"
           }
         },
         {
           "src": "images/projects/wind-rider/pause-menu.webp",
           "caption": {
             "en": "Pause Menu",
-            "pl": "Menu Pauzy"
+            "pl": "Menu pauzy"
           }
         },
         {
           "src": "images/projects/wind-rider/death-screen.webp",
           "caption": {
             "en": "Death Screen",
-            "pl": "Ekran Śmierci"
+            "pl": "Ekran śmierci"
           }
         },
         {
           "src": "images/projects/wind-rider/fold-paper-puzzle.webp",
           "caption": {
             "en": "Fold Paper Puzzle",
-            "pl": "Łamigłówka ze Składaniem Papieru"
+            "pl": "Łamigłówka ze składaniem papieru"
           }
         },
         {
           "src": "images/projects/wind-rider/end-screen.webp",
           "caption": {
             "en": "End Screen",
-            "pl": "Ekran Końcowy"
+            "pl": "Ekran końcowy"
           }
         }
       ],
       "related": [
         "vertex-map-editor"
-      ],
-      "team": {
-        "name": "The Long Cat",
-        "url": "https://thelongcat.itch.io/",
-        "description": {
-          "en": "Team created to make game for ZTGK 2023. Participated also in 2024 edition.",
-          "pl": "Zespół stworzony by stworzyć grę na ZTGK 2023. Wziął udział również w edycji 2024."
-        },
-        "members": [
-          {
-            "name": "Patryk Antosik",
-            "role": {
-              "en": "Gameplay & Tools Programmer",
-              "pl": "Programista Rozgrywki i Narzędzi"
-            },
-            "url": "https://github.com/MAIPA01",
-            "me": true
-          },
-          {
-            "name": "Marceli Antosik",
-            "role": {
-              "en": "UI Designer, Gameplay & Tools Programmer",
-              "pl": "Projektant UI i Rozgrywki i Programist Narzędzi"
-            },
-            "url": "https://github.com/Muppetsg2"
-          },
-          {
-            "name": "Jakub Biniek",
-            "role": {
-              "en": "Game & Level Designer",
-              "pl": "Projektant Gry i Poziomów"
-            },
-            "url": "https://github.com/adanadhar"
-          },
-          {
-            "name": "Mateusz Rybicki",
-            "role": {
-              "en": "Gameplay Programmer",
-              "pl": "Programista Rozgrywki"
-            },
-            "url": "https://github.com/MatRyb"
-          },
-          {
-            "name": "Katarzyna Tyszka",
-            "role": {
-              "en": "2D Artist",
-              "pl": "Artystka 2D"
-            },
-            "url": "https://github.com/KatieT6"
-          }
-        ]
-      },
-      "myRole": {
-        "items": [
-          {
-            "en": "Throwing Enemy",
-            "pl": "Zrzucającego Przeciwnika"
-          },
-          {
-            "en": "Player Movement",
-            "pl": "Poruszanie się Postaci"
-          },
-          {
-            "en": "Fold Paper Puzzle",
-            "pl": "Łamigłówka ze Składaniem Papieru"
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "calculator-rpg",
@@ -1267,14 +1615,19 @@
       "year": "2020",
       "icon": "images/projects/calculator-rpg/icon.webp",
       "iconFit": "contain",
-      "banner": "",
       "summary": {
         "en": "A virus pulls you inside your own device — and the only weapon you have is the calculator.",
         "pl": "Wirus wciąga cię do wnętrza twojego urządzenia, a jedyną bronią, jaką masz, jest kalkulator."
       },
       "description": {
-        "en": "Calculator RPG is a mobile **RPG** for Android. A virus transports you into your own device, and the only way to fight back is with a calculator.",
-        "pl": "Calculator RPG to mobilna **gra RPG** na Androida. Wirus przenosi cię do wnętrza twojego urządzenia, a jedynym sposobem na walkę jest kalkulator."
+        "en": [
+          "Calculator RPG is a mobile **RPG** for Android. A virus transports you into your own device, and the",
+          "only way to fight back is with a calculator."
+        ],
+        "pl": [
+          "Calculator RPG to mobilna **gra RPG** na Androida. Wirus przenosi cię do wnętrza twojego urządzenia,",
+          "a jedynym sposobem na walkę jest kalkulator."
+        ]
       },
       "tags": [
         "Unity",
@@ -1312,8 +1665,28 @@
         "pl": "Prosta gra imprezowa, która rozkręci każde spotkanie — idealna do grania ze znajomymi albo po prostu dla dobrej zabawy."
       },
       "description": {
-        "en": "Marry, Kiss & Kill is a simple **party game** for Android that brings some fun to your next gathering — whether you're playing with friends or just looking for a good laugh. There are three ways to play: ❤Enter Names & Pick – for groups of two or more. ❤Let the Phone Decide – simply let your phone make the choice, with any number of players. ❤Choose from Celebrities – let the phone pick from a selection of famous people. The app is all about having fun together, sharing laughs, and maybe revealing a secret or two. Your choices are never saved or sent anywhere, so you can play with complete privacy!\n\nIt's my most popular game, with more than **15 000 downloads** on Google Play.",
-        "pl": "Marry, Kiss & Kill to prosta **gra imprezowa** na Androida, która wprowadzi trochę zabawy na każde spotkanie — niezależnie od tego, czy grasz ze znajomymi, czy po prostu szukasz okazji do śmiechu. Dostępne są trzy sposoby gry: ❤Wpisz imiona i wybierz – dla grup dwuosobowych lub liczniejszych. ❤Niech zdecyduje telefon – pozwól urządzeniu dokonać wyboru; liczba graczy jest dowolna. ❤Wybierz spośród celebrytów – niech telefon wskaże osobę z przygotowanej listy znanych postaci. Aplikacja służy przede wszystkim wspólnej zabawie, śmiechowi, a może nawet ujawnieniu jakiegoś sekretu! Twoje wybory nie są nigdzie zapisywane ani przesyłane, więc możesz grać z zachowaniem pełnej prywatności!\n\nTo moja najpopularniejsza gra — ponad **15 000 pobrań** w Google Play."
+        "en": [
+          "Marry, Kiss & Kill is a simple **party game** for Android that brings some fun to your next",
+          "gathering — whether you're playing with friends or just looking for a good laugh. There are three",
+          "ways to play: ❤Enter Names & Pick – for groups of two or more. ❤Let the Phone Decide – simply let",
+          "your phone make the choice, with any number of players. ❤Choose from Celebrities – let the phone",
+          "pick from a selection of famous people. The app is all about having fun together, sharing laughs,",
+          "and maybe revealing a secret or two. Your choices are never saved or sent anywhere, so you can play",
+          "with complete privacy!",
+          "",
+          "It's my most popular game, with more than **15 000 downloads** on Google Play."
+        ],
+        "pl": [
+          "Marry, Kiss & Kill to prosta **gra imprezowa** na Androida, która wprowadzi trochę zabawy na każde",
+          "spotkanie — niezależnie od tego, czy grasz ze znajomymi, czy po prostu szukasz okazji do śmiechu.",
+          "Dostępne są trzy sposoby gry: ❤Wpisz imiona i wybierz – dla grup dwuosobowych lub liczniejszych.",
+          "❤Niech zdecyduje telefon – pozwól urządzeniu dokonać wyboru; liczba graczy jest dowolna. ❤Wybierz",
+          "spośród celebrytów – niech telefon wskaże osobę z przygotowanej listy znanych postaci. Aplikacja",
+          "służy przede wszystkim wspólnej zabawie, śmiechowi, a może nawet ujawnieniu jakiegoś sekretu! Twoje",
+          "wybory nie są nigdzie zapisywane ani przesyłane, więc możesz grać z zachowaniem pełnej prywatności!",
+          "",
+          "To moja najpopularniejsza gra — ponad **15 000 pobrań** w Google Play."
+        ]
       },
       "tags": [
         "Android",
@@ -1321,6 +1694,55 @@
         "C#",
         "Party Game",
         "Google Play"
+      ],
+      "links": [
+        {
+          "type": "playstore",
+          "url": "https://play.google.com/store/apps/details?id=com.MAIPA.INCandMuppetsg2.MKandK"
+        },
+        {
+          "type": "web",
+          "label": {
+            "en": "Privacy policy",
+            "pl": "Polityka prywatności"
+          },
+          "url": "https://muppetsg2.github.io/privacy.html?id=marry-kiss-kill"
+        }
+      ],
+      "team": {
+        "id": "lava-lamp-games",
+        "name": "MAIPA.INC & Muppetsg2",
+        "logo": "images/teams/lava-lamp-games/logo-m-and-m.png",
+        "members": [
+          {
+            "person": "patryk-antosik",
+            "role": {
+              "en": "Game designer & gameplay programmer",
+              "pl": "Projektant gry i programista rozgrywki"
+            }
+          },
+          {
+            "person": "marceli-antosik",
+            "role": {
+              "en": "UI designer, VFX artist & data curator",
+              "pl": "Projektant UI, artysta VFX i kurator danych"
+            }
+          }
+        ]
+      },
+      "whatIDid": [
+        {
+          "en": "Saving, editing and creating custom sets",
+          "pl": "Zapisywanie, edycja i tworzenie własnych zestawów"
+        },
+        {
+          "en": "The marry, kiss or kill mechanic",
+          "pl": "Mechanika wyboru: poślub, pocałuj, zabij"
+        },
+        {
+          "en": "Displaying, filtering and selecting categories",
+          "pl": "Wyświetlanie, filtrowanie i wybór kategorii"
+        }
       ],
       "gallery": [
         {
@@ -1345,14 +1767,14 @@
           "src": "images/projects/marry-kiss-and-kill/game-modes.webp",
           "caption": {
             "en": "Game Modes",
-            "pl": "Tryby Gry"
+            "pl": "Tryby gry"
           }
         },
         {
           "src": "images/projects/marry-kiss-and-kill/premade-categories.webp",
           "caption": {
             "en": "Premade Categories",
-            "pl": "Gotowe Kategorie"
+            "pl": "Gotowe kategorie"
           }
         },
         {
@@ -1366,81 +1788,24 @@
           "src": "images/projects/marry-kiss-and-kill/filling-names.webp",
           "caption": {
             "en": "Filling Names",
-            "pl": "Wypełnianie Imion"
+            "pl": "Wypełnianie imion"
           }
         },
         {
           "src": "images/projects/marry-kiss-and-kill/random-choosing.webp",
           "caption": {
             "en": "Random Choosing",
-            "pl": "Losowe Wybieranie"
+            "pl": "Losowe wybieranie"
           }
         },
         {
           "src": "images/projects/marry-kiss-and-kill/choose-action-view.webp",
           "caption": {
             "en": "Choose Action View",
-            "pl": "Widok Wyboru Akcji"
+            "pl": "Widok wyboru akcji"
           }
         }
-      ],
-      "links": [
-        {
-          "type": "playstore",
-          "url": "https://play.google.com/store/apps/details?id=com.MAIPA.INCandMuppetsg2.MKandK"
-        },
-        {
-          "type": "web",
-          "label": {
-            "en": "Privacy policy",
-            "pl": "Polityka prywatności"
-          },
-          "url": "https://muppetsg2.github.io/privacy.html?id=marry-kiss-kill"
-        }
-      ],
-      "team": {
-        "name": "Lava Lamp Studio",
-        "description": {
-          "en": "Team of two brothers creating games.",
-          "pl": "Zespół dwóch braci robiących gry."
-        },
-        "url": "https://play.google.com/store/apps/dev?id=9148978594936176812",
-        "members": [
-          {
-            "name": "Patryk Antosik",
-            "role": {
-              "en": "Game Designer & Gameplay Programmer",
-              "pl": "Projektant Gry i Programista Rozgrywki"
-            },
-            "url": "https://github.com/MAIPA01",
-            "me": true
-          },
-          {
-            "name": "Marceli Antosik",
-            "role": {
-              "en": "UI Designer, VFX Artist & Data Curator",
-              "pl": "Projektant UI, Artysta VFX i Kurator Danych"
-            },
-            "url": "https://github.com/Muppetsg2"
-          }
-        ]
-      },
-      "myRole": {
-        "items": [
-          {
-            "en": "System of Saving, Editing and Creating own Sets.",
-            "pl": "System Zapisywania, Edytowania i Tworzenia Własnych Zbiorów."
-          },
-          {
-            "en": "Killing, Marring and Kissing Mechanic.",
-            "pl": "Mechanika Zabijania, Pobierania się i Całowania."
-          },
-          {
-            "en": "Displaying, Filtering, and Selecting Categories.",
-            "pl": "Wyświetlanie, Filtrowanie i Wybieranie Kategori."
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "diler",
@@ -1455,15 +1820,27 @@
         "pl": "Pełna akcji kosmiczna strzelanka — zasiądź za sterami statku i rozpraw się z dłużnikami dilera."
       },
       "description": {
-        "en": "Get behind the controls of a spaceship and take down the dealer's debtors in this action-packed **space shooter**! Choose from 6 different spaceships and help the dealer settle some unfinished business. The game features two modes: ★Story Mode – Uncover the full story, solve the mystery of the last 7week, and help the dealer collect the debts he's owed. ★Endless Mode – Beat your own high scores or compete with your friends. Survive for as long as you can and see how far you can go!",
-        "pl": "Zasiądź za sterami statku kosmicznego i rozpraw się z dłużnikami dilera w tej pełnej akcji **kosmicznej strzelance**! Wybierz jeden z 6 statków i pomóż dilerowi załatwić niedokończone sprawy. Gra oferuje dwa tryby: ★Tryb fabularny – poznaj pełną historię, rozwiąż zagadkę ostatnich 7 tygodni i pomóż windykatorowi odzyskać należne mu długi. ★Tryb nieskończony – pobijaj własne rekordy lub rywalizuj ze znajomymi. Przetrwaj jak najdłużej i sprawdź, jak daleko uda Ci się zajść!"
+        "en": [
+          "Get behind the controls of a spaceship and take down the dealer's debtors in this action-packed",
+          "**space shooter**! Choose from 6 different spaceships and help the dealer settle some unfinished",
+          "business. The game features two modes: ★Story Mode – Uncover the full story, solve the mystery of",
+          "the last 7week, and help the dealer collect the debts he's owed. ★Endless Mode – Beat your own high",
+          "scores or compete with your friends. Survive for as long as you can and see how far you can go!"
+        ],
+        "pl": [
+          "Zasiądź za sterami statku kosmicznego i rozpraw się z dłużnikami dilera w tej pełnej akcji",
+          "**kosmicznej strzelance**! Wybierz jeden z 6 statków i pomóż dilerowi załatwić niedokończone sprawy.",
+          "Gra oferuje dwa tryby: ★Tryb fabularny – poznaj pełną historię, rozwiąż zagadkę ostatnich 7 tygodni",
+          "i pomóż windykatorowi odzyskać należne mu długi. ★Tryb nieskończony – pobijaj własne rekordy lub",
+          "rywalizuj ze znajomymi. Przetrwaj jak najdłużej i sprawdź, jak daleko uda Ci się zajść!"
+        ]
       },
       "tags": [
         "Unity",
         "C#",
         {
           "en": "Space Shooter",
-          "pl": "Kosmiczna Strzelanka"
+          "pl": "Kosmiczna strzelanka"
         },
         "Android",
         "Google Play"
@@ -1485,6 +1862,37 @@
           "type": "youtube",
           "label": "Trailer",
           "url": "https://youtu.be/byNMAhhpPEM"
+        }
+      ],
+      "team": {
+        "id": "lava-lamp-games",
+        "name": "MAIPA.INC & Muppetsg2",
+        "logo": "images/teams/lava-lamp-games/logo-m-and-m.png",
+        "members": [
+          {
+            "person": "patryk-antosik",
+            "role": {
+              "en": "3D artist & gameplay programmer",
+              "pl": "Grafik 3D i programista rozgrywki"
+            }
+          },
+          {
+            "person": "marceli-antosik",
+            "role": {
+              "en": "Level & UI designer, Google Play Games integration",
+              "pl": "Projektant poziomów i UI, integracja z Google Play Games"
+            }
+          }
+        ]
+      },
+      "whatIDid": [
+        {
+          "en": "Story levels system",
+          "pl": "System poziomów fabularnych"
+        },
+        {
+          "en": "Upgrade system",
+          "pl": "System ulepszeń"
         }
       ],
       "gallery": [
@@ -1517,7 +1925,7 @@
           "src": "images/projects/diler/player-profile.webp",
           "caption": {
             "en": "Player Profile",
-            "pl": "Profil Gracza"
+            "pl": "Profil gracza"
           }
         },
         {
@@ -1538,7 +1946,7 @@
           "src": "images/projects/diler/story-levels.webp",
           "caption": {
             "en": "Story Levels",
-            "pl": "Poziomy Histori"
+            "pl": "Poziomy histori"
           }
         },
         {
@@ -1548,46 +1956,7 @@
             "pl": "Rozgrywka"
           }
         }
-      ],
-      "team": {
-        "name": "Lava Lamp Studio",
-        "description": {
-          "en": "Team of two brothers creating games.",
-          "pl": "Zespół dwóch braci robiących gry."
-        },
-        "url": "https://play.google.com/store/apps/dev?id=9148978594936176812",
-        "members": [
-          {
-            "name": "Patryk Antosik",
-            "role": {
-              "en": "3D Artist & Gameplay Programmer",
-              "pl": "Artysta 3D i Programista Rozgrywki"
-            },
-            "url": "https://github.com/MAIPA01",
-            "me": true
-          },
-          {
-            "name": "Marceli Antosik",
-            "role": {
-              "en": "Level Designer, UI Designer & Google Play Games Integration",
-              "pl": "Projektant Poziomów i UI oraz Google Play Games Integrator"
-            },
-            "url": "https://github.com/Muppetsg2"
-          }
-        ]
-      },
-      "myRole": {
-        "items": [
-          {
-            "en": "Story Levels System.",
-            "pl": "System Poziomów Histori."
-          },
-          {
-            "en": "Upgrades System.",
-            "pl": "System Ulepszeń."
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "the-wizards",
@@ -1602,8 +1971,22 @@
         "pl": "Platformówka o czwórce czarodziejów, którzy muszą powstrzymać Złego Władcę przed pogrążeniem świata w ciemności."
       },
       "description": {
-        "en": "The Wizards is a **platformer** about a team of four wizards who must save the world from an evil force threatening to corrupt it. Step into the shoes of one of four unique wizards and stop the Evil Lord from plunging the world into darkness! A platforming adventure inspired by the videos created by me on my youtube channel.\n\nIt was also the **first game we ever published** — on 16 April 2017.",
-        "pl": "The Wizards to **gra platformowa** o czwórce czarodziejów, którzy muszą ocalić świat przed złowrogą siłą, która chce go skazić. Wciel się w jednego z czterech wyjątkowych magów i powstrzymaj Złego Władcę, zanim pogrąży świat w ciemności! Przygodowa gra platformowa inspirowana filmami, które tworzę na swoim kanale w serwisie YouTube..\n\nTo także **pierwsza gra, jaką wydaliśmy** — 16 kwietnia 2017 roku."
+        "en": [
+          "The Wizards is a **platformer** about a team of four wizards who must save the world from an evil",
+          "force threatening to corrupt it. Step into the shoes of one of four unique wizards and stop the Evil",
+          "Lord from plunging the world into darkness! A platforming adventure inspired by the videos created",
+          "by me on my youtube channel.",
+          "",
+          "It was also the **first game we ever published** — on 16 April 2017."
+        ],
+        "pl": [
+          "The Wizards to **gra platformowa** o czwórce czarodziejów, którzy muszą ocalić świat przed złowrogą",
+          "siłą, która chce go skazić. Wciel się w jednego z czterech wyjątkowych magów i powstrzymaj Złego",
+          "Władcę, zanim pogrąży świat w ciemności! Przygodowa gra platformowa inspirowana filmami, które",
+          "tworzę na swoim kanale w serwisie YouTube..",
+          "",
+          "To także **pierwsza gra, jaką wydaliśmy** — 16 kwietnia 2017 roku."
+        ]
       },
       "tags": [
         "Unity",
@@ -1636,6 +2019,41 @@
             "pl": "Polityka prywatności"
           },
           "url": "https://muppetsg2.github.io/privacy.html?id=the-wizards"
+        }
+      ],
+      "team": {
+        "id": "lava-lamp-games",
+        "name": "MAIPA.INC & Muppetsg2",
+        "logo": "images/teams/lava-lamp-games/logo-m-and-m.png",
+        "members": [
+          {
+            "person": "patryk-antosik",
+            "role": {
+              "en": "Gameplay programmer",
+              "pl": "Programista rozgrywki"
+            }
+          },
+          {
+            "person": "marceli-antosik",
+            "role": {
+              "en": "Level & UI designer, Google Play Games integration",
+              "pl": "Projektant poziomów i UI, integracja z Google Play Games"
+            }
+          }
+        ]
+      },
+      "whatIDid": [
+        {
+          "en": "Player movement",
+          "pl": "Poruszanie się postaci"
+        },
+        {
+          "en": "Character animations",
+          "pl": "Animacje postaci"
+        },
+        {
+          "en": "Character designs",
+          "pl": "Projekty postaci"
         }
       ],
       "gallery": [
@@ -1682,7 +2100,7 @@
           "src": "images/projects/the-wizards/about.webp",
           "caption": {
             "en": "About",
-            "pl": "O Twórcach"
+            "pl": "O twórcach"
           }
         },
         {
@@ -1692,50 +2110,7 @@
             "pl": "Filmiki"
           }
         }
-      ],
-      "team": {
-        "name": "Lava Lamp Studio",
-        "description": {
-          "en": "Team of two brothers creating games.",
-          "pl": "Zespół dwóch braci robiących gry."
-        },
-        "url": "https://play.google.com/store/apps/dev?id=9148978594936176812",
-        "members": [
-          {
-            "name": "Patryk Antosik",
-            "role": {
-              "en": "Gameplay Programmer",
-              "pl": "Programista Rozgrywki"
-            },
-            "url": "https://github.com/MAIPA01",
-            "me": true
-          },
-          {
-            "name": "Marceli Antosik",
-            "role": {
-              "en": "Level Designer, UI Designer & Google Play Games Integration",
-              "pl": "Projektant Poziomów i UI i Google Play Integrator"
-            },
-            "url": "https://github.com/Muppetsg2"
-          }
-        ]
-      },
-      "myRole": {
-        "items": [
-          {
-            "en": "Player Movement.",
-            "pl": "Poruszanie się Postacji."
-          },
-          {
-            "en": "Characters Animations",
-            "pl": "Animacje Postacji"
-          },
-          {
-            "en": "Characters Designs",
-            "pl": "Projekty Postacji"
-          }
-        ]
-      }
+      ]
     },
     {
       "id": "stack",
@@ -1744,14 +2119,19 @@
       "year": "2017",
       "icon": "images/projects/stack/icon.webp",
       "iconFit": "contain",
-      "banner": "",
       "summary": {
         "en": "My take on Ketchapp's popular stacking arcade game.",
         "pl": "Moja wersja popularnej zręcznościówki od Ketchapp, w której układa się wieżę z bloków."
       },
       "description": {
-        "en": "My take on **Stack**, the popular arcade game by Ketchapp: place each block as precisely as you can and build the tallest tower possible.",
-        "pl": "Moja wersja **Stack** — popularnej gry zręcznościowej od Ketchapp: kładź kolejne bloki jak najdokładniej i zbuduj jak najwyższą wieżę."
+        "en": [
+          "My take on **Stack**, the popular arcade game by Ketchapp: place each block as precisely as you can",
+          "and build the tallest tower possible."
+        ],
+        "pl": [
+          "Moja wersja **Stack** — popularnej gry zręcznościowej od Ketchapp: kładź kolejne bloki jak",
+          "najdokładniej i zbuduj jak najwyższą wieżę."
+        ]
       },
       "tags": [
         "Unity",
@@ -1774,14 +2154,17 @@
       "year": "2016",
       "icon": "images/projects/money-click/icon.webp",
       "iconFit": "contain",
-      "banner": "",
       "summary": {
         "en": "My very first game — a simple clicker.",
         "pl": "Moja pierwsza gra w życiu — prosty clicker."
       },
       "description": {
-        "en": "**Money Click** is where it all started: my very first game, a simple clicker made in Unity.",
-        "pl": "Od **Money Click** wszystko się zaczęło: to moja pierwsza gra w życiu, prosty clicker zrobiony w Unity."
+        "en": [
+          "**Money Click** is where it all started: my very first game, a simple clicker made in Unity."
+        ],
+        "pl": [
+          "Od **Money Click** wszystko się zaczęło: to moja pierwsza gra w życiu, prosty clicker zrobiony w Unity."
+        ]
       },
       "tags": [
         "Unity",
@@ -1819,14 +2202,19 @@
       "year": "2024",
       "icon": "images/projects/fifteen/icon.webp",
       "iconFit": "contain",
-      "banner": "",
       "summary": {
         "en": "The classic sliding puzzle — fifteen tiles and one empty space. Slide them back into order.",
         "pl": "Klasyczna układanka przesuwna — piętnaście kafelków i jedno puste pole. Przesuwaj je, aż ułożą się po kolei."
       },
       "description": {
-        "en": "The classic **fifteen puzzle**, written in Processing for JavaScript. Slide the tiles into the empty space until they're back in order — you can play it right here in your browser.",
-        "pl": "Klasyczna **piętnastka** napisana w Processingu dla JavaScriptu. Przesuwaj kafelki na puste pole, aż ułożą się po kolei — możesz zagrać w nią tutaj, w przeglądarce."
+        "en": [
+          "The classic **fifteen puzzle**, written in Processing for JavaScript. Slide the tiles into the empty",
+          "space until they're back in order — you can play it right here in your browser."
+        ],
+        "pl": [
+          "Klasyczna **piętnastka** napisana w Processingu dla JavaScriptu. Przesuwaj kafelki na puste pole, aż",
+          "ułożą się po kolei — możesz zagrać w nią tutaj, w przeglądarce."
+        ]
       },
       "tags": [
         "Processing",
@@ -1844,6 +2232,11 @@
           "url": "https://maipa01.github.io/PZP/Projekt/Pietnastka/"
         }
       ],
+      "webBuild": {
+        "url": "https://maipa01.github.io/PZP/Projekt/Pietnastka/",
+        "width": 1280,
+        "height": 760
+      },
       "gallery": [
         {
           "src": "images/projects/fifteen/icon.webp",
@@ -1852,11 +2245,7 @@
             "pl": "Plansza"
           }
         }
-      ],
-      "webBuild": {
-        "url": "https://maipa01.github.io/PZP/Projekt/Pietnastka/",
-        "aspect": "1/1"
-      }
+      ]
     },
     {
       "id": "vertex-map-editor",
@@ -1865,14 +2254,19 @@
       "year": "2024",
       "icon": "images/projects/vertex-map-editor/icon.webp",
       "iconFit": "contain",
-      "banner": "",
       "summary": {
         "en": "A tool that helped us create the level backgrounds for Wind Rider.",
         "pl": "Narzędzie, które pomagało nam tworzyć tła poziomów w grze Wind Rider."
       },
       "description": {
-        "en": "**Vertex Map Editor** is a Windows tool made in Unity to help create the backgrounds of levels in [Wind Rider](project.html?id=wind-rider).",
-        "pl": "**Vertex Map Editor** to narzędzie na Windowsa zrobione w Unity, które pomaga tworzyć tła poziomów w grze [Wind Rider](project.html?id=wind-rider)."
+        "en": [
+          "**Vertex Map Editor** is a Windows tool made in Unity for painting vertex colours on level backgrounds.",
+          "We used it to create the backgrounds of levels in [Wind Rider](project.html?id=wind-rider)."
+        ],
+        "pl": [
+          "**Vertex Map Editor** to narzędzie na Windowsa zrobione w Unity do malowania kolorów wierzchołków na tłach poziomów.",
+          "Używaliśmy go do tworzenia teł poziomów w grze [Wind Rider](project.html?id=wind-rider)."
+        ]
       },
       "tags": [
         "Unity",
@@ -1895,8 +2289,8 @@
         {
           "src": "images/projects/vertex-map-editor/icon.webp",
           "caption": {
-            "en": "Vertices Painting",
-            "pl": "Malowanie Wierzchołków"
+            "en": "Vertex painting",
+            "pl": "Malowanie wierzchołków"
           }
         }
       ],
@@ -1911,14 +2305,17 @@
       "year": "2022",
       "icon": "images/projects/ping-pong/icon.webp",
       "iconFit": "contain",
-      "banner": "",
       "summary": {
         "en": "The classic Ping-Pong game, made with JavaScript and SVG.",
         "pl": "Klasyczny ping-pong napisany w JavaScripcie z grafiką w SVG."
       },
       "description": {
-        "en": "A classic **Ping-Pong** game made with plain JavaScript and SVG graphics. Play it right here in your browser.",
-        "pl": "Klasyczny **ping-pong** napisany w czystym JavaScripcie z grafiką w SVG. Zagraj w niego tutaj, w przeglądarce."
+        "en": [
+          "A classic **Ping-Pong** game made with plain JavaScript and SVG graphics. Play it right here in your browser."
+        ],
+        "pl": [
+          "Klasyczny **ping-pong** napisany w czystym JavaScripcie z grafiką w SVG. Zagraj w niego tutaj, w przeglądarce."
+        ]
       },
       "tags": [
         "JavaScript",
@@ -1940,19 +2337,19 @@
           "url": "https://github.com/MAIPA01/SVG-JS-PONG-GAME"
         }
       ],
+      "webBuild": {
+        "url": "https://maipa01.github.io/SVG-JS-PONG-GAME/Main%20Screen.svg",
+        "aspect": "16/9"
+      },
       "gallery": [
         {
           "src": "images/projects/ping-pong/icon.webp",
           "caption": {
-            "en": "Game View",
-            "pl": "Widok Gry"
+            "en": "Game view",
+            "pl": "Widok gry"
           }
         }
-      ],
-      "webBuild": {
-        "url": "https://maipa01.github.io/SVG-JS-PONG-GAME/Main%20Screen.svg",
-        "aspect": "16/9"
-      }
+      ]
     },
     {
       "id": "dodge-challenger",
@@ -1960,7 +2357,6 @@
       "category": "model",
       "featured": true,
       "year": "2018",
-      "icon": "",
       "iconFit": "cover",
       "banner": "images/renders/challenger/side.webp",
       "summary": {
@@ -1968,8 +2364,14 @@
         "pl": "Mój pierwszy model 3D — Dodge Challenger wymodelowany i wyrenderowany od zera."
       },
       "description": {
-        "en": "The **Dodge Challenger** was my first 3D model. It's the car you can see all over this site — in the header and between the sections.",
-        "pl": "**Dodge Challenger** to mój pierwszy model 3D. To właśnie to auto widać na całej tej stronie — w nagłówku i między sekcjami."
+        "en": [
+          "The **Dodge Challenger** was my first 3D model. It's the car you can see all over this site — in the",
+          "header and between the sections."
+        ],
+        "pl": [
+          "**Dodge Challenger** to mój pierwszy model 3D. To właśnie to auto widać na całej tej stronie — w",
+          "nagłówku i między sekcjami."
+        ]
       },
       "tags": [
         "Blender",
@@ -2016,7 +2418,6 @@
       "title": "Glock 18D",
       "category": "model",
       "year": "2023",
-      "icon": "",
       "iconFit": "cover",
       "banner": "images/renders/glock18D/HighPoly/textured.webp",
       "summary": {
@@ -2024,8 +2425,16 @@
         "pl": "Mój drugi model 3D — Glock 18D w czterech poziomach szczegółowości, od high poly do 250 poligonów."
       },
       "description": {
-        "en": "A **Glock 18D** pistol modelled in four levels of detail (LOD): a high-poly version and optimised versions with **1500**, **500** and **250** polygons. Switch between them in the viewer above and compare the textured and wireframe renders below.",
-        "pl": "Pistolet **Glock 18D** wymodelowany w czterech poziomach szczegółowości (LOD): wersja high poly oraz zoptymalizowane wersje z **1500**, **500** i **250** poligonami. Przełączaj je w podglądzie powyżej i porównaj rendery z teksturami oraz siatką poniżej."
+        "en": [
+          "A **Glock 18D** pistol modelled in four levels of detail (LOD): a high-poly version and optimised",
+          "versions with **1500**, **500** and **250** polygons. Switch between them in the viewer above and",
+          "compare the textured and wireframe renders below."
+        ],
+        "pl": [
+          "Pistolet **Glock 18D** wymodelowany w czterech poziomach szczegółowości (LOD): wersja high poly oraz",
+          "zoptymalizowane wersje z **1500**, **500** i **250** poligonami. Przełączaj je w podglądzie powyżej",
+          "i porównaj rendery z teksturami oraz siatką poniżej."
+        ]
       },
       "tags": [
         "Blender",
@@ -2155,7 +2564,6 @@
       },
       "category": "model",
       "year": "2023",
-      "icon": "",
       "iconFit": "cover",
       "banner": "images/renders/room/Camera1/Day.webp",
       "summary": {
@@ -2163,8 +2571,14 @@
         "pl": "Wnętrze pokoju wyrenderowane w świetle dziennym i nocą."
       },
       "description": {
-        "en": "A furnished **living room** scene, rendered from seven camera angles in two lighting setups — **day** and **night**. Use the buttons on each render to switch the lighting.",
-        "pl": "Scena **umeblowanego pokoju** wyrenderowana z siedmiu ujęć kamery w dwóch wariantach oświetlenia — **dzień** i **noc**. Przyciskami na renderze przełączasz oświetlenie."
+        "en": [
+          "A furnished **living room** scene, rendered from seven camera angles in two lighting setups —",
+          "**day** and **night**. Use the buttons on each render to switch the lighting."
+        ],
+        "pl": [
+          "Scena **umeblowanego pokoju** wyrenderowana z siedmiu ujęć kamery w dwóch wariantach oświetlenia —",
+          "**dzień** i **noc**. Przyciskami na renderze przełączasz oświetlenie."
+        ]
       },
       "tags": [
         "Blender",

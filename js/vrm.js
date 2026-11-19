@@ -2,7 +2,7 @@
    VRM viewer (VRoid Studio characters) — three.js + @pixiv/three-vrm.
    Loaded only when someone opens a character in 3D.
    ========================================================= */
-import { THREE, GLTFLoader, OrbitControls, VRMLoaderPlugin, VRMUtils } from './vendor/vrm-viewer.bundle.js';
+import { THREE, GLTFLoader, DRACOLoader, MeshoptDecoder, OrbitControls, VRMLoaderPlugin, VRMUtils } from './vendor/vrm-viewer.bundle.js';
 
 export async function mountVRM(host, url, { autoRotate = true } = {}) {
   const w = () => host.clientWidth || 300;
@@ -34,6 +34,10 @@ export async function mountVRM(host, url, { autoRotate = true } = {}) {
   scene.add(sun);
 
   const loader = new GLTFLoader();
+  const draco = new DRACOLoader();
+  draco.setDecoderPath(new URL('js/vendor/draco/', document.baseURI).href);
+  loader.setDRACOLoader(draco);
+  loader.setMeshoptDecoder(MeshoptDecoder);
   loader.register((parser) => new VRMLoaderPlugin(parser));
   const gltf = await loader.loadAsync(url);
   const vrm = gltf.userData.vrm;
@@ -51,11 +55,25 @@ export async function mountVRM(host, url, { autoRotate = true } = {}) {
   camera.position.set(0, box.min.y + height * 0.6, height * 1.9);
   controls.update();
 
-  // relaxed arms instead of the T-pose
+  // relaxed arms instead of the T-pose. VRM 0.x and 1.0 use opposite arm axes, so instead of
+  // guessing the sign we try both and keep the one that puts the hand below the shoulder.
   const bone = (name) => vrm.humanoid?.getNormalizedBoneNode(name);
   const lArm = bone('leftUpperArm'), rArm = bone('rightUpperArm');
-  if (lArm) lArm.rotation.z = -1.2;
-  if (rArm) rArm.rotation.z = 1.2;
+  const ARM = 1.2;
+  const handY = (arm, handName, angle) => {
+    arm.rotation.z = angle;
+    vrm.humanoid.update?.();
+    vrm.scene.updateMatrixWorld(true);
+    const raw = vrm.humanoid.getRawBoneNode(handName) || bone(handName);
+    return raw ? raw.getWorldPosition(new THREE.Vector3()).y : 0;
+  };
+  const pickSign = (arm, handName) => {
+    if (!arm) return 0;
+    return handY(arm, handName, ARM) < handY(arm, handName, -ARM) ? 1 : -1;
+  };
+  const lSign = pickSign(lArm, 'leftHand'), rSign = pickSign(rArm, 'rightHand');
+  if (lArm) lArm.rotation.z = lSign * ARM;
+  if (rArm) rArm.rotation.z = rSign * ARM;
   const spine = bone('spine'), neck = bone('neck');
   if (vrm.lookAt) vrm.lookAt.target = camera;
 
@@ -66,8 +84,8 @@ export async function mountVRM(host, url, { autoRotate = true } = {}) {
     const dt = clock.getDelta(), time = clock.elapsedTime;
     if (spine) spine.rotation.x = Math.sin(time * 1.6) * 0.02;            // breathing
     if (neck) neck.rotation.y = Math.sin(time * 0.7) * 0.06;
-    if (lArm) lArm.rotation.z = -1.2 - Math.sin(time * 1.6) * 0.02;
-    if (rArm) rArm.rotation.z = 1.2 + Math.sin(time * 1.6) * 0.02;
+    if (lArm) lArm.rotation.z = lSign * (ARM + Math.sin(time * 1.6) * 0.02);
+    if (rArm) rArm.rotation.z = rSign * (ARM + Math.sin(time * 1.6) * 0.02);
     if (vrm.expressionManager) {                                            // blinking
       if (time > nextBlink && blinkT < 0) blinkT = 0;
       if (blinkT >= 0) {

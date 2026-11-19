@@ -1,0 +1,12 @@
+{
+  "json.schemas": [
+    { "fileMatch": ["data/projects.json"], "url": "./schemas/projects.schema.json" },
+    { "fileMatch": ["data/teams.json"], "url": "./schemas/teams.schema.json" },
+    { "fileMatch": ["data/people.json"], "url": "./schemas/people.schema.json" },
+    { "fileMatch": ["data/characters.json"], "url": "./schemas/characters.schema.json" },
+    { "fileMatch": ["data/socials.json"], "url": "./schemas/socials.schema.json" },
+    { "fileMatch": ["data/profile.json"], "url": "./schemas/profile.schema.json" },
+    { "fileMatch": ["data/game.json"], "url": "./schemas/game.schema.json" },
+    { "fileMatch": ["data/i18n/languages.json"], "url": "./schemas/languages.schema.json" }
+  ]
+}

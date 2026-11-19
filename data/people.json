@@ -1,0 +1,150 @@
+{
+  "$schema": "../schemas/people.schema.json",
+  "people": [
+    {
+      "id": "patryk-antosik",
+      "name": "Patryk Antosik",
+      "me": true,
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/MAIPA01"
+        },
+        {
+          "type": "itch",
+          "url": "https://maipa01.itch.io/"
+        }
+      ]
+    },
+    {
+      "id": "marceli-antosik",
+      "name": "Marceli Antosik",
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/Muppetsg2"
+        },
+        {
+          "type": "itch",
+          "url": "https://muppetsg2.itch.io/"
+        }
+      ]
+    },
+    {
+      "id": "lukasz-gapinski",
+      "name": "Łukasz Gapiński",
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/lgapinski18"
+        }
+      ]
+    },
+    {
+      "id": "mateusz-gapinski",
+      "name": "Mateusz Gapiński",
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/mateusz-gapinski"
+        }
+      ]
+    },
+    {
+      "id": "maja-ochmanska",
+      "name": "Maja Ochmańska",
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/Maikomi"
+        }
+      ]
+    },
+    {
+      "id": "bartlomiej-wlodarski",
+      "name": "Bartłomiej Włodarski",
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/BartlomiejWlodarski"
+        }
+      ]
+    },
+    {
+      "id": "mikolaj-kisiel",
+      "name": "Mikołaj Kisiel",
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/Westesc"
+        }
+      ]
+    },
+    {
+      "id": "konrad-karwowski",
+      "name": "Konrad Karwowski",
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/Darnok7"
+        },
+        {
+          "type": "web",
+          "icon": "linkedin",
+          "url": "https://www.linkedin.com/in/konradkarvovski1507123456/"
+        }
+      ]
+    },
+    {
+      "id": "maciej-poncyleusz",
+      "name": "Maciej Poncyleusz",
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/Merloran"
+        }
+      ]
+    },
+    {
+      "id": "agata-granosik",
+      "name": "Agata Granosik",
+      "links": [
+        {
+          "type": "web",
+          "icon": "linkedin",
+          "url": "https://www.linkedin.com/in/agata-granosik/"
+        }
+      ]
+    },
+    {
+      "id": "jakub-biniek",
+      "name": "Jakub Biniek",
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/adanadhar"
+        }
+      ]
+    },
+    {
+      "id": "mateusz-rybicki",
+      "name": "Mateusz Rybicki",
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/MatRyb"
+        }
+      ]
+    },
+    {
+      "id": "katarzyna-tyszka",
+      "name": "Katarzyna Tyszka",
+      "links": [
+        {
+          "type": "github",
+          "url": "https://github.com/KatieT6"
+        }
+      ]
+    }
+  ]
+}

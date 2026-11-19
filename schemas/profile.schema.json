@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "profile.schema.json",
+  "title": "MAIPA portfolio — profil (data/profile.json)",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" }, "_info": { "type": "string" },
+    "name": { "type": "string" }, "brand": { "type": "string" },
+    "roles": { "$ref": "common.schema.json#/definitions/textList", "description": "Role wypisywane w hero (animacja pisania)." },
+    "tagline": { "$ref": "common.schema.json#/definitions/text" },
+    "about": { "type": "object", "properties": {
+      "paragraphs": { "type": "array", "items": { "$ref": "common.schema.json#/definitions/text" } },
+      "avatar": { "type": "string" }, "avatarAlt": { "$ref": "common.schema.json#/definitions/text" }, "avatarCaption": { "$ref": "common.schema.json#/definitions/text" } } },
+    "stats": { "type": "array", "items": { "type": "object", "properties": { "value": { "type": "string" }, "label": { "$ref": "common.schema.json#/definitions/text" }, "hidden": { "type": "boolean" } } } },
+    "skills": { "type": "array", "items": { "type": "object", "properties": { "icon": { "$ref": "common.schema.json#/definitions/icon" }, "title": { "$ref": "common.schema.json#/definitions/text" }, "text": { "$ref": "common.schema.json#/definitions/text" }, "tags": { "$ref": "common.schema.json#/definitions/textList" }, "hidden": { "type": "boolean" } } } }
+  }
+}
