@@ -151,12 +151,28 @@
           },
           "body": {
             "en": [
-              "ImGui (editor UI), SoLoud (audio), FreeType (fonts), GLM (math), yaml-cpp (serialization),",
-              "GLFW (window), spdlog (logging), Tracy (profiling), stb_image (images), Assimp (3D models)."
+              "- ImGui (editor UI)",
+              "- SoLoud (audio)",
+              "- FreeType (fonts)",
+              "- GLM (math)",
+              "- yaml-cpp (serialization)",
+              "- GLFW (window)",
+              "- spdlog (logging)",
+              "- Tracy (profiling)",
+              "- stb_image (images)",
+              "- Assimp (3D models)"
             ],
             "pl": [
-              "ImGui (interfejs edytora), SoLoud (dźwięk), FreeType (fonty), GLM (matematyka), yaml-cpp (serializacja),",
-              "GLFW (okno), spdlog (logi), Tracy (profilowanie), stb_image (obrazy), Assimp (modele 3D)."
+              "- ImGui (interfejs edytora)",
+              "- SoLoud (dźwięk)",
+              "- FreeType (fonty)",
+              "- GLM (matematyka)",
+              "- yaml-cpp (serializacja)",
+              "- GLFW (okno)",
+              "- spdlog (logi)",
+              "- Tracy (profilowanie)",
+              "- stb_image (obrazy)",
+              "- Assimp (modele 3D)"
             ]
           }
         }
