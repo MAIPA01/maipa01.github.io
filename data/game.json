@@ -132,6 +132,7 @@
     ".filter-chip",
     ".project-card",
     ".model-tile",
+    ".model-tile-body",
     ".character-card",
     ".contact-text",
     ".social-link",
@@ -150,7 +151,8 @@
     ".pp-team-head",
     ".tp-member",
     ".pp-related-card",
-    ".section"
+    ".section",
+    ".character-body"
   ],
   "coinsOn": [
     ".project-card",
