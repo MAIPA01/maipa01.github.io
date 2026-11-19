@@ -50,9 +50,9 @@
       "category": "engine",
       "featured": true,
       "year": "2024",
-      "icon": "images/projects/twin2-engine/icon.png",
+      "icon": "images/projects/twin2-engine/icon.webp",
       "iconFit": "contain",
-      "banner": "images/projects/twin2-engine/cover.png",
+      "banner": "images/projects/twin2-engine/cover.webp",
       "summary": {
         "en": "A C++20 game engine built from scratch in four months as a team project at Lodz University of Technology.",
         "pl": "Silnik gier w C++20 napisany od zera w cztery miesiące jako zespołowy projekt na Politechnice Łódzkiej."
@@ -75,7 +75,7 @@
       ],
       "gallery": [
         {
-          "src": "images/projects/twin2-engine/cover.png",
+          "src": "images/projects/twin2-engine/cover.webp",
           "caption": {
             "en": "Cover",
             "pl": "Okładka"
@@ -455,18 +455,18 @@
           }
         },
         {
-          "src": "images/projects/destiny-painter/menu.jpg",
+          "src": "images/projects/destiny-painter/menu.webp",
           "caption": "Menu"
         },
         {
-          "src": "images/projects/destiny-painter/level.jpg",
+          "src": "images/projects/destiny-painter/level.webp",
           "caption": {
             "en": "Level",
             "pl": "Poziomu"
           }
         },
         {
-          "src": "images/projects/destiny-painter/level-end.jpg",
+          "src": "images/projects/destiny-painter/level-end.webp",
           "caption": {
             "en": "Level end",
             "pl": "Koniec poziomu"
@@ -588,35 +588,35 @@
           }
         },
         {
-          "src": "images/projects/ceo-simulator/document-reading.png",
+          "src": "images/projects/ceo-simulator/document-reading.webp",
           "caption": {
             "en": "Document Reading",
             "pl": "Czytanie Dokumentu"
           }
         },
         {
-          "src": "images/projects/ceo-simulator/document-accepted.png",
+          "src": "images/projects/ceo-simulator/document-accepted.webp",
           "caption": {
             "en": "Accept Document",
             "pl": "Akceptacja Dokumentu"
           }
         },
         {
-          "src": "images/projects/ceo-simulator/document-rejected.png",
+          "src": "images/projects/ceo-simulator/document-rejected.webp",
           "caption": {
             "en": "Reject Document",
             "pl": "Odrzucenie Dokumentu"
           }
         },
         {
-          "src": "images/projects/ceo-simulator/stamping.png",
+          "src": "images/projects/ceo-simulator/stamping.webp",
           "caption": {
             "en": "Stamping",
             "pl": "Stemplowanie"
           }
         },
         {
-          "src": "images/projects/ceo-simulator/game-over.png",
+          "src": "images/projects/ceo-simulator/game-over.webp",
           "caption": {
             "en": "Game Over",
             "pl": "Koniec Gry"
@@ -737,39 +737,39 @@
           }
         },
         {
-          "src": "images/projects/dog-of-war/menu.png",
+          "src": "images/projects/dog-of-war/menu.webp",
           "caption": "Menu"
         },
         {
-          "src": "images/projects/dog-of-war/enemies.png",
+          "src": "images/projects/dog-of-war/enemies.webp",
           "caption": {
             "en": "Enemies",
             "pl": "Przeciwnicy"
           }
         },
         {
-          "src": "images/projects/dog-of-war/path-with-vines.png",
+          "src": "images/projects/dog-of-war/path-with-vines.webp",
           "caption": {
             "en": "Path with Vines",
             "pl": "Ścieżka z Pnączami"
           }
         },
         {
-          "src": "images/projects/dog-of-war/bullet.png",
+          "src": "images/projects/dog-of-war/bullet.webp",
           "caption": {
             "en": "Bullet",
             "pl": "Pocisk"
           }
         },
         {
-          "src": "images/projects/dog-of-war/star-piece.png",
+          "src": "images/projects/dog-of-war/star-piece.webp",
           "caption": {
             "en": "Star Piece",
             "pl": "Fragment Gwiazdy"
           }
         },
         {
-          "src": "images/projects/dog-of-war/health-loss.png",
+          "src": "images/projects/dog-of-war/health-loss.webp",
           "caption": {
             "en": "Health Loss",
             "pl": "Utrata Zdrowia"
@@ -886,21 +886,21 @@
           }
         },
         {
-          "src": "images/projects/there-are-signs/city.png",
+          "src": "images/projects/there-are-signs/city.webp",
           "caption": {
             "en": "City",
             "pl": "Miasto"
           }
         },
         {
-          "src": "images/projects/there-are-signs/school.png",
+          "src": "images/projects/there-are-signs/school.webp",
           "caption": {
             "en": "School",
             "pl": "Szkoła"
           }
         },
         {
-          "src": "images/projects/there-are-signs/nerd.png",
+          "src": "images/projects/there-are-signs/nerd.webp",
           "caption": "Nerd"
         }
       ],
@@ -1007,28 +1007,28 @@
           }
         },
         {
-          "src": "images/projects/bubble-hunt/enemy-in-bubble.png",
+          "src": "images/projects/bubble-hunt/enemy-in-bubble.webp",
           "caption": {
             "en": "Enemy in Bubble",
             "pl": "Przeciwnik w Bańce"
           }
         },
         {
-          "src": "images/projects/bubble-hunt/bug.png",
+          "src": "images/projects/bubble-hunt/bug.webp",
           "caption": {
             "en": "Bug",
             "pl": "Robal"
           }
         },
         {
-          "src": "images/projects/bubble-hunt/slimed.png",
+          "src": "images/projects/bubble-hunt/slimed.webp",
           "caption": {
             "en": "Slimed",
             "pl": "Zaśluzowany"
           }
         },
         {
-          "src": "images/projects/bubble-hunt/eye-of-evil-crab.png",
+          "src": "images/projects/bubble-hunt/eye-of-evil-crab.webp",
           "caption": {
             "en": "Eye of Evil Crab",
             "pl": "Oko Złego Kraba"
@@ -1143,46 +1143,46 @@
           }
         },
         {
-          "src": "images/projects/wind-rider/menu.png",
+          "src": "images/projects/wind-rider/menu.webp",
           "caption": "Menu"
         },
         {
-          "src": "images/projects/wind-rider/levels.png",
+          "src": "images/projects/wind-rider/levels.webp",
           "caption": {
             "en": "Levels",
             "pl": "Poziomy"
           }
         },
         {
-          "src": "images/projects/wind-rider/paper-squid.png",
+          "src": "images/projects/wind-rider/paper-squid.webp",
           "caption": {
             "en": "Paper Squid Enemy",
             "pl": "Papierowa Kałamarnica"
           }
         },
         {
-          "src": "images/projects/wind-rider/pause-menu.png",
+          "src": "images/projects/wind-rider/pause-menu.webp",
           "caption": {
             "en": "Pause Menu",
             "pl": "Menu Pauzy"
           }
         },
         {
-          "src": "images/projects/wind-rider/death-screen.png",
+          "src": "images/projects/wind-rider/death-screen.webp",
           "caption": {
             "en": "Death Screen",
             "pl": "Ekran Śmierci"
           }
         },
         {
-          "src": "images/projects/wind-rider/fold-paper-puzzle.png",
+          "src": "images/projects/wind-rider/fold-paper-puzzle.webp",
           "caption": {
             "en": "Fold Paper Puzzle",
             "pl": "Łamigłówka ze Składaniem Papieru"
           }
         },
         {
-          "src": "images/projects/wind-rider/end-screen.png",
+          "src": "images/projects/wind-rider/end-screen.webp",
           "caption": {
             "en": "End Screen",
             "pl": "Ekran Końcowy"
@@ -1331,53 +1331,53 @@
           }
         },
         {
-          "src": "images/projects/marry-kiss-and-kill/menu.jpg",
+          "src": "images/projects/marry-kiss-and-kill/menu.webp",
           "caption": "Menu"
         },
         {
-          "src": "images/projects/marry-kiss-and-kill/options.jpg",
+          "src": "images/projects/marry-kiss-and-kill/options.webp",
           "caption": {
             "en": "Options",
             "pl": "Ustawienia"
           }
         },
         {
-          "src": "images/projects/marry-kiss-and-kill/game-modes.jpg",
+          "src": "images/projects/marry-kiss-and-kill/game-modes.webp",
           "caption": {
             "en": "Game Modes",
             "pl": "Tryby Gry"
           }
         },
         {
-          "src": "images/projects/marry-kiss-and-kill/premade-categories.jpg",
+          "src": "images/projects/marry-kiss-and-kill/premade-categories.webp",
           "caption": {
             "en": "Premade Categories",
             "pl": "Gotowe Kategorie"
           }
         },
         {
-          "src": "images/projects/marry-kiss-and-kill/custom-categories.jpg",
+          "src": "images/projects/marry-kiss-and-kill/custom-categories.webp",
           "caption": {
             "en": "List of own Custom Categories",
             "pl": "Lista własnych kategori"
           }
         },
         {
-          "src": "images/projects/marry-kiss-and-kill/filling-names.jpg",
+          "src": "images/projects/marry-kiss-and-kill/filling-names.webp",
           "caption": {
             "en": "Filling Names",
             "pl": "Wypełnianie Imion"
           }
         },
         {
-          "src": "images/projects/marry-kiss-and-kill/random-choosing.jpg",
+          "src": "images/projects/marry-kiss-and-kill/random-choosing.webp",
           "caption": {
             "en": "Random Choosing",
             "pl": "Losowe Wybieranie"
           }
         },
         {
-          "src": "images/projects/marry-kiss-and-kill/choose-action-view.jpg",
+          "src": "images/projects/marry-kiss-and-kill/choose-action-view.webp",
           "caption": {
             "en": "Choose Action View",
             "pl": "Widok Wyboru Akcji"
@@ -1496,53 +1496,53 @@
           }
         },
         {
-          "src": "images/projects/diler/menu.png",
+          "src": "images/projects/diler/menu.webp",
           "caption": "Menu"
         },
         {
-          "src": "images/projects/diler/about.jpg",
+          "src": "images/projects/diler/about.webp",
           "caption": {
             "en": "About",
             "pl": "O twórcach"
           }
         },
         {
-          "src": "images/projects/diler/characters.png",
+          "src": "images/projects/diler/characters.webp",
           "caption": {
             "en": "Characters",
             "pl": "Postacie"
           }
         },
         {
-          "src": "images/projects/diler/player-profile.jpg",
+          "src": "images/projects/diler/player-profile.webp",
           "caption": {
             "en": "Player Profile",
             "pl": "Profil Gracza"
           }
         },
         {
-          "src": "images/projects/diler/settings.png",
+          "src": "images/projects/diler/settings.webp",
           "caption": {
             "en": "Settings",
             "pl": "Ustawienia"
           }
         },
         {
-          "src": "images/projects/diler/upgrades.png",
+          "src": "images/projects/diler/upgrades.webp",
           "caption": {
             "en": "Upgrades",
             "pl": "Ulepszenia"
           }
         },
         {
-          "src": "images/projects/diler/story-levels.png",
+          "src": "images/projects/diler/story-levels.webp",
           "caption": {
             "en": "Story Levels",
             "pl": "Poziomy Histori"
           }
         },
         {
-          "src": "images/projects/diler/gameplay.png",
+          "src": "images/projects/diler/gameplay.webp",
           "caption": {
             "en": "Gameplay",
             "pl": "Rozgrywka"
@@ -1647,46 +1647,46 @@
           }
         },
         {
-          "src": "images/projects/the-wizards/menu.png",
+          "src": "images/projects/the-wizards/menu.webp",
           "caption": "Menu"
         },
         {
-          "src": "images/projects/the-wizards/characters.jpg",
+          "src": "images/projects/the-wizards/characters.webp",
           "caption": {
             "en": "Characters",
             "pl": "Postacie"
           }
         },
         {
-          "src": "images/projects/the-wizards/levels.png",
+          "src": "images/projects/the-wizards/levels.webp",
           "caption": {
             "en": "Levels",
             "pl": "Poziomy"
           }
         },
         {
-          "src": "images/projects/the-wizards/gameplay.png",
+          "src": "images/projects/the-wizards/gameplay.webp",
           "caption": {
             "en": "Gameplay",
             "pl": "Rozgrywka"
           }
         },
         {
-          "src": "images/projects/the-wizards/settings.jpg",
+          "src": "images/projects/the-wizards/settings.webp",
           "caption": {
             "en": "Settings",
             "pl": "Ustawienia"
           }
         },
         {
-          "src": "images/projects/the-wizards/about.jpg",
+          "src": "images/projects/the-wizards/about.webp",
           "caption": {
             "en": "About",
             "pl": "O Twórcach"
           }
         },
         {
-          "src": "images/projects/the-wizards/videos.png",
+          "src": "images/projects/the-wizards/videos.webp",
           "caption": {
             "en": "Videos",
             "pl": "Filmiki"
@@ -1817,7 +1817,7 @@
       },
       "category": "game",
       "year": "2024",
-      "icon": "images/projects/fifteen/icon.png",
+      "icon": "images/projects/fifteen/icon.webp",
       "iconFit": "contain",
       "banner": "",
       "summary": {
@@ -1846,7 +1846,7 @@
       ],
       "gallery": [
         {
-          "src": "images/projects/fifteen/icon.png",
+          "src": "images/projects/fifteen/icon.webp",
           "caption": {
             "en": "Board",
             "pl": "Plansza"
@@ -1863,7 +1863,7 @@
       "title": "Vertex Map Editor",
       "category": "app",
       "year": "2024",
-      "icon": "images/projects/vertex-map-editor/icon.png",
+      "icon": "images/projects/vertex-map-editor/icon.webp",
       "iconFit": "contain",
       "banner": "",
       "summary": {
@@ -1893,7 +1893,7 @@
       ],
       "gallery": [
         {
-          "src": "images/projects/vertex-map-editor/icon.png",
+          "src": "images/projects/vertex-map-editor/icon.webp",
           "caption": {
             "en": "Vertices Painting",
             "pl": "Malowanie Wierzchołków"
@@ -1909,7 +1909,7 @@
       "title": "Ping-Pong",
       "category": "game",
       "year": "2022",
-      "icon": "images/projects/ping-pong/icon.png",
+      "icon": "images/projects/ping-pong/icon.webp",
       "iconFit": "contain",
       "banner": "",
       "summary": {
@@ -1942,7 +1942,7 @@
       ],
       "gallery": [
         {
-          "src": "images/projects/ping-pong/icon.png",
+          "src": "images/projects/ping-pong/icon.webp",
           "caption": {
             "en": "Game View",
             "pl": "Widok Gry"
