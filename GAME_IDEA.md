@@ -11,7 +11,10 @@
 - **Portfel i garaż:** monety za pierwsze ukończenie wyzwania na danym poziomie, ceny przeliczane tak,
   żeby suma wszystkich przedmiotów = suma monet ze wszystkich poziomów.
 - **Sekretna gra autem:** ukryta w pasie z bocznym renderem Challengera. Runner w stylu dinozaura z Chrome:
-  przeszkody z prawej, skok, docisk do ziemi (↓), rosnąca prędkość, rekord.
+  przeszkody z prawej, skok, docisk do ziemi (↓), drony nad dachem (wymuszają szybki ↓ po skoku), rampy z przechyleniem auta,
+  spaliny zostające za autem, rosnąca prędkość, rekord. Auto = karoseria + koła (osobno w garażu) + tuning.
+- **Ekran „Portfolio ukończone!”** (`finale.html`): fajerwerki, animowany napis, machające postacie, statystyki;
+  po odblokowaniu skrót w stopce każdej strony.
 - **Postacie:** MAIPA-Chan, Remi, MAIPA-Senpai (placeholdery 16×16), wybór C albo E na karcie postaci.
 
 ## Jak działa gra na wielu stronach
@@ -24,14 +27,16 @@
 
 ## Pomysły na dalej
 1. **Licznik sekretów** w HUD (np. „sekrety 1/3”): ukryta postać do odblokowania, złota moneta za wyzwanie bez użycia R.
-2. **Rampy w grze autem:** co jakiś czas rampa zamiast przeszkody → dłuższy skok i bonus do wyniku.
+2. **Bonus za rampę:** monetka / punkty w powietrzu nad rampą, do złapania tylko przy pełnym skoku.
 3. **Dzienna trasa:** seed przeszkód zależny od daty — każdy dzień ma tę samą trasę dla wszystkich, łatwo porównać wynik.
 4. **Kosmetyka postaci w garażu:** czapki/akcesoria nakładane na sprite (osobny pasek klatek z warstwą).
-5. **Ekran „Ukończono portfolio”** po przejściu wszystkich poziomów — z animacją machania wszystkich trzech postaci.
+5. **Czas całego portfolio:** speedrun wszystkich poziomów jednym ciągiem, wynik pokazany na ekranie finału.
 
 ## Do narysowania w Aseprite
 - 3 postacie × 13 klatek (układ w README), paleta strony: `#d11717`, `#9e1010`, `#141414`, `#ffffff`, `#4d4c4d`.
-- Auto 32×16, 2 klatki (obrót kół). Kolory z garażu podmieniają dwa odcienie czerwieni sprite'a
-  (`#d11717` → lakier, `#8f0f0f` → cień), więc rysuj karoserię dokładnie tymi kolorami.
-- Przeszkody do gry autem (teraz rysowane kodem): pachołek 8×10, barierka 18×9, opony 10×14.
+- Auto: karoserie 32×16 **bez kół** (`assets/game/car/bodies/`), koła 8×8 × 4 klatki obrotu (`wheels/`, pasek 32×8),
+  miejsca kół na karoserii: `car.wheelAnchors`. Spaliny wylatują z punktu (1, 11.5) karoserii — tył przy zderzaku.
+- Przeszkody (`assets/game/car/obstacles/`): pachołek 8×10, dwa pachołki 20×10, barierka 18×9, opony 10×14,
+  dron 2 klatki 16×8 (pasek 32×8), rampa 24×10 (wznosi się w prawo).
+- Ikony tuningu 16×16 (`assets/game/car/upgrades/`).
 - Moneta 8×8 (4 klatki).

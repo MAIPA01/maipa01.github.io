@@ -1,0 +1,81 @@
+/* =========================================================
+   Project page (project.html?id=…): layout with sidebar, web build player,
+   videos, gallery, related projects.
+   ========================================================= */
+/* ---------- Project page ---------- */
+.project-page { min-height: 70vh; }
+.pp-loading { min-height: 70vh; display: grid; place-items: center; }
+.pp-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; padding: 50px 0 80px; align-items: start; }
+.pp-side { position: sticky; top: calc(var(--nav-h) + 20px); display: grid; gap: 20px; }
+.pp-side-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+.pp-side-card h3 { display: flex; align-items: center; gap: 8px; font-family: var(--font-pixel); font-size: 10px; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+.pp-side-card h3 .icon { width: 16px; height: 16px; fill: currentColor; }
+.pp-side-card h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-top: 16px; }
+.pp-side-card dl div { display: flex; justify-content: space-between; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--border); font-size: 15px; }
+.pp-side-card dt { color: var(--text-muted); }
+.pp-side-card dd { color: var(--text-strong); font-weight: 500; text-align: right; }
+.pp-team-name { font-weight: 700; color: var(--text-strong); font-size: 17px; }
+.pp-team-name a:hover { color: var(--red); }
+.pp-members { list-style: none; margin-top: 12px; display: grid; gap: 8px; }
+.pp-members li { display: flex; flex-direction: column; padding: 8px 10px; background: var(--surface-2); border-left: 3px solid transparent; }
+.pp-members li.me { border-left-color: var(--red); }
+.pp-member-name { display: flex; align-items: center; gap: 8px; color: var(--text-strong); font-weight: 500; }
+.pp-member-name a:hover { color: var(--red); }
+.pp-member-role { font-size: 13px; color: var(--text-muted); }
+.pp-role-list { list-style: none; display: grid; gap: 8px; }
+.pp-role-list li { position: relative; padding-left: 18px; font-size: 15px; }
+.pp-role-list li::before { content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 8px; background: var(--red); }
+.pp-play-frame { position: relative; aspect-ratio: var(--aspect, 16/9); height: var(--h, auto); background: #000; border-radius: var(--radius); overflow: hidden; }
+.pp-play-frame iframe { width: 100%; height: 100%; border: 0; display: block; background: #000; }
+.pp-play-start { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: #ccc;
+  background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.75)), var(--poster, none) center / cover, repeating-linear-gradient(45deg, #121212 0 12px, #0d0d0d 12px 24px); }
+.pp-play-start small { font-size: 13px; max-width: 80%; }
+.pp-play-start:hover .btn-pixel { background: #e52222; transform: translateY(-2px); }
+.pp-play-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.pp-videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.pp-video { margin: 0; }
+.pp-video-start, .pp-video-iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; border-radius: var(--radius); }
+.pp-video-start { position: relative; background: #000 var(--thumb, none) center / cover; overflow: hidden; }
+.pp-video-start::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.35); transition: background-color .2s; }
+.pp-video-start:hover::before { background: rgba(0,0,0,.15); }
+.pp-video-play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; display: grid; place-items: center; background: var(--red); clip-path: polygon(0 6px, 6px 6px, 6px 0, calc(100% - 6px) 0, calc(100% - 6px) 6px, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 6px calc(100% - 6px), 0 calc(100% - 6px)); }
+.pp-video-play .icon { width: 30px; height: 30px; fill: #fff; }
+.pp-video-site { position: absolute; left: 10px; bottom: 10px; display: inline-flex; gap: 6px; align-items: center; font-size: 12px; color: #fff; background: rgba(0,0,0,.65); padding: 4px 8px; }
+.pp-video-site .icon { width: 14px; height: 14px; fill: currentColor; }
+.pp-video figcaption { font-size: 14px; margin-top: 8px; color: var(--text-muted); }
+.pp-video figcaption a { color: var(--red); }
+.pp-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.pp-gallery.single { grid-template-columns: minmax(0, 760px); }
+.pp-gallery-item { position: relative; margin: 0; border-radius: var(--radius); overflow: hidden; background: #000; }
+.pp-gallery-open { display: block; width: 100%; cursor: zoom-in; }
+.pp-gallery-item img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .5s var(--ease); }
+.pp-gallery-item:hover img { transform: scale(1.04); }
+.pp-gallery-item figcaption { position: absolute; left: 0; right: 0; top: 0; padding: 10px 12px 26px; color: #fff; font-size: 13px; font-weight: 500; background: linear-gradient(rgba(0,0,0,.7), transparent); pointer-events: none; }
+.pp-related { padding-bottom: 80px; }
+.pp-related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.pp-related-card { display: flex; gap: 14px; align-items: center; padding: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); transition: .2s; }
+.pp-related-card:hover { border-color: var(--red); transform: translateY(-3px); }
+.pp-related-card img, .pp-related-ph { width: 56px; height: 56px; flex: none; border-radius: 10px; object-fit: cover; background: #111; display: grid; place-items: center; }
+.pp-related-ph .icon { width: 26px; height: 26px; fill: var(--red); }
+.pp-related-card strong { display: block; color: var(--text-strong); }
+.pp-related-card small { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: var(--text-muted); font-size: 13px; }
+/* ---------- web builds with a virtual resolution ---------- */
+.pp-play-frame.scaled { aspect-ratio: var(--aspect); }
+.pp-play-frame.scaled iframe { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.pp-play-frame:fullscreen { background: #000; }
+
+/* click on the game = it gets the keyboard (arrows, space) until you click outside */
+.pp-play-frame.focused { outline: 3px solid var(--red); outline-offset: 3px; }
+.pp-play-focus {
+  position: absolute; left: 50%; top: 8px; transform: translateX(-50%); z-index: 3; pointer-events: none;
+  font-family: var(--font-pixel); font-size: 8px; line-height: 1.6; color: #fff; background: rgba(209, 23, 23, .92);
+  padding: 6px 9px; white-space: nowrap; max-width: calc(100% - 16px); overflow: hidden; text-overflow: ellipsis;
+  opacity: 0; transition: opacity .25s;
+}
+.pp-play-frame.focused .pp-play-focus { opacity: 1; animation: focus-hint 3.5s forwards; }
+@keyframes focus-hint { 0%, 75% { opacity: 1; } 100% { opacity: 0; } }
+
+@media (max-width: 1000px) {
+  .pp-layout { grid-template-columns: 1fr; }
+  .pp-side { position: static; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+}

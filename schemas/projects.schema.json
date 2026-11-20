@@ -3,114 +3,435 @@
   "$id": "projects.schema.json",
   "title": "MAIPA portfolio — projekty (data/projects.json)",
   "type": "object",
-  "required": ["categories", "projects"],
+  "required": [
+    "categories",
+    "projects"
+  ],
   "properties": {
-    "$schema": { "type": "string" },
+    "$schema": {
+      "type": "string"
+    },
     "categories": {
-      "type": "array", "description": "Kategorie = filtry na stronie głównej.",
+      "type": "array",
+      "description": "Kategorie = filtry na stronie głównej.",
       "items": {
-        "type": "object", "required": ["id", "label"], "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "label"
+        ],
+        "additionalProperties": false,
         "properties": {
-          "id": { "type": "string", "description": "Id kategorii, używane w projekcie w polu \"category\"." },
-          "label": { "$ref": "common.schema.json#/definitions/text" },
-          "icon": { "$ref": "common.schema.json#/definitions/icon", "description": "Ikona zastępcza dla kart bez obrazka." },
-          "showInProjects": { "type": "boolean", "description": "false = nie pokazuj w siatce „Projekty” (np. modele 3D mają własną sekcję)." }
+          "id": {
+            "type": "string",
+            "description": "Id kategorii, używane w projekcie w polu \"category\"."
+          },
+          "label": {
+            "$ref": "common.schema.json#/definitions/text"
+          },
+          "icon": {
+            "$ref": "common.schema.json#/definitions/icon",
+            "description": "Ikona zastępcza dla kart bez obrazka."
+          },
+          "showInProjects": {
+            "type": "boolean",
+            "description": "false = nie pokazuj w siatce „Projekty” (np. modele 3D mają własną sekcję)."
+          }
         }
       }
     },
-    "projects": { "type": "array", "items": { "$ref": "#/definitions/project" } }
+    "projects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/project"
+      }
+    }
   },
   "definitions": {
     "galleryItem": {
-      "type": "object", "additionalProperties": false,
+      "type": "object",
+      "additionalProperties": false,
       "properties": {
-        "src": { "$ref": "common.schema.json#/definitions/image" },
-        "caption": { "$ref": "common.schema.json#/definitions/text" },
-        "alt": { "$ref": "common.schema.json#/definitions/text", "description": "Opis obrazka dla czytników ekranu." },
-        "variants": {
-          "type": "array", "description": "Kilka wersji jednego obrazka (np. Dzień/Noc, Tekstury/Siatka) — przełączane przyciskami.",
-          "items": { "type": "object", "required": ["label", "src"], "additionalProperties": false,
-            "properties": { "label": { "$ref": "common.schema.json#/definitions/text" }, "src": { "$ref": "common.schema.json#/definitions/image" }, "hidden": { "type": "boolean" } } }
+        "src": {
+          "$ref": "common.schema.json#/definitions/image"
         },
-        "hidden": { "$ref": "common.schema.json#/definitions/hidden" }
+        "caption": {
+          "$ref": "common.schema.json#/definitions/text"
+        },
+        "alt": {
+          "$ref": "common.schema.json#/definitions/text",
+          "description": "Opis obrazka dla czytników ekranu."
+        },
+        "variants": {
+          "type": "array",
+          "description": "Kilka wersji jednego obrazka (np. Dzień/Noc, Tekstury/Siatka) — przełączane przyciskami.",
+          "items": {
+            "type": "object",
+            "required": [
+              "label",
+              "src"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "$ref": "common.schema.json#/definitions/text"
+              },
+              "src": {
+                "$ref": "common.schema.json#/definitions/image"
+              },
+              "hidden": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "hidden": {
+          "$ref": "common.schema.json#/definitions/hidden"
+        }
       },
       "defaultSnippets": [
-        { "label": "obrazek", "body": { "src": "images/projects/$1.webp", "caption": { "en": "$2", "pl": "$3" } } },
-        { "label": "obrazek z wariantami", "body": { "caption": { "en": "$1", "pl": "$2" }, "variants": [{ "label": { "en": "$3", "pl": "$4" }, "src": "$5" }] } }
+        {
+          "label": "obrazek",
+          "body": {
+            "src": "images/projects/$1.webp",
+            "caption": {
+              "en": "$2",
+              "pl": "$3"
+            }
+          }
+        },
+        {
+          "label": "obrazek z wariantami",
+          "body": {
+            "caption": {
+              "en": "$1",
+              "pl": "$2"
+            },
+            "variants": [
+              {
+                "label": {
+                  "en": "$3",
+                  "pl": "$4"
+                },
+                "src": "$5"
+              }
+            ]
+          }
+        }
       ]
     },
     "project": {
       "type": "object",
-      "required": ["id", "title", "category"],
+      "required": [
+        "id",
+        "title",
+        "category"
+      ],
       "additionalProperties": false,
       "properties": {
-        "id": { "$ref": "common.schema.json#/definitions/id", "description": "Adres podstrony: project.html?id=<id>." },
-        "title": { "$ref": "common.schema.json#/definitions/text" },
-        "category": { "type": "string", "enum": ["game", "engine", "library", "app", "model"], "description": "game | engine | library | app | model (lista w \"categories\")." },
-        "hidden": { "$ref": "common.schema.json#/definitions/hidden" },
-        "featured": { "type": "boolean", "description": "Na początek listy + czerwony badge." },
-        "year": { "type": "string" },
-        "icon": { "$ref": "common.schema.json#/definitions/image", "description": "Ikona projektu (karta i nagłówek podstrony)." },
-        "iconFit": { "type": "string", "enum": ["contain", "cover"], "description": "contain = cała ikona widoczna; cover = wypełnij kartę." },
-        "banner": { "$ref": "common.schema.json#/definitions/image", "description": "Opcjonalny baner: tło nagłówka podstrony i obrazek karty." },
-        "cardImage": { "type": "string", "enum": ["icon", "banner"], "description": "Co pokazać na karcie, gdy są i ikona, i baner (domyślnie baner)." },
-        "summary": { "$ref": "common.schema.json#/definitions/text", "description": "Krótki opis — karta i nagłówek podstrony." },
-        "description": { "$ref": "common.schema.json#/definitions/markdown", "description": "Długi opis (Markdown) — blok „O projekcie”." },
-        "sections": {
-          "type": "array", "description": "Dodatkowe bloki na podstronie (np. Funkcje, Przykład, Instalacja).",
-          "items": { "type": "object", "required": ["title", "body"], "additionalProperties": false,
-            "properties": { "title": { "$ref": "common.schema.json#/definitions/text" }, "body": { "$ref": "common.schema.json#/definitions/markdown" }, "hidden": { "type": "boolean" } } }
+        "id": {
+          "$ref": "common.schema.json#/definitions/id",
+          "description": "Adres podstrony: project.html?id=<id>."
         },
-        "tags": { "$ref": "common.schema.json#/definitions/textList", "description": "Technologie i etykiety." },
-        "links": { "type": "array", "items": { "$ref": "common.schema.json#/definitions/link" }, "description": "Przyciski. Pierwszy jest główny." },
-        "team": {
-          "type": "object", "required": ["id"], "additionalProperties": false, "description": "Zespół z data/teams.json + role osób w TYM projekcie.",
-          "properties": {
-            "id": { "type": "string", "description": "Id zespołu z data/teams.json." },
-            "name": { "$ref": "common.schema.json#/definitions/text", "description": "Opcjonalnie: inna nazwa zespołu tylko w tym projekcie." },
-            "members": {
-              "type": "array", "description": "Kto brał udział i w jakiej roli (osoby z data/people.json).",
-              "items": { "type": "object", "required": ["person"], "additionalProperties": false,
-                "properties": { "person": { "type": "string", "description": "Id osoby z data/people.json." }, "role": { "$ref": "common.schema.json#/definitions/text" } },
-                "defaultSnippets": [{ "body": { "person": "$1", "role": { "en": "$2", "pl": "$3" } } }] }
+        "title": {
+          "$ref": "common.schema.json#/definitions/text"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "game",
+            "engine",
+            "library",
+            "app",
+            "model"
+          ],
+          "description": "game | engine | library | app | model (lista w \"categories\")."
+        },
+        "hidden": {
+          "$ref": "common.schema.json#/definitions/hidden"
+        },
+        "featured": {
+          "type": "boolean",
+          "description": "Na początek listy + czerwony badge."
+        },
+        "year": {
+          "type": "string"
+        },
+        "icon": {
+          "$ref": "common.schema.json#/definitions/image",
+          "description": "Ikona projektu (karta i nagłówek podstrony)."
+        },
+        "iconFit": {
+          "type": "string",
+          "enum": [
+            "contain",
+            "cover"
+          ],
+          "description": "contain = cała ikona widoczna; cover = wypełnij kartę."
+        },
+        "banner": {
+          "$ref": "common.schema.json#/definitions/image",
+          "description": "Opcjonalny baner: tło nagłówka podstrony i obrazek karty."
+        },
+        "cardImage": {
+          "type": "string",
+          "enum": [
+            "icon",
+            "banner"
+          ],
+          "description": "Co pokazać na karcie, gdy są i ikona, i baner (domyślnie baner)."
+        },
+        "summary": {
+          "$ref": "common.schema.json#/definitions/text",
+          "description": "Krótki opis — karta i nagłówek podstrony."
+        },
+        "description": {
+          "$ref": "common.schema.json#/definitions/markdown",
+          "description": "Długi opis (Markdown) — blok „O projekcie”."
+        },
+        "sections": {
+          "type": "array",
+          "description": "Dodatkowe bloki na podstronie (np. Funkcje, Przykład, Instalacja).",
+          "items": {
+            "type": "object",
+            "required": [
+              "title",
+              "body"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "title": {
+                "$ref": "common.schema.json#/definitions/text"
+              },
+              "body": {
+                "$ref": "common.schema.json#/definitions/markdown"
+              },
+              "hidden": {
+                "type": "boolean"
+              }
             }
           }
         },
-        "whatIDid": { "type": "array", "items": { "$ref": "common.schema.json#/definitions/text" }, "description": "Lista: co konkretnie zrobiłem w projekcie (Markdown w linii dozwolony)." },
-        "gallery": { "type": "array", "items": { "$ref": "#/definitions/galleryItem" }, "description": "Zrzuty ekranu / rendery / zdjęcia." },
-        "galleryTitle": { "$ref": "common.schema.json#/definitions/text", "description": "Tytuł galerii (domyślnie: Zrzuty ekranu / Rendery / Galeria)." },
+        "tags": {
+          "$ref": "common.schema.json#/definitions/textList",
+          "description": "Technologie i etykiety."
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/definitions/link"
+          },
+          "description": "Przyciski. Pierwszy jest główny."
+        },
+        "team": {
+          "type": "object",
+          "required": [
+            "id"
+          ],
+          "additionalProperties": false,
+          "description": "Zespół z data/teams.json + role osób w TYM projekcie.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Id zespołu z data/teams.json."
+            },
+            "name": {
+              "$ref": "common.schema.json#/definitions/text",
+              "description": "Opcjonalnie: inna nazwa zespołu tylko w tym projekcie."
+            },
+            "logo": {
+              "$ref": "common.schema.json#/definitions/image",
+              "description": "Opcjonalnie: inne logo zespołu tylko w tym projekcie (np. logo podzespołu)."
+            },
+            "members": {
+              "type": "array",
+              "description": "Kto brał udział i w jakiej roli (osoby z data/people.json).",
+              "items": {
+                "type": "object",
+                "required": [
+                  "person"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "person": {
+                    "type": "string",
+                    "description": "Id osoby z data/people.json."
+                  },
+                  "role": {
+                    "$ref": "common.schema.json#/definitions/text"
+                  }
+                },
+                "defaultSnippets": [
+                  {
+                    "body": {
+                      "person": "$1",
+                      "role": {
+                        "en": "$2",
+                        "pl": "$3"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "whatIDid": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/definitions/text"
+          },
+          "description": "Lista: co konkretnie zrobiłem w projekcie (Markdown w linii dozwolony)."
+        },
+        "gallery": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/galleryItem"
+          },
+          "description": "Zrzuty ekranu / rendery / zdjęcia."
+        },
+        "galleryTitle": {
+          "$ref": "common.schema.json#/definitions/text",
+          "description": "Tytuł galerii (domyślnie: Zrzuty ekranu / Rendery / Galeria)."
+        },
         "videos": {
-          "type": "array", "description": "Filmy (dodatkowo do linków youtube/vimeo w \"links\").",
-          "items": { "type": "object", "required": ["url"], "additionalProperties": false,
-            "properties": { "url": { "type": "string" }, "title": { "$ref": "common.schema.json#/definitions/text" }, "cover": { "$ref": "common.schema.json#/definitions/image", "description": "Własna okładka (bez niej pobiera się z YouTube/Vimeo)." }, "hidden": { "type": "boolean" } } }
+          "type": "array",
+          "description": "Filmy (dodatkowo do linków youtube/vimeo w \"links\").",
+          "items": {
+            "type": "object",
+            "required": [
+              "url"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "title": {
+                "$ref": "common.schema.json#/definitions/text"
+              },
+              "cover": {
+                "$ref": "common.schema.json#/definitions/image",
+                "description": "Własna okładka (bez niej pobiera się z YouTube/Vimeo)."
+              },
+              "hidden": {
+                "type": "boolean"
+              }
+            }
+          }
         },
         "webBuild": {
-          "type": "object", "required": ["url"], "additionalProperties": false, "description": "Gra w przeglądarce (iframe uruchamiany kliknięciem).",
+          "type": "object",
+          "required": [
+            "url"
+          ],
+          "additionalProperties": false,
+          "description": "Gra w przeglądarce (iframe uruchamiany kliknięciem).",
           "properties": {
-            "url": { "type": "string" },
-            "aspect": { "type": "string", "pattern": "^\\d+(\\.\\d+)?/\\d+(\\.\\d+)?$", "description": "Proporcje okna, np. \"16/9\". Gra dostaje rzeczywisty rozmiar bloku." },
-            "width": { "type": "number", "description": "Wirtualna szerokość w px: gra renderuje się w tym rozmiarze i jest skalowana do bloku (dla gier z układem w stałych pikselach)." },
-            "height": { "type": "number", "description": "Wirtualna wysokość w px (razem z width)." },
-            "poster": { "$ref": "common.schema.json#/definitions/image" },
-            "captureKeys": { "type": "boolean", "description": "Domyślnie true: strzałki i spacja w grze nie przewijają strony (działa dla gier z tej samej domeny)." }
+            "url": {
+              "type": "string"
+            },
+            "aspect": {
+              "type": "string",
+              "pattern": "^\\d+(\\.\\d+)?/\\d+(\\.\\d+)?$",
+              "description": "Proporcje okna, np. \"16/9\". Gra dostaje rzeczywisty rozmiar bloku."
+            },
+            "width": {
+              "type": "number",
+              "description": "Wirtualna szerokość w px: gra renderuje się w tym rozmiarze i jest skalowana do bloku (dla gier z układem w stałych pikselach)."
+            },
+            "height": {
+              "type": "number",
+              "description": "Wirtualna wysokość w px (razem z width)."
+            },
+            "poster": {
+              "$ref": "common.schema.json#/definitions/image"
+            },
+            "captureKeys": {
+              "type": "boolean",
+              "description": "Domyślnie true: strzałki i spacja w grze nie przewijają strony (działa dla gier z tej samej domeny)."
+            }
           }
         },
         "model": {
-          "type": "object", "additionalProperties": false, "description": "Model 3D — jeden model w kilku wersjach.",
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Model 3D — jeden model w kilku wersjach.",
           "properties": {
-            "variants": { "type": "array", "items": { "type": "object", "required": ["label", "src"], "additionalProperties": false,
-              "properties": { "label": { "$ref": "common.schema.json#/definitions/text", "description": "Dowolny tekst, np. HighPoly, LowPoly, 250." }, "src": { "type": "string", "description": ".glb / .gltf / .vrm (lub zaciemnione .obf)." }, "poster": { "type": "string" }, "hidden": { "type": "boolean" } } } },
-            "src": { "type": "string", "description": "Pojedynczy plik zamiast variants." },
-            "poster": { "type": "string" },
-            "cameraOrbit": { "type": "string", "description": "np. \"30deg 75deg auto\"" },
-            "autoRotate": { "type": "boolean" },
-            "environment": { "type": "string" },
-            "exposure": { "type": "number" },
-            "shadowIntensity": { "type": "number" }
+            "variants": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "label",
+                  "src"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "label": {
+                    "$ref": "common.schema.json#/definitions/text",
+                    "description": "Dowolny tekst, np. HighPoly, LowPoly, 250."
+                  },
+                  "src": {
+                    "type": "string",
+                    "description": ".glb / .gltf / .vrm (lub zaciemnione .obf)."
+                  },
+                  "poster": {
+                    "type": "string"
+                  },
+                  "hidden": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "src": {
+              "type": "string",
+              "description": "Pojedynczy plik zamiast variants."
+            },
+            "poster": {
+              "type": "string"
+            },
+            "cameraOrbit": {
+              "type": "string",
+              "description": "np. \"30deg 75deg auto\""
+            },
+            "autoRotate": {
+              "type": "boolean"
+            },
+            "environment": {
+              "type": "string"
+            },
+            "exposure": {
+              "type": "number"
+            },
+            "shadowIntensity": {
+              "type": "number"
+            }
           }
         },
-        "related": { "type": "array", "items": { "type": "string" }, "description": "Id powiązanych projektów (blok na dole podstrony)." },
-        "layout": { "type": "array", "items": { "type": "string", "enum": ["play", "videos", "gallery", "about", "sections", "model"] }, "description": "Własna kolejność bloków podstrony." }
+        "related": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Id powiązanych projektów (blok na dole podstrony)."
+        },
+        "layout": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "play",
+              "videos",
+              "gallery",
+              "about",
+              "sections",
+              "model"
+            ]
+          },
+          "description": "Własna kolejność bloków podstrony."
+        }
       }
     }
   }

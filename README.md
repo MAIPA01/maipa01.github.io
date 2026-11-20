@@ -12,8 +12,9 @@ Zmieniasz JSON → commit → po ~1 minucie zmiana jest na stronie (odśwież z 
 | `project.html?id=<id>` | **strona projektu** — jeden szablon dla wszystkich projektów, generuje się z `data/projects.json` |
 | `team.html?id=<id>` | **strona zespołu** — logo, opis, członkowie z rolami i projekty zespołu (`data/teams.json`) |
 | `404.html` | „nie znaleziono” — GitHub Pages pokazuje ją sam dla każdego złego adresu |
+| `finale.html` | **„Portfolio ukończone!”** — odblokowuje się po przejściu wszystkich poziomów trybu gry (bez tego → 404) |
 
-Nagłówek, stopka, tryb dzień/noc, wybór języka i tryb gry działają na każdej stronie (`js/core.js`).
+Nagłówek, stopka, tryb dzień/noc, wybór języka i tryb gry działają na każdej stronie (`js/core/`).
 
 ## Gdzie co edytować
 | Plik | Co zawiera |
@@ -106,6 +107,7 @@ Jeden wpis = karta na stronie głównej + własna podstrona `project.html?id=...
   "team": {                                // zespół z data/teams.json + role osób W TYM projekcie
     "id": "drop-table",
     "name": "Drop Table – 1",              // opcjonalnie: inna nazwa tylko w tym projekcie
+    "logo": "images/teams/drop-table/logo-1.webp",   // opcjonalnie: inne logo tylko w tym projekcie
     "members": [
       { "person": "patryk-antosik", "role": { "en": "Gameplay programmer", "pl": "Programista rozgrywki" } },
       { "person": "marceli-antosik", "role": { "en": "Art lead", "pl": "Lider artystyczny" } }
@@ -130,8 +132,10 @@ Linki YouTube/Vimeo otwierają się w odtwarzaczu na stronie (bez wychodzenia), 
 
 **Okładki filmów:** pole `cover`; bez niego okładka pobiera się sama (YouTube — miniatura filmu, Vimeo — przez publiczne API Vimeo).
 
-**Gry w przeglądarce:** strzałki i spacja w grze nie przewijają strony (działa dla gier z tej samej domeny `maipa01.github.io`;
-wyłączysz to `"captureKeys": false`).
+**Gry w przeglądarce:** kliknięcie w okno gry daje jej klawiaturę (czerwona ramka) — strzałki, spacja i kółko myszy
+nie przewijają wtedy strony, a P nie włącza trybu gry. Kliknięcie gdziekolwiek poza grą (albo Esc) oddaje klawiaturę stronie.
+Działa dla gier z każdej domeny (także gdy testujesz lokalnie na `localhost`, a gra jest na `maipa01.github.io`).
+Wyłączysz to `"captureKeys": false`.
 
 ## Zespoły i osoby
 - `data/people.json` — każda osoba raz: `id`, `name`, `links`, opcjonalnie `avatar`, `title`, `"me": true`.
@@ -179,7 +183,7 @@ Co realnie pomaga (od najskuteczniejszego):
    **Czy klucz można trzymać w `.env`?** Nie da się tego zrobić na GitHub Pages: to hosting plików statycznych, bez serwera,
    który mógłby przeczytać `.env`. Wszystko, czego potrzebuje przeglądarka do odkodowania modelu, musi do niej trafić —
    gdyby klucz był w `.env` wrzuconym do repo, strona by go udostępniła; gdyby go nie było w repo, strona nie mogłaby odkodować modeli.
-   Zmiana klucza też nic nie daje: dekoder jest w `js/core.js`. Prawdziwa ochrona wymagałaby serwera z logowaniem (np. Cloudflare Workers),
+   Zmiana klucza też nic nie daje: dekoder jest w `js/core/viewer3d.js`. Prawdziwa ochrona wymagałaby serwera z logowaniem (np. Cloudflare Workers),
    a i tak to, co trafi do karty graficznej, da się przechwycić.
 3. **Licencja** w opisie (np. „© Patryk Antosik — all rights reserved”) — daje Ci podstawę prawną.
 4. **Modele VRoid**: na VRoid Hub możesz zablokować pobieranie, ale plik `.vrm` wrzucony do repo GitHub Pages jest publiczny —
@@ -202,7 +206,7 @@ Przełącznik w menu (EN/PL). Język wybiera się sam według przeglądarki i je
 
 ## Tryb dzień / noc
 Przycisk ☀/☾ w menu. Domyślnie według ustawień systemu, wybór jest zapamiętywany.
-Kolory obu trybów są w `css/main.css` na górze (`:root` = dzień, `[data-theme="dark"]` = noc).
+Kolory obu trybów są w `css/common/tokens.css` (`:root` = dzień, `[data-theme="dark"]` = noc).
 
 ## Tryb gry (klawisz **P** albo przycisk **GRAJ**)
 Strona jest poziomem: górne krawędzie elementów to platformy, a **boki strony** to ściany, po których można się wspinać.
@@ -219,7 +223,7 @@ Strona jest poziomem: górne krawędzie elementów to platformy, a **boki strony
 | **T** | **wyzwanie** na tej stronie |
 | **G** | **garaż** (tuning auta za monety) |
 | R | bez wyzwania: na górę strony · w wyzwaniu: od nowa · w grze autem: od nowa |
-| Esc | zawsze wyjście z trybu gry |
+| Esc | zamyka garaż / wybór postaci, poza tym wyjście z trybu gry |
 
 **Tryb swobodny** (po P): chodzisz po stronie, monet nie ma.
 
@@ -232,12 +236,37 @@ Wyjście z trybu gry (Esc) przerywa wyzwanie.
 (najpierw siatka projektów, potem modele 3D). Zablokowane mają kłódkę, ukończone — ptaszka. Blokady działają **tylko w trybie gry** —
 zwykły odwiedzający zawsze ma dostęp do wszystkiego. Strony zespołów i 404 nie są poziomami (można po nich chodzić, ale nie ma wyzwania).
 
-**Garaż (G):** kolory auta (klasyczna czerwień + kolor każdej grywalnej postaci, ustawisz go w `characters.json` → `game.carColor`)
-i tuning: sportowe sprężyny (wyższy skok), nitro-skok (drugi skok), klatka bezpieczeństwa (przetrwanie jednej kraksy).
+**Garaż (G):** auto składa się z **karoserii** i **kół** (każde osobno do kupienia, koła mają wspólną animację obrotu)
+oraz **tuningu**: sportowe sprężyny (wyższy skok), nitro-skok (drugi skok), klatka bezpieczeństwa (przetrwanie jednej kraksy).
 Ceny liczą się same: waga przedmiotu / suma wag × **wszystkie monety możliwe do zdobycia na wszystkich poziomach**,
-więc za komplet ukończonych wyzwań kupisz dokładnie wszystko. Wagi zmienisz w `data/game.json` → `shop`.
+więc za komplet ukończonych wyzwań kupisz dokładnie wszystko. Przedmiot z `"weight": 0` jest darmowy (startowy).
 
 **Sekret:** gdzieś na stronie głównej, w odpowiednim miejscu, E robi coś specjalnego 🙂 (`data/game.json` → `car.secretAt`).
+W grze autem: przeszkody na ziemi przeskakujesz, **drony** latają tuż nad dachem — przelatują nad autem na ziemi,
+ale jeśli jesteś jeszcze w powietrzu po skoku, musisz szybko docisnąć **↓**. **Rampa** wybija auto wysoko (auto przechyla się do tyłu).
+
+**Auto w `data/game.json` → `car`** (wszystkie obrazki w `assets/game/car/`):
+```jsonc
+"bodies":    [{ "id": "midnight", "name": {"en": "Midnight", "pl": "Północ"}, "sprite": "assets/game/car/bodies/midnight.png", "weight": 1 }],
+"wheels":    [{ "id": "sport", "name": {...}, "sprite": "assets/game/car/wheels/sport.png", "weight": 1 }],
+"upgrades":  [{ "id": "shield", "name": {...}, "description": {...}, "icon": "assets/game/car/upgrades/shield.png", "weight": 3 }],
+"obstacles": [{ "id": "drone", "sprite": "assets/game/car/obstacles/drone.png", "kind": "air", "frames": 2, "fps": 10, "chance": 2 }],
+"wheelAnchors": [[4, 8], [22, 8]]      // lewy górny róg każdego koła na karoserii (w pikselach sprite'a)
+```
+- karoseria: 32×16 px **bez kół**; koła: pasek `wheelFrames` klatek po `wheelSize` px (np. 4 klatki 8×8 → 32×8);
+- przeszkody: `kind` = `ground` (przeskocz), `air` (dron — pojawia się zaraz za przeszkodą naziemną), `ramp` (rampa);
+  `chance` = jak często; animowane — klatki obok siebie + `frames`, `fps`;
+- id tuningu (`springs`, `doubleJump`, `shield`) są w kodzie gry — nazwy, opisy, ikony i ceny zmieniasz w JSON.
+
+### Strona „Portfolio ukończone!” (`finale.html`)
+Po ukończeniu wyzwania na **ostatnim** poziomie gra sama przenosi na `finale.html`: fajerwerki na całej stronie,
+animowany napis „Gratulacje!”, machające wszystkie grywalne postacie i statystyki. Od tej chwili w stopce każdej strony jest
+przycisk **„Portfolio ukończone!”**. Wejście na `finale.html` bez ukończenia wszystkiego przenosi na 404.
+
+**Podgląd bez przechodzenia gry:**
+- lokalnie: http://localhost:8000/finale.html?preview (działa tylko na `localhost` — na prawdziwej stronie `?preview` nic nie daje);
+- albo w konsoli przeglądarki (F12): `maipa.completeAll()` (zalicza wszystkie poziomy + monety), potem odśwież;
+  `maipa.resetProgress()` czyści postęp. `maipa.progress()` pokazuje zapisany stan.
 
 Postęp (ukończone poziomy, monety, zakupy) zapisuje się w przeglądarce (`localStorage`: `maipa-progress`).
 
@@ -255,7 +284,7 @@ Każda postać ma jeden poziomy pasek klatek 16×16 (`assets/game/characters/<id
 | 12 | zjazd po ścianie |
 
 Aseprite: **File → Export Sprite Sheet → Sheet type: Horizontal Strip**, bez paddingu. Inny układ/rozmiar ustawisz w `data/game.json` → `player`
-(albo per postać w `characters.json` → `game`). Auto: `assets/game/car.png` (2 klatki 32×16), moneta: `assets/game/coin.png`.
+(albo per postać w `characters.json` → `game`). Auto: `assets/game/car/` (opis wyżej), moneta: `assets/game/coin.png`.
 Obecne sprite'y to placeholdery wygenerowane skryptem `tools/placeholder-sprites.py`.
 
 ## Podgląd lokalny
@@ -267,19 +296,31 @@ i wejdź na http://localhost:8000 (404 lokalnie: http://localhost:8000/404.html)
 
 ## Struktura
 ```
-index.html, project.html, team.html, 404.html
-css/main.css            wygląd (kolory dzień/noc na górze)
-js/core.js              wspólne: nagłówek, stopka, motyw, język, lightbox, wideo, podgląd 3D, markdown, gra
-js/app.js               strona główna
-js/project.js           podstrona projektu
-js/team.js              strona zespołu
-js/notfound.js          404
-js/vrm.js               podgląd postaci VRM
-js/i18n.js, js/icons.js tłumaczenia, ikony (Simple Icons, CC0)
-js/game/playmode.js     tryb gry
+index.html, project.html, team.html, 404.html, finale.html
+css/common.css          wspólny wygląd — importuje pliki z css/common/:
+  common/tokens.css       kolory dzień/noc, fonty, rozmiary
+  common/fonts.css, base.css, buttons.css, nav.css, cards.css, viewer.css,
+  common/dialogs.css, markdown.css, detail-page.css (project + team), footer.css
+css/pages/<strona>.css  wygląd jednej strony: home, project, team, notfound, finale
+css/game.css            tryb gry (każda strona)
+js/core/                wspólny kod stron (spis w js/core/index.js):
+  boot.js                 bootPage() — od tego zaczyna każda strona
+  i18n.js, dom.js, storage.js, icons.js, site.js, chrome.js (nagłówek, stopka, motyw, język)
+  content.js, markdown.js, media.js (lightbox, wideo), viewer3d.js, vrm.js, levels.js, play.js
+js/pages/               jeden plik na stronę: home.js, project.js (+ project/), team.js, notfound.js, finale.js (+ finale/)
+js/game/                tryb gry (spis modułów w js/game/index.js):
+  index.js                createPlayMode(), pętla gry
+  context.js              konfiguracja + wspólny stan „G”
+  player.js, physics.js, level.js, input.js, interact.js, challenge.js, progress.js, hud.js, ui.js, render.js, ...
+  car/parts.js, car/runner.js, car/garage.js   auto: części, gra, garaż
 js/vendor/              model-viewer, three.js + three-vrm (bez CDN)
 data/                   TREŚĆ
-assets/game/            sprite'y gry
+assets/game/            sprite'y gry (postacie, moneta, auto: car/bodies, wheels, obstacles, upgrades)
 schemas/                schematy JSON (podpowiedzi w VS Code)
 tools/                  optimize-images.py, obfuscate-model.py, validate-data.py, placeholder-sprites.py
 ```
+
+**Nowa strona:** skopiuj np. `team.html`, podmień `css/pages/…css` i `js/pages/…js`; w JS:
+`import { bootPage } from '../core/index.js'; bootPage({ page: 'nazwa', render(data) { … } });`
+**Nowa funkcja gry:** nowy plik w `js/game/` z `export function installCośTam(G) { G.mojaFunkcja = … }`
+i jedno wywołanie w `js/game/index.js`.

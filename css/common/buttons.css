@@ -1,0 +1,36 @@
+/* =========================================================
+   Buttons: .btn (outline) and .btn-pixel (pixel-art red button) + the mini sprite in PLAY.
+   ========================================================= */
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 14px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase;
+  padding: 16px 26px; border-radius: var(--radius);
+  transition: transform .25s var(--ease), background-color .25s, color .25s, box-shadow .25s;
+}
+.btn-outline { color: #fff; border: 2px solid var(--red); }
+.btn-outline:hover { background: var(--red); transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.35); }
+.btn-outline-dark { color: var(--text-strong); border: 2px solid var(--text-strong); }
+.btn-outline-dark:hover { background: var(--red); border-color: var(--red); color: #fff; transform: translateY(-3px); }
+
+.btn-pixel {
+  --px: 3px;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-pixel); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+  color: #fff; background: var(--red); padding: 10px 14px;
+  clip-path: polygon(0 var(--px), var(--px) var(--px), var(--px) 0, calc(100% - var(--px)) 0, calc(100% - var(--px)) var(--px), 100% var(--px),
+                     100% calc(100% - var(--px)), calc(100% - var(--px)) calc(100% - var(--px)), calc(100% - var(--px)) 100%, var(--px) 100%, var(--px) calc(100% - var(--px)), 0 calc(100% - var(--px)));
+  box-shadow: inset 0 calc(var(--px) * -1) 0 var(--red-dark);
+  transition: transform .1s steps(2), background-color .15s;
+}
+.btn-pixel .icon { width: 14px; height: 14px; fill: currentColor; }
+.btn-pixel:hover { background: #e52222; transform: translateY(-2px); }
+.btn-pixel:active { transform: translateY(1px); box-shadow: none; }
+.btn-pixel-lg { font-size: 12px; padding: 17px 22px; --px: 4px; }
+
+.mini-sprite {
+  width: 16px; height: 16px; flex: none;
+  background: url("../../assets/game/characters/maipa-chan.png") 0 0 / auto 16px no-repeat;
+  image-rendering: pixelated; animation: mini-idle 1s steps(1) infinite;
+}
+@keyframes mini-idle { 0% { background-position: 0 0; } 50% { background-position: -16px 0; } }

@@ -1,0 +1,19 @@
+/* =========================================================
+   Text rendered from markdown in JSON (.md).
+   ========================================================= */
+/* markdown */
+.md { font-size: 17px; }
+.md.small { font-size: 15px; }
+.md > * + * { margin-top: 14px; }
+.md h3, .md h4, .md h5 { color: var(--text-strong); font-weight: 700; margin-top: 24px; }
+.md h3 { font-size: 21px; } .md h4 { font-size: 18px; }
+.md strong { color: var(--text-strong); }
+.md a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+.md ul, .md ol { padding-left: 22px; }
+.md li + li { margin-top: 4px; }
+.md ul li::marker { color: var(--red); }
+.md code { font-family: var(--font-mono); font-size: .9em; background: var(--code-bg); border: 1px solid var(--border); padding: 1px 6px; border-radius: 3px; color: var(--text-strong); }
+.md pre { background: #0d0d0e; color: #e8e8e8; border: 1px solid #262626; border-left: 3px solid var(--red); padding: 16px 18px; border-radius: var(--radius); overflow-x: auto; font-size: 14px; line-height: 1.55; }
+.md pre code { background: none; border: 0; padding: 0; color: inherit; }
+.md pre[data-lang]::before { content: attr(data-lang); display: block; font-family: var(--font-pixel); font-size: 8px; color: var(--red); margin-bottom: 8px; text-transform: uppercase; }
+.md blockquote { border-left: 3px solid var(--red); padding: 4px 0 4px 16px; color: var(--text-muted); font-style: italic; }

@@ -12,11 +12,13 @@
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="images/icon.webp">
   <script>try{var m=JSON.parse(localStorage.getItem('maipa-theme'));document.documentElement.dataset.theme=m||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+  <link rel="stylesheet" href="css/game.css">
 </head>
 <body class="page-home">
   <!--
-    Header, footer and dialogs are added by js/core.js (same on every page).
+    Header, footer and dialogs are added by js/core/ (chrome.js, media.js) — same on every page.
     TRANSLATIONS: data-i18n="key" → text from data/i18n/<language>.json;
     data-i18n-attr="attribute:key; attribute2:key2" translates attributes.
   -->
@@ -117,6 +119,6 @@
     </section>
   </main>
 
-  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/pages/home.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 import {
   bootPage, $, $$, esc, txt, tr, t, icon, visible, tagsHTML, linksHTML, projectUrl,
   openLightbox, mountModel, playableCharacters, projectCardHTML, homeProjectOrder,
-} from './core.js';
+} from '../core/index.js';
 const home = { filter: '*', typeToken: 0, characters: [], viewers: new Map() };
 
 bootPage({ page: 'home', render });

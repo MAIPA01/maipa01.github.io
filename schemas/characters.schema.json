@@ -2,24 +2,104 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "characters.schema.json",
   "title": "MAIPA portfolio — postacie (data/characters.json)",
-  "type": "object", "required": ["characters"],
+  "type": "object",
+  "required": [
+    "characters"
+  ],
   "properties": {
-    "$schema": { "type": "string" }, "_info": { "type": "string" },
-    "characters": { "type": "array", "items": {
-      "type": "object", "required": ["id", "name", "images"], "additionalProperties": false,
-      "properties": {
-        "id": { "$ref": "common.schema.json#/definitions/id" },
-        "name": { "$ref": "common.schema.json#/definitions/text" },
-        "hidden": { "$ref": "common.schema.json#/definitions/hidden" },
-        "images": { "type": "array", "description": "Pozy (pierwsza = domyślna).", "items": { "type": "object", "required": ["src"], "properties": { "src": { "type": "string" }, "alt": { "$ref": "common.schema.json#/definitions/text" } } } },
-        "description": { "$ref": "common.schema.json#/definitions/text" },
-        "tags": { "$ref": "common.schema.json#/definitions/textList" },
-        "model": { "description": ".vrm / .glb (lub .obf) — przycisk „Zobacz w 3D”.", "anyOf": [{ "type": "string" }, { "type": "object" }] },
-        "links": { "type": "array", "items": { "$ref": "common.schema.json#/definitions/link" } },
-        "game": { "type": "object", "description": "Sprite do trybu gry — postać staje się grywalna.", "required": ["sprite"],
-          "properties": { "sprite": { "type": "string" }, "frameWidth": { "type": "number" }, "frameHeight": { "type": "number" }, "hitbox": { "type": "object" }, "animations": { "type": "object" },
-            "carColor": { "type": "object", "description": "Kolor auta tej postaci w garażu: {\"body\": \"#rrggbb\", \"shade\": \"#rrggbb\"}." } } }
+    "$schema": {
+      "type": "string"
+    },
+    "_info": {
+      "type": "string"
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "images"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/definitions/id"
+          },
+          "name": {
+            "$ref": "common.schema.json#/definitions/text"
+          },
+          "hidden": {
+            "$ref": "common.schema.json#/definitions/hidden"
+          },
+          "images": {
+            "type": "array",
+            "description": "Pozy (pierwsza = domyślna).",
+            "items": {
+              "type": "object",
+              "required": [
+                "src"
+              ],
+              "properties": {
+                "src": {
+                  "type": "string"
+                },
+                "alt": {
+                  "$ref": "common.schema.json#/definitions/text"
+                }
+              }
+            }
+          },
+          "description": {
+            "$ref": "common.schema.json#/definitions/text"
+          },
+          "tags": {
+            "$ref": "common.schema.json#/definitions/textList"
+          },
+          "model": {
+            "description": ".vrm / .glb (lub .obf) — przycisk „Zobacz w 3D”.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/definitions/link"
+            }
+          },
+          "game": {
+            "type": "object",
+            "description": "Sprite do trybu gry — postać staje się grywalna.",
+            "required": [
+              "sprite"
+            ],
+            "properties": {
+              "sprite": {
+                "type": "string"
+              },
+              "frameWidth": {
+                "type": "number"
+              },
+              "frameHeight": {
+                "type": "number"
+              },
+              "hitbox": {
+                "type": "object"
+              },
+              "animations": {
+                "type": "object"
+              }
+            }
+          }
+        }
       }
-    } }
+    }
   }
 }

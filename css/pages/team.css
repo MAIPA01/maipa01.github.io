@@ -1,0 +1,20 @@
+/* =========================================================
+   Team page (team.html?id=…): members and their roles.
+   ========================================================= */
+/* ---------- team page ---------- */
+.tp-layout { padding: 50px 0 80px; display: grid; gap: 24px; }
+.tp-members { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.tp-member { background: var(--surface-2); padding: 16px; border-left: 3px solid transparent; }
+.tp-member.me { border-left-color: var(--red); }
+.tp-member-head { display: flex; gap: 12px; align-items: center; }
+.tp-avatar { width: 44px; height: 44px; flex: none; object-fit: cover; }
+.tp-avatar-ph { display: grid; place-items: center; font-family: var(--font-pixel); font-size: 11px; color: var(--text-strong); background: var(--surface); border: 2px solid var(--border); }
+.tp-member h3 { font-size: 17px; color: var(--text-strong); display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.tp-member h3 a:hover { color: var(--red); }
+.tp-member-title { font-size: 13px; color: var(--text-muted); }
+.tp-roles { list-style: none; margin-top: 12px; display: grid; gap: 6px; font-size: 14px; }
+.tp-roles li { display: flex; flex-direction: column; padding-top: 6px; border-top: 1px dashed var(--border); }
+.tp-roles a { color: var(--text-strong); font-weight: 500; }
+.tp-roles a:hover { color: var(--red); }
+.tp-roles span { color: var(--text-muted); font-size: 13px; }
+.tp-projects .pp-block-title { margin-top: 10px; }

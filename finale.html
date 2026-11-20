@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio completed! · MAIPA</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#d11717">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="images/icon.webp">
+  <script>try{var m=JSON.parse(localStorage.getItem('maipa-theme'));document.documentElement.dataset.theme=m||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/pages/finale.css">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body class="page-finale">
+  <!--
+    FINALE — shown after completing the challenge on every level of the play mode.
+    Without that it redirects to 404.html.
+    Preview without playing: http://localhost:8000/finale.html?preview  (only on localhost)
+    or in the browser console (F12): maipa.completeAll()   /   maipa.resetProgress()
+  -->
+  <canvas class="fireworks" aria-hidden="true"></canvas>
+  <main id="main" class="finale">
+    <div class="pp-loading"><span></span></div>
+  </main>
+  <script type="module" src="js/pages/finale.js"></script>
+</body>
+</html>

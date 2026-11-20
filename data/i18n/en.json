@@ -112,7 +112,7 @@
     "newRecord": "NEW RECORD!",
     "car": "E: get in",
     "carExit": "E: get out",
-    "carFound": "SECRET FOUND! The Challenger runner: SPACE / ↑ jump · ↓ slam down · R restart · E get out",
+    "carFound": "SECRET FOUND! The Challenger runner: SPACE / ↑ jump · ↓ slam down under drones · ramps = big jumps · R restart · E get out",
     "openProject": "E: open project",
     "back": "E: go back",
     "pickHere": "E: play as {name}",
@@ -132,27 +132,21 @@
     "reward": "+{coins} coins for the garage.",
     "unlocked": "Unlocked: {level}.",
     "carHint": "E: get in",
-    "carStart": "SPACE / ↑ jump · ↓ slam down · R restart · E get out",
+    "carStart": "SPACE / ↑ jump · ↓ slam down under drones · R restart · E get out",
     "carOver": "CRASH! Score: {score} · SPACE again · E get out",
     "score": "score",
-    "carClassic": "Classic red",
-    "carColorDesc": "Paint job",
-    "up_springs": "Sport springs",
-    "up_springs_desc": "Car jumps 22% higher",
-    "up_doubleJump": "Nitro hop",
-    "up_doubleJump_desc": "Second jump in the air",
-    "up_shield": "Roll cage",
-    "up_shield_desc": "Survive one crash per run",
     "garage": "GARAGE",
     "wallet": "Coins: {coins} (all levels: {total})",
-    "garageColors": "Colours",
     "garageUpgrades": "Tuning",
     "garageHint": "↑ ↓ choose · ENTER buy / use · G or ESC close. Coins come from completing level challenges.",
     "equipped": "IN USE",
     "equip": "USE",
     "owned": "OWNED",
     "notEnough": "Not enough coins — you need {coins} more.",
-    "garageBusy": "The garage is closed during a challenge."
+    "garageBusy": "The garage is closed during a challenge.",
+    "garageBodies": "Body",
+    "garageWheels": "Wheels",
+    "allDone": "PORTFOLIO COMPLETED! Taking you to the finale…"
   },
   "errors": {
     "load": "Couldn't load the data files. If you opened index.html straight from disk, run a local server instead: python -m http.server and open http://localhost:8000"
@@ -189,7 +183,8 @@
     "model": "3D model",
     "variant": "Version",
     "modelMissing": "This 3D model isn't available right now.",
-    "related": "Related projects"
+    "related": "Related projects",
+    "playFocused": "Game has the keyboard — click outside to scroll the page"
   },
   "notFound": {
     "title": "Page not found",
@@ -210,5 +205,19 @@
     "counts": "{members} members · {projects} projects",
     "notFound": "Team not found",
     "notFoundText": "There is no team with this id. Check the link or go back to the projects."
+  },
+  "finale": {
+    "link": "Portfolio completed!",
+    "title": "Congratulations!",
+    "subtitle": "You've completed every level of this portfolio.",
+    "levels": "levels completed",
+    "time": "total of best times",
+    "coins": "coins earned",
+    "car": "best car score",
+    "thanks": "Thanks for playing — and for checking out my work!",
+    "home": "Back to the home page",
+    "projects": "Browse projects",
+    "preview": "PREVIEW — the real page needs every level completed",
+    "pageTitle": "Portfolio completed! · MAIPA"
   }
 }

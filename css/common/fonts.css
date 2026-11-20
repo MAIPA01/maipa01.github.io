@@ -1,0 +1,22 @@
+/* =========================================================
+   Self-hosted fonts (folder Fonts/). Change the families in tokens.css.
+   ========================================================= */
+/* ---------- Fonts (self-hosted) ---------- */
+@font-face {
+  font-family: "Viper";
+  src: url("../../Fonts/vipessi_-webfont.woff2") format("woff2"), url("../../Fonts/vipessi_-webfont.woff") format("woff");
+  font-display: swap;
+}
+/* Title font: Exo 2 Black Italic (SIL OFL) — digits + Polish letters. Change --font-title to swap it. */
+@font-face { font-family: "Exo 2"; font-weight: 900; font-style: italic; src: url("../../Fonts/exo-2-latin-900-italic.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F; font-display: swap; }
+@font-face { font-family: "Exo 2"; font-weight: 900; font-style: italic; src: url("../../Fonts/exo-2-latin-ext-900-italic.woff2") format("woff2"); unicode-range: U+0100-024F, U+1E00-1EFF; font-display: swap; }
+@font-face { font-family: "Press Start 2P"; src: url("../../Fonts/press-start-2p-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F; font-display: swap; }
+@font-face { font-family: "Press Start 2P"; src: url("../../Fonts/press-start-2p-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-024F, U+1E00-1EFF; font-display: swap; }
+@font-face { font-family: "Roboto"; font-weight: 300; src: url("../../Fonts/roboto-latin-300-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
+@font-face { font-family: "Roboto"; font-weight: 400; src: url("../../Fonts/roboto-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
+@font-face { font-family: "Roboto"; font-weight: 500; src: url("../../Fonts/roboto-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
+@font-face { font-family: "Roboto"; font-weight: 700; src: url("../../Fonts/roboto-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
+@font-face { font-family: "Roboto"; font-weight: 300; src: url("../../Fonts/roboto-latin-ext-300-normal.woff2") format("woff2"); unicode-range: U+0100-024F; font-display: swap; }
+@font-face { font-family: "Roboto"; font-weight: 400; src: url("../../Fonts/roboto-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-024F; font-display: swap; }
+@font-face { font-family: "Roboto"; font-weight: 500; src: url("../../Fonts/roboto-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-024F; font-display: swap; }
+@font-face { font-family: "Roboto"; font-weight: 700; src: url("../../Fonts/roboto-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-024F; font-display: swap; }

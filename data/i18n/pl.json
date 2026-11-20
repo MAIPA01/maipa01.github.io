@@ -112,7 +112,7 @@
     "newRecord": "NOWY REKORD!",
     "car": "E: wsiądź",
     "carExit": "E: wysiądź",
-    "carFound": "SEKRET ZNALEZIONY! Wyścig Challengerem: SPACJA / ↑ skok · ↓ docisk do ziemi · R od nowa · E wysiądź",
+    "carFound": "SEKRET ZNALEZIONY! Wyścig Challengerem: SPACJA / ↑ skok · ↓ docisk pod dronami · rampy = wielkie skoki · R od nowa · E wysiądź",
     "openProject": "E: otwórz projekt",
     "back": "E: wróć",
     "pickHere": "E: graj jako {name}",
@@ -132,27 +132,21 @@
     "reward": "+{coins} monet do garażu.",
     "unlocked": "Odblokowano: {level}.",
     "carHint": "E: wsiądź",
-    "carStart": "SPACJA / ↑ skok · ↓ docisk do ziemi · R od nowa · E wysiądź",
+    "carStart": "SPACJA / ↑ skok · ↓ docisk pod dronami · R od nowa · E wysiądź",
     "carOver": "KRAKSA! Wynik: {score} · SPACJA jeszcze raz · E wysiądź",
     "score": "wynik",
-    "carClassic": "Klasyczna czerwień",
-    "carColorDesc": "Lakier",
-    "up_springs": "Sportowe sprężyny",
-    "up_springs_desc": "Auto skacze o 22% wyżej",
-    "up_doubleJump": "Nitro-skok",
-    "up_doubleJump_desc": "Drugi skok w powietrzu",
-    "up_shield": "Klatka bezpieczeństwa",
-    "up_shield_desc": "Przetrwaj jedną kraksę na przejazd",
     "garage": "GARAŻ",
     "wallet": "Monety: {coins} (wszystkie poziomy: {total})",
-    "garageColors": "Kolory",
     "garageUpgrades": "Tuning",
     "garageHint": "↑ ↓ wybór · ENTER kup / użyj · G lub ESC zamknij. Monety zdobywasz, kończąc wyzwania na poziomach.",
     "equipped": "W UŻYCIU",
     "equip": "UŻYJ",
     "owned": "KUPIONE",
     "notEnough": "Za mało monet — brakuje {coins}.",
-    "garageBusy": "Garaż jest zamknięty w trakcie wyzwania."
+    "garageBusy": "Garaż jest zamknięty w trakcie wyzwania.",
+    "garageBodies": "Karoseria",
+    "garageWheels": "Koła",
+    "allDone": "PORTFOLIO UKOŃCZONE! Zabieram cię na finał…"
   },
   "errors": {
     "load": "Nie udało się wczytać plików z danymi. Jeśli otworzyłeś index.html bezpośrednio z dysku, uruchom lokalny serwer: python -m http.server i wejdź na http://localhost:8000"
@@ -189,7 +183,8 @@
     "model": "Model 3D",
     "variant": "Wersja",
     "modelMissing": "Ten model 3D jest teraz niedostępny.",
-    "related": "Powiązane projekty"
+    "related": "Powiązane projekty",
+    "playFocused": "Gra ma klawiaturę — kliknij poza grą, aby przewijać stronę"
   },
   "notFound": {
     "title": "Nie znaleziono strony",
@@ -210,5 +205,19 @@
     "counts": "członkowie: {members} · projekty: {projects}",
     "notFound": "Nie znaleziono zespołu",
     "notFoundText": "Nie ma zespołu o takim identyfikatorze. Sprawdź link albo wróć do projektów."
+  },
+  "finale": {
+    "link": "Portfolio ukończone!",
+    "title": "Gratulacje!",
+    "subtitle": "Udało się — wszystkie poziomy tego portfolio są ukończone.",
+    "levels": "ukończone poziomy",
+    "time": "suma najlepszych czasów",
+    "coins": "zdobyte monety",
+    "car": "rekord w aucie",
+    "thanks": "Dzięki za grę — i za obejrzenie moich prac!",
+    "home": "Wróć na stronę główną",
+    "projects": "Przeglądaj projekty",
+    "preview": "PODGLĄD — prawdziwa strona wymaga ukończenia wszystkich poziomów",
+    "pageTitle": "Portfolio ukończone! · MAIPA"
   }
 }

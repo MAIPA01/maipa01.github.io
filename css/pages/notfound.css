@@ -1,0 +1,10 @@
+/* =========================================================
+   404 page: pixel digits.
+   ========================================================= */
+/* ---------- 404 ---------- */
+.nf { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px; padding: calc(var(--nav-h) + 60px) 20px 80px; background: var(--bg-alt); }
+.nf-digits { display: flex; gap: clamp(14px, 3vw, 34px); }
+.nf-digit { display: grid; grid-template-columns: repeat(4, var(--b)); grid-template-rows: repeat(5, var(--b)); --b: clamp(16px, 4vw, 36px); }
+.nf-digit i { display: block; }
+.nf-digit i.on { background: var(--red); box-shadow: inset -4px -4px 0 var(--red-dark), inset 4px 4px 0 rgba(255,255,255,.18); }
+.nf-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 26px; }

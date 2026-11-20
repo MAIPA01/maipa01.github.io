@@ -93,34 +93,182 @@
   },
   "car": {
     "enabled": true,
-    "sprite": "assets/game/car.png",
-    "frameWidth": 32,
-    "frameHeight": 16,
-    "frames": [
-      0,
-      1
-    ],
     "secretAt": ".band-1",
+    "size": {
+      "w": 32,
+      "h": 16
+    },
+    "hitbox": {
+      "x": 1,
+      "y": 3,
+      "w": 30,
+      "h": 13
+    },
+    "wheelSize": 8,
+    "wheelFrames": 4,
+    "wheelAnchors": [
+      [
+        4,
+        8
+      ],
+      [
+        22,
+        8
+      ]
+    ],
     "speed": 430,
     "speedUp": 14,
     "maxSpeed": 1150,
+    "gravity": 2600,
     "jumpVelocity": 900,
-    "slamSpeed": 1700
-  },
-  "shop": {
-    "colorWeight": 1,
+    "slamSpeed": 1700,
+    "rampVelocity": 1350,
+    "bodies": [
+      {
+        "id": "classic",
+        "name": {
+          "en": "Classic red",
+          "pl": "Klasyczna czerwień"
+        },
+        "sprite": "assets/game/car/bodies/classic.png",
+        "weight": 0
+      },
+      {
+        "id": "midnight",
+        "name": {
+          "en": "Midnight",
+          "pl": "Północ"
+        },
+        "sprite": "assets/game/car/bodies/midnight.png",
+        "weight": 1
+      },
+      {
+        "id": "sunset",
+        "name": {
+          "en": "Sunset",
+          "pl": "Zachód słońca"
+        },
+        "sprite": "assets/game/car/bodies/sunset.png",
+        "weight": 1
+      },
+      {
+        "id": "mint",
+        "name": {
+          "en": "Mint",
+          "pl": "Mięta"
+        },
+        "sprite": "assets/game/car/bodies/mint.png",
+        "weight": 1
+      }
+    ],
+    "wheels": [
+      {
+        "id": "standard",
+        "name": {
+          "en": "Standard wheels",
+          "pl": "Zwykłe koła"
+        },
+        "sprite": "assets/game/car/wheels/standard.png",
+        "weight": 0
+      },
+      {
+        "id": "sport",
+        "name": {
+          "en": "Sport rims",
+          "pl": "Sportowe felgi"
+        },
+        "sprite": "assets/game/car/wheels/sport.png",
+        "weight": 1
+      },
+      {
+        "id": "gold",
+        "name": {
+          "en": "Gold rims",
+          "pl": "Złote felgi"
+        },
+        "sprite": "assets/game/car/wheels/gold.png",
+        "weight": 2
+      }
+    ],
     "upgrades": [
       {
         "id": "springs",
+        "name": {
+          "en": "Sport springs",
+          "pl": "Sportowe sprężyny"
+        },
+        "description": {
+          "en": "The car jumps 22% higher.",
+          "pl": "Auto skacze o 22% wyżej."
+        },
+        "icon": "assets/game/car/upgrades/springs.png",
         "weight": 2
       },
       {
         "id": "doubleJump",
+        "name": {
+          "en": "Nitro hop",
+          "pl": "Nitro-skok"
+        },
+        "description": {
+          "en": "A second jump in the air.",
+          "pl": "Drugi skok w powietrzu."
+        },
+        "icon": "assets/game/car/upgrades/doubleJump.png",
         "weight": 3
       },
       {
         "id": "shield",
+        "name": {
+          "en": "Roll cage",
+          "pl": "Klatka bezpieczeństwa"
+        },
+        "description": {
+          "en": "Survive one crash per run.",
+          "pl": "Przetrwaj jedną kraksę na przejazd."
+        },
+        "icon": "assets/game/car/upgrades/shield.png",
         "weight": 3
+      }
+    ],
+    "obstacles": [
+      {
+        "id": "cone",
+        "sprite": "assets/game/car/obstacles/cone.png",
+        "kind": "ground",
+        "chance": 3
+      },
+      {
+        "id": "cones",
+        "sprite": "assets/game/car/obstacles/cones.png",
+        "kind": "ground",
+        "chance": 2
+      },
+      {
+        "id": "barrier",
+        "sprite": "assets/game/car/obstacles/barrier.png",
+        "kind": "ground",
+        "chance": 2
+      },
+      {
+        "id": "tires",
+        "sprite": "assets/game/car/obstacles/tires.png",
+        "kind": "ground",
+        "chance": 2
+      },
+      {
+        "id": "drone",
+        "sprite": "assets/game/car/obstacles/drone.png",
+        "frames": 2,
+        "fps": 10,
+        "kind": "air",
+        "chance": 2
+      },
+      {
+        "id": "ramp",
+        "sprite": "assets/game/car/obstacles/ramp.png",
+        "kind": "ramp",
+        "chance": 1
       }
     ]
   },
@@ -152,7 +300,10 @@
     ".tp-member",
     ".pp-related-card",
     ".section",
-    ".character-body"
+    ".character-body",
+    ".finale-char",
+    ".finale-stat",
+    ".finale-actions .btn-pixel"
   ],
   "coinsOn": [
     ".project-card",

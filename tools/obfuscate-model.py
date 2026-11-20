@@ -10,7 +10,7 @@ Then point the JSON to the new file, e.g.  "src": "models/glock18D/HighPoly.glb.
 and do NOT commit the original .glb / .vrm (add it to .gitignore).
 
 IMPORTANT: this is a deterrent, not real protection. Anything a browser can display
-can be extracted by someone determined (the decoder is in js/core.js). See README → "Ochrona modeli".
+can be extracted by someone determined (the decoder is in js/core/viewer3d.js). See README → "Ochrona modeli".
 """
 import os, sys, glob
 

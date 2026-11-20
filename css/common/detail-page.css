@@ -1,0 +1,43 @@
+/* =========================================================
+   Shared layout of the detail pages (project.html, team.html):
+   dark hero with icon/logo, white blocks, team logo.
+   ========================================================= */
+.pp-hero { position: relative; color: #fff; padding: calc(var(--nav-h) + 40px) 0 46px; background: var(--black); overflow: hidden; }
+.pp-hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 80% 0%, rgba(209,23,23,.35), transparent 55%); }
+.pp-hero.has-banner::before { background: linear-gradient(90deg, rgba(0,0,0,.92) 0%, rgba(0,0,0,.7) 50%, rgba(0,0,0,.35) 100%), var(--banner) center / cover; }
+.pp-hero-inner { position: relative; }
+.pp-back { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-pixel); font-size: 9px; color: #ddd; padding: 8px 10px; border: 2px solid rgba(255,255,255,.25); transition: .2s; }
+.pp-back .icon { width: 16px; height: 16px; fill: currentColor; }
+.pp-back:hover { border-color: var(--red); color: #fff; background: var(--red); }
+.pp-head { display: flex; gap: 26px; align-items: center; margin-top: 30px; }
+.pp-icon { width: 128px; height: 128px; flex: none; border-radius: 18px; object-fit: cover; box-shadow: 0 14px 30px rgba(0,0,0,.5); background: #111; }
+.pp-icon-placeholder { display: grid; place-items: center; border: 2px solid #2a2a2a; }
+.pp-icon-placeholder .icon { width: 60px; height: 60px; fill: var(--red); }
+.pp-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.pp-title { font-family: var(--font-title); font-style: italic; font-weight: 900; font-size: clamp(36px, 6vw, 64px); line-height: 1.05; margin-top: 10px; color: #fff; }
+.pp-summary { font-size: 19px; font-weight: 300; color: rgba(255,255,255,.85); max-width: 720px; margin-top: 10px; }
+.pp-links { margin-top: 28px; }
+.pp-hero .project-link { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.2); color: #fff; }
+.pp-hero .project-link.primary { background: var(--red); border-color: var(--red); }
+.pp-hero .project-link:hover { border-color: var(--red); color: #fff; }
+.pp-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 24px; }
+.pp-block-title { font-family: var(--font-title); font-style: italic; font-weight: 900; color: var(--text-strong); font-size: 26px; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
+.pp-block-title::before { content: ""; width: 10px; height: 10px; background: var(--red); flex: none; }
+.pp-missing { padding: calc(var(--nav-h) + 80px) 0 100px; }
+.page-project main, .page-team main { background: var(--bg-alt); }
+/* ---------- team on the project page ---------- */
+.pp-team-head { display: flex; align-items: center; gap: 12px; padding: 10px; margin-bottom: 12px; background: var(--surface-2); transition: background-color .2s; }
+.pp-team-head:hover { background: var(--red); color: #fff; }
+.pp-team-head strong { display: block; color: inherit; font-size: 16px; }
+.pp-team-head small { font-family: var(--font-pixel); font-size: 8px; opacity: .75; }
+.pp-team-head:hover strong { color: #fff; }
+.pp-team-logo, .team-logo { width: 44px; height: 44px; flex: none; object-fit: contain; }
+.team-logo-ph { display: grid; place-items: center; font-family: var(--font-pixel); font-size: 12px; color: #fff; background: var(--red);
+  box-shadow: inset -4px -4px 0 var(--red-dark), inset 4px 4px 0 rgba(255,255,255,.2); }
+.pp-icon.team-logo-ph { font-size: 30px; border-radius: 0; }
+
+@media (max-width: 900px) {
+  .pp-head { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .pp-icon { width: 96px; height: 96px; }
+  .pp-block { padding: 20px; }
+}

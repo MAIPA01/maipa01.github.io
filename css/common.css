@@ -1,0 +1,29 @@
+/* =========================================================
+   MAIPA portfolio — styles shared by every page.
+   Each page links:  css/common.css  +  css/game.css  +  css/pages/<page>.css
+
+   common/
+     fonts.css        @font-face (self-hosted, folder Fonts/)
+     tokens.css       colours / fonts / sizes — day + night mode
+     base.css         reset, typography helpers, sections, reveal
+     buttons.css      .btn, .btn-pixel
+     nav.css          top bar + mobile menu
+     cards.css        project cards, tags, badges, link buttons, message card
+     viewer.css       3D viewer + variant buttons
+     dialogs.css      lightbox + video modal
+     markdown.css     text from markdown (.md)
+     detail-page.css  hero + blocks of project.html / team.html
+     footer.css       footer
+   New page? Create css/pages/<page>.css and link it after common.css.
+   ========================================================= */
+@import url("common/fonts.css");
+@import url("common/tokens.css");
+@import url("common/base.css");
+@import url("common/buttons.css");
+@import url("common/nav.css");
+@import url("common/cards.css");
+@import url("common/viewer.css");
+@import url("common/dialogs.css");
+@import url("common/markdown.css");
+@import url("common/detail-page.css");
+@import url("common/footer.css");

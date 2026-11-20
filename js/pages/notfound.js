@@ -1,5 +1,5 @@
 /* 404 page — big pixel "404" made of blocks (they are platforms in play mode). */
-import { bootPage, $, t } from './core.js';
+import { bootPage, $, t } from '../core/index.js';
 
 const DIGITS = {
   4: ['1..1', '1..1', '1111', '...1', '...1'],

@@ -2,7 +2,7 @@
    VRM viewer (VRoid Studio characters) — three.js + @pixiv/three-vrm.
    Loaded only when someone opens a character in 3D.
    ========================================================= */
-import { THREE, GLTFLoader, DRACOLoader, MeshoptDecoder, OrbitControls, VRMLoaderPlugin, VRMUtils } from './vendor/vrm-viewer.bundle.js';
+import { THREE, GLTFLoader, DRACOLoader, MeshoptDecoder, OrbitControls, VRMLoaderPlugin, VRMUtils } from '../vendor/vrm-viewer.bundle.js';
 
 export async function mountVRM(host, url, { autoRotate = true } = {}) {
   const w = () => host.clientWidth || 300;

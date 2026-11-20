@@ -5,7 +5,7 @@
 import {
   bootPage, $, esc, txt, tr, t, tf, icon, visible, linksHTML, markdown, loadMarkdownFiles,
   teamById, projectsOfTeam, personById, personLink, teamLogoHTML, projectCardHTML,
-} from './core.js';
+} from '../core/index.js';
 
 const id = new URLSearchParams(location.search).get('id');
 bootPage({ page: 'team', render });
