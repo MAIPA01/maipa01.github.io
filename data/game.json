@@ -6,13 +6,13 @@
   "pixelScale": 4,
   "defaultCharacter": "maipa-chan",
   "player": {
-    "frameWidth": 16,
-    "frameHeight": 16,
+    "frameWidth": 17,
+    "frameHeight": 17,
     "hitbox": {
       "x": 3,
       "y": 0,
       "w": 11,
-      "h": 16
+      "h": 17
     },
     "animations": {
       "idle": {

@@ -54,7 +54,7 @@
         }
       ],
       "game": {
-        "sprite": "assets/game/characters/maipa-chan.png"
+        "sprite": "assets/game/characters/maipa-chan/maipa-chan.png"
       }
     },
     {
@@ -109,7 +109,7 @@
         }
       ],
       "game": {
-        "sprite": "assets/game/characters/remi.png"
+        "sprite": "assets/game/characters/remi/remi.png"
       }
     },
     {
@@ -161,7 +161,7 @@
         }
       ],
       "game": {
-        "sprite": "assets/game/characters/maipa-senpai.png"
+        "sprite": "assets/game/characters/maipa-senpai/maipa-senpai.png"
       }
     }
   ]
