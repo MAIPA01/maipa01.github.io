@@ -128,7 +128,7 @@
           "en": "Classic red",
           "pl": "Klasyczna czerwień"
         },
-        "sprite": "assets/game/car/bodies/classic.png",
+        "sprite": "assets/game/car/bodies/classic/classic.png",
         "weight": 0
       },
       {
@@ -137,7 +137,7 @@
           "en": "Midnight",
           "pl": "Północ"
         },
-        "sprite": "assets/game/car/bodies/midnight.png",
+        "sprite": "assets/game/car/bodies/midnight/midnight.png",
         "weight": 1
       },
       {
@@ -146,7 +146,7 @@
           "en": "Sunset",
           "pl": "Zachód słońca"
         },
-        "sprite": "assets/game/car/bodies/sunset.png",
+        "sprite": "assets/game/car/bodies/sunset/sunset.png",
         "weight": 1
       },
       {
@@ -155,7 +155,25 @@
           "en": "Mint",
           "pl": "Mięta"
         },
-        "sprite": "assets/game/car/bodies/mint.png",
+        "sprite": "assets/game/car/bodies/mint/mint.png",
+        "weight": 1
+      },
+      {
+        "id": "maipa-chan",
+        "name": "Maipa-Chan",
+        "sprite": "assets/game/car/bodies/maipa-chan/maipa-chan.png",
+        "weight": 1
+      },
+      {
+        "id": "remi",
+        "name": "Remi",
+        "sprite": "assets/game/car/bodies/remi/remi.png",
+        "weight": 1
+      },
+      {
+        "id": "maipa-senpai",
+        "name": "Maipa-Senpai",
+        "sprite": "assets/game/car/bodies/maipa-senpai/maipa-senpai.png",
         "weight": 1
       }
     ],
