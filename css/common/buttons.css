@@ -30,7 +30,7 @@
 
 .mini-sprite {
   width: 16px; height: 16px; flex: none;
-  background: url("../../assets/game/characters/maipa-chan.png") 0 0 / auto 16px no-repeat;
+  background: url("../../assets/game/characters/maipa-chan/maipa-chan.png") 0 0 / auto 16px no-repeat;
   image-rendering: pixelated; animation: mini-idle 1s steps(1) infinite;
 }
 @keyframes mini-idle { 0% { background-position: 0 0; } 50% { background-position: -16px 0; } }

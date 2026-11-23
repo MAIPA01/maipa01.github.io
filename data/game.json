@@ -66,18 +66,16 @@
     }
   },
   "collectible": {
-    "sprite": "assets/game/coin.png",
-    "frameWidth": 8,
-    "frameHeight": 8,
+    "sprite": "assets/game/coin/coin.png",
+    "frameWidth": 20,
+    "frameHeight": 20,
     "frames": [
       0,
       1,
       2,
-      3,
-      2,
-      1
+      3
     ],
-    "fps": 10
+    "fps": 5
   },
   "physics": {
     "gravity": 2200,
