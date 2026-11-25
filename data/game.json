@@ -106,12 +106,12 @@
     "wheelFrames": 4,
     "wheelAnchors": [
       [
-        4,
-        8
+        3,
+        9
       ],
       [
         22,
-        8
+        9
       ]
     ],
     "speed": 430,
@@ -217,11 +217,11 @@
           "en": "The car jumps 22% higher.",
           "pl": "Auto skacze o 22% wyżej."
         },
-        "icon": "assets/game/car/upgrades/springs.png",
+        "icon": "assets/game/car/upgrades/springs/springs.png",
         "weight": 2
       },
       {
-        "id": "doubleJump",
+        "id": "double-jump",
         "name": {
           "en": "Nitro hop",
           "pl": "Nitro-skok"
@@ -230,7 +230,7 @@
           "en": "A second jump in the air.",
           "pl": "Drugi skok w powietrzu."
         },
-        "icon": "assets/game/car/upgrades/doubleJump.png",
+        "icon": "assets/game/car/upgrades/double-jump/double-jump.png",
         "weight": 3
       },
       {
@@ -243,38 +243,38 @@
           "en": "Survive one crash per run.",
           "pl": "Przetrwaj jedną kraksę na przejazd."
         },
-        "icon": "assets/game/car/upgrades/shield.png",
+        "icon": "assets/game/car/upgrades/shield/shield.png",
         "weight": 3
       }
     ],
     "obstacles": [
       {
         "id": "cone",
-        "sprite": "assets/game/car/obstacles/cone.png",
+        "sprite": "assets/game/car/obstacles/cone/cone.png",
         "kind": "ground",
         "chance": 3
       },
       {
         "id": "cones",
-        "sprite": "assets/game/car/obstacles/cones.png",
+        "sprite": "assets/game/car/obstacles/cone/cones.png",
         "kind": "ground",
         "chance": 2
       },
       {
         "id": "barrier",
-        "sprite": "assets/game/car/obstacles/barrier.png",
+        "sprite": "assets/game/car/obstacles/barrier/barrier.png",
         "kind": "ground",
         "chance": 2
       },
       {
         "id": "tires",
-        "sprite": "assets/game/car/obstacles/tires.png",
+        "sprite": "assets/game/car/obstacles/tires/tires.png",
         "kind": "ground",
         "chance": 2
       },
       {
         "id": "drone",
-        "sprite": "assets/game/car/obstacles/drone.png",
+        "sprite": "assets/game/car/obstacles/drone/drone.png",
         "frames": 2,
         "fps": 10,
         "kind": "air",
@@ -282,7 +282,7 @@
       },
       {
         "id": "ramp",
-        "sprite": "assets/game/car/obstacles/ramp.png",
+        "sprite": "assets/game/car/obstacles/ramp/ramp.png",
         "kind": "ramp",
         "chance": 1
       }
