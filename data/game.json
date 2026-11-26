@@ -175,16 +175,49 @@
         "name": "Maipa-Senpai",
         "sprite": "assets/game/car/bodies/maipa-senpai/maipa-senpai.png",
         "weight": 1
+      },
+      {
+        "id": "monster-truck",
+        "name": "Monster Truck",
+        "sprite": "assets/game/car/bodies/monster-truck/monster-truck.png",
+        "weight": 2
       }
     ],
     "wheels": [
+      {
+        "id": "standard-small",
+        "name": {
+          "en": "Small standard wheels",
+          "pl": "Małe zwykłe koła"
+        },
+        "sprite": "assets/game/car/wheels/standard/standard-small.png",
+        "weight": 0
+      },
+      {
+        "id": "sport-small",
+        "name": {
+          "en": "Small sport rims",
+          "pl": "Małe sportowe felgi"
+        },
+        "sprite": "assets/game/car/wheels/sport/sport-small.png",
+        "weight": 1
+      },
+      {
+        "id": "gold-small",
+        "name": {
+          "en": "Samll gold rims",
+          "pl": "Małe złote felgi"
+        },
+        "sprite": "assets/game/car/wheels/gold/gold-small.png",
+        "weight": 2
+      },
       {
         "id": "standard",
         "name": {
           "en": "Standard wheels",
           "pl": "Zwykłe koła"
         },
-        "sprite": "assets/game/car/wheels/standard.png",
+        "sprite": "assets/game/car/wheels/standard/standard.png",
         "weight": 0
       },
       {
@@ -193,7 +226,7 @@
           "en": "Sport rims",
           "pl": "Sportowe felgi"
         },
-        "sprite": "assets/game/car/wheels/sport.png",
+        "sprite": "assets/game/car/wheels/sport/sport.png",
         "weight": 1
       },
       {
@@ -202,7 +235,34 @@
           "en": "Gold rims",
           "pl": "Złote felgi"
         },
-        "sprite": "assets/game/car/wheels/gold.png",
+        "sprite": "assets/game/car/wheels/gold/gold.png",
+        "weight": 2
+      },
+      {
+        "id": "standard-big",
+        "name": {
+          "en": "Big standard wheels",
+          "pl": "Duże zwykłe koła"
+        },
+        "sprite": "assets/game/car/wheels/standard/standard-big.png",
+        "weight": 0
+      },
+      {
+        "id": "sport-big",
+        "name": {
+          "en": "Big sport rims",
+          "pl": "Duże sportowe felgi"
+        },
+        "sprite": "assets/game/car/wheels/sport/sport-big.png",
+        "weight": 1
+      },
+      {
+        "id": "gold-big",
+        "name": {
+          "en": "Big gold rims",
+          "pl": "Duże złote felgi"
+        },
+        "sprite": "assets/game/car/wheels/gold/gold-big.png",
         "weight": 2
       }
     ],
