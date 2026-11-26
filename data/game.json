@@ -223,8 +223,8 @@
       {
         "id": "double-jump",
         "name": {
-          "en": "Nitro hop",
-          "pl": "Nitro-skok"
+          "en": "Tesla jump",
+          "pl": "Skok Tesli"
         },
         "description": {
           "en": "A second jump in the air.",
